@@ -1,16 +1,14 @@
-package com.unlucky.assignment3.user.seller;
+package com.unlucky.assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.unlucky.assignment3.R;
-
-public class sellerMain extends AppCompatActivity {
+public class SignUpPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seller_main);
+        setContentView(R.layout.activity_sign_up_page);
     }
 }

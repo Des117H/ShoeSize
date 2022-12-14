@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.unlucky.assignment3.R;
 
-public class buyerShoppingCart extends AppCompatActivity {
+public class BuyerDetail extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buyer_shopping_cart);
+        setContentView(R.layout.activity_buyer_detail);
     }
 }

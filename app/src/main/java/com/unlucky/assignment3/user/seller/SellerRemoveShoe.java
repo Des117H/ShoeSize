@@ -1,14 +1,16 @@
-package com.unlucky.assignment3;
+package com.unlucky.assignment3.user.seller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class welcomePage extends AppCompatActivity {
+import com.unlucky.assignment3.R;
+
+public class SellerRemoveShoe extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome_page);
+        setContentView(R.layout.activity_seller_remove_shoe);
     }
 }

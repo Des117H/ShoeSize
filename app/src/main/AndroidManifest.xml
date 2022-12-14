@@ -13,77 +13,77 @@
         android:theme="@style/Theme.Assignment3"
         tools:targetApi="31">
         <activity
-            android:name=".user.seller.sellerRemoveShoe"
+            android:name=".user.seller.SellerRemoveShoe"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.seller.sellerAddShoe"
+            android:name=".user.seller.SellerAddShoe"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.seller.sellerList"
+            android:name=".user.seller.SellerList"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.seller.sellerMain"
+            android:name=".user.seller.SellerMain"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.buyer.buyerPayment"
+            android:name=".user.buyer.BuyerPayment"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.buyer.buyerShoppingCart"
+            android:name=".user.buyer.BuyerShoppingCart"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.buyer.buyerDetail"
+            android:name=".user.buyer.BuyerDetail"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.buyer.buyerSearch"
+            android:name=".user.buyer.BuyerSearch"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.buyer.buyerMain"
+            android:name=".user.buyer.BuyerMain"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".signUpPage"
+            android:name=".SignUpPage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".welcomePage"
+            android:name=".WelcomePage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

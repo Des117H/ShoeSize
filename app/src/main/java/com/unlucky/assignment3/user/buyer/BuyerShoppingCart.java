@@ -1,4 +1,4 @@
-package com.unlucky.assignment3.user.seller;
+package com.unlucky.assignment3.user.buyer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.unlucky.assignment3.R;
 
-public class sellerRemoveShoe extends AppCompatActivity {
+public class BuyerShoppingCart extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seller_remove_shoe);
+        setContentView(R.layout.activity_buyer_shopping_cart);
     }
 }

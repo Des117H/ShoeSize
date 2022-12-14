@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.unlucky.assignment3.R;
 
-public class buyerMain extends AppCompatActivity {
+public class BuyerSearch extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buyer_main);
+        setContentView(R.layout.activity_buyer_search);
     }
 }
