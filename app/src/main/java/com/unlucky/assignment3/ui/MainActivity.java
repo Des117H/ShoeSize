@@ -1,4 +1,4 @@
-package com.unlucky.assignment3;
+package com.unlucky.assignment3.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
 
 import java.text.DateFormat;

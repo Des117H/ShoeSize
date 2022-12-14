@@ -30,6 +30,12 @@ android {
 }
 
 dependencies {
+    // Java language implementation
+    //noinspection GradleDependency
+    implementation "androidx.fragment:fragment:1.5.5"
+    // Kotlin
+    implementation "androidx.fragment:fragment-ktx:1.5.5"
+
 
     implementation platform('com.google.firebase:firebase-bom:31.1.0')
     implementation 'androidx.appcompat:appcompat:1.5.1'
