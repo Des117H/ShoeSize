@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Assignment3</string>
+    <string name="app_name">ShoeSize</string>
+    <string name="viewall"><u>View all</u></string>
+    <string name="bestseller">Best Seller</string>
+    <string name="newinstock">New In Stock</string>
+    <string name="quesiton">What are you look for ?</string>
 </resources>
