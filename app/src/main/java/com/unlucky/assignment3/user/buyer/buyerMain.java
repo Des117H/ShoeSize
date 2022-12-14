@@ -1,8 +1,10 @@
-package com.unlucky.assignment3;
+package com.unlucky.assignment3.user.buyer;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.unlucky.assignment3.R;
 
 public class buyerMain extends AppCompatActivity {
 
