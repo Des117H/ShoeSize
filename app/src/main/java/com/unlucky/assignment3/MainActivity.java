@@ -21,6 +21,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    String test;
     EditText name;
     EditText style;
     EditText colorway;
