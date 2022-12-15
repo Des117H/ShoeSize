@@ -15,7 +15,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome to SHOESIZE"
+        android:text="@string/welcome_to_shoesize"
         android:textColor="@color/black"
         android:textSize="24sp" />
 
@@ -37,7 +37,7 @@
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Please fill up below information to complete register"
+            android:text="@string/please_fill_up_below_information_to_complete_register"
             android:textSize="20sp" />
 
         <LinearLayout
@@ -79,7 +79,7 @@
             android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up" />
+            android:text="@string/sign_up" />
 
         <Space
             android:layout_width="wrap_content"
