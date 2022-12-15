@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/nav_buyer"
-        android:name="com.unlucky.myapplication.ui.home.HomeFragment"
+        android:name="com.unlucky.assignment3.ui.welcome.fragment.BuyerSignInFragment"
         android:label="Buyer"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_buyer_sign_in" />
 
     <fragment
-        android:id="@+id/vav_seller"
-        android:name="com.unlucky.myapplication.ui.dashboard.DashboardFragment"
+        android:id="@+id/nav_seller"
+        android:name="com.unlucky.assignment3.ui.welcome.fragment.SellerSignInFragment"
         android:label="Seller"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_seller_sign_in" />
 
 </navigation>
