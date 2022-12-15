@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:name="com.unlucky.assignment3.ui.fragment.welcome.BuyerSignInFragment"
-    tools:context=".ui.fragment.welcome.BuyerSignInFragment"
-    tools:layout="@layout/sign_in_layout_fragment">
+    android:name="com.unlucky.assignment3.ui.fragment.signup.BuyerSignUpFragment"
+    tools:context=".ui.fragment.signup.BuyerSignUpFragment"
+    tools:layout="@layout/sign_up_layout_fragment" >
 
 </androidx.fragment.app.FragmentContainerView>

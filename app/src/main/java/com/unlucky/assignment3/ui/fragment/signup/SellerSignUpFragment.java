@@ -1,22 +1,17 @@
-package com.unlucky.assignment3.ui.welcome.fragment;
+package com.unlucky.assignment3.ui.fragment.signup;
 
+import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import com.unlucky.assignment3.R;
+import com.unlucky.assignment3.ui.fragment.welcome.SellerSignInFragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SellerSignInFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class SellerSignInFragment extends Fragment {
-
+public class SellerSignUpFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,7 +21,7 @@ public class SellerSignInFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SellerSignInFragment() {
+    public SellerSignUpFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +34,8 @@ public class SellerSignInFragment extends Fragment {
      * @return A new instance of fragment SellerSignInFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static SellerSignInFragment newInstance(String param1, String param2) {
-        SellerSignInFragment fragment = new SellerSignInFragment();
+    public static SellerSignUpFragment newInstance(String param1, String param2) {
+        SellerSignUpFragment fragment = new SellerSignUpFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +56,6 @@ public class SellerSignInFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_seller_sign_in, container, false);
+        return inflater.inflate(R.layout.fragment_seller_sign_up, container, false);
     }
 }

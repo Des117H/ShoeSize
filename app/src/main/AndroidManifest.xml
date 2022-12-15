@@ -83,7 +83,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.welcome.WelcomePage"
+            android:name=".ui.WelcomePage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

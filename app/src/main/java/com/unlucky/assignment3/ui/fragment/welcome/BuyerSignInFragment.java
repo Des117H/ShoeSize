@@ -1,4 +1,4 @@
-package com.unlucky.assignment3.ui.welcome.fragment;
+package com.unlucky.assignment3.ui.fragment.welcome;
 
 import android.os.Bundle;
 

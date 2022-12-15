@@ -5,4 +5,6 @@
     <string name="trending">Best Seller</string>
     <string name="newinstock">New In Stock</string>
     <string name="quesiton">What are you look for ?</string>
+    <string name="register">Register</string>
+    <string name="log_in">Log In</string>
 </resources>
