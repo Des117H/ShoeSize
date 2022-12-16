@@ -1,4 +1,4 @@
-package com.unlucky.assignment3.ui.welcome;
+package com.unlucky.assignment3.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
