@@ -62,7 +62,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register" />
+            android:text="register" />
 
         <Space
             android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/log_in" />
+            android:text="login" />
 
         <Space
             android:layout_width="wrap_content"
