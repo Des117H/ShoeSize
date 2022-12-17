@@ -31,8 +31,8 @@ public class WelcomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent i = new Intent(this, BuyerPayment.class);
-        startActivity(i);
+//        Intent i = new Intent(this, BuyerPayment.class);
+//        startActivity(i);
 
         binding = ActivityWelcomePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
