@@ -25,4 +25,7 @@
     <string name="name_of_the_shoe">Name of the shoe</string>
     <string name="price_of_the_shoe">price of the shoe</string>
     <string name="color_of_the_shoe">Color of the shoe</string>
+    <string name="confirmation">CONFIRMATION</string>
+    <string name="confirmation_check">Enter the work \'confirm\' into the box for the confirmation.</string>
+    <string name="confirm">confirm</string>
 </resources>

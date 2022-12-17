@@ -7,17 +7,140 @@
     tools:context=".user.seller.SellerRemoveShoe"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Seller remove shoe"
-        android:textSize="50sp">
-    </TextView>
+        android:orientation="vertical"
+        android:background="@color/yellow">
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/back"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="30dp"
+                app:icon="@android:drawable/ic_menu_revert"
+                app:iconTint="@color/blue" />
+
+            <ImageView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginStart="50dp"
+                app:srcCompat="@drawable/ava">
+
+            </ImageView>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/remove_shoe"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:textSize="50sp">
+        </TextView>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="50dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    app:srcCompat="@drawable/a"
+                    android:id="@+id/image">
+                </ImageView>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Air Jordan 1 Mid Triple White GS"
+                        android:id="@+id/name">
+                    </TextView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Chicago Lost and Found"
+                        android:id="@+id/supName">
+                    </TextView>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="$281"
+                        android:textColor="@color/blue"
+                        android:id="@+id/price">
+                    </TextView>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/confirmation"
+            android:textSize="40sp"
+            android:textColor="@color/black"
+            android:textAlignment="center">
+        </TextView>
+        <TextView
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="@string/confirmation_check"
+            android:textSize="25sp">
+        </TextView>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp"
+            android:hint="@string/confirm"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textAlignment="center"></EditText>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="150dp">
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="50dp">
 
         <Button
             android:layout_width="wrap_content"
@@ -32,14 +155,6 @@
             android:layout_height="wrap_content"
             android:text="@string/list"
             android:id="@+id/list">
-        </Button>
-
-        <Button
-            android:layout_marginStart="50dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/back"
-            android:id="@+id/back">
         </Button>
     </LinearLayout>
 
