@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.databinding.ActivityWelcomePageBinding;
+import com.unlucky.assignment3.user.buyer.BuyerDetail;
 import com.unlucky.assignment3.user.buyer.BuyerMain;
 import com.unlucky.assignment3.user.seller.SellerMain;
 
@@ -29,7 +30,7 @@ public class WelcomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent i = new Intent(this, SellerMain.class);
+        Intent i = new Intent(this, BuyerDetail.class);
         startActivity(i);
 
         binding = ActivityWelcomePageBinding.inflate(getLayoutInflater());

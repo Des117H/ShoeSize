@@ -29,4 +29,5 @@
     <string name="confirmation_check">Enter the work \'confirm\' into the box for the confirmation.</string>
     <string name="confirm">confirm</string>
     <string name="current_selling_list">Current Selling List</string>
+    <string name="description">Description</string>
 </resources>
