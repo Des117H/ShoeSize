@@ -33,6 +33,14 @@
             android:text="@string/remove"
             android:id="@+id/remove">
         </Button>
+
+        <Button
+            android:layout_marginStart="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:id="@+id/back">
+        </Button>
     </LinearLayout>
 
 </LinearLayout>

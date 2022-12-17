@@ -10,6 +10,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -17,6 +18,8 @@ import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.databinding.ActivityWelcomePageBinding;
+import com.unlucky.assignment3.user.buyer.BuyerMain;
+import com.unlucky.assignment3.user.seller.SellerMain;
 
 public class WelcomePage extends AppCompatActivity {
 
@@ -25,6 +28,9 @@ public class WelcomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent i = new Intent(this, SellerMain.class);
+        startActivity(i);
 
         binding = ActivityWelcomePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

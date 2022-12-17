@@ -16,4 +16,5 @@
     <string name="add">add</string>
     <string name="remove">Remove</string>
     <string name="list">list</string>
+    <string name="back">back</string>
 </resources>

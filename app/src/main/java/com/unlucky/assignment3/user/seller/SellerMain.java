@@ -34,6 +34,13 @@ public class SellerMain extends AppCompatActivity {
             }
         });
 
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openUpdateShoeButton();
+            }
+        });
+
     }
 
     @Override
@@ -43,11 +50,19 @@ public class SellerMain extends AppCompatActivity {
         if (requestCode == 200) {
             if (resultCode == RESULT_OK){
                 if(data.getExtras() != null){
-                    System.out.println("Main");
+                    if(data.getExtras().get("activity").toString().equals("remove"))
+                    {
+                        System.out.println("list -> remove");
+                        openSellerRemoveShoe();
+                    }
+                    if(data.getExtras().get("activity").toString().equals("back"))
+                    {
+                        System.out.println("List -> Seller main");
+                    }
                 }
                 else {
-                    System.out.println("Lecturer");
-                    openSellerList();
+                    System.out.println("list - > add");
+                    openUpdateShoeButton();
                 }
             }
         }
@@ -55,11 +70,38 @@ public class SellerMain extends AppCompatActivity {
         if (requestCode == 201) {
             if (resultCode == RESULT_OK){
                 if(data.getExtras() != null){
-                    System.out.println("Main");
+                    if(data.getExtras().get("activity").toString().equals("list"))
+                    {
+                        System.out.println("add -> list");
+                        openSellerList();
+                    }
+                    if(data.getExtras().get("activity").toString().equals("back"))
+                    {
+                        System.out.println("add -> Seller main");
+                    }
                 }
                 else {
-                    System.out.println("Courses");
+                    System.out.println("add -> remove");
                     openSellerRemoveShoe();
+                }
+            }
+        }
+        if (requestCode == 202) {
+            if (resultCode == RESULT_OK){
+                if(data.getExtras() != null){
+                    if(data.getExtras().get("activity").toString().equals("list"))
+                    {
+                        System.out.println("remove -> list");
+                        openSellerList();
+                    }
+                    if(data.getExtras().get("activity").toString().equals("back"))
+                    {
+                        System.out.println("remove -> Seller main");
+                    }
+                }
+                else {
+                    System.out.println("remove -> add");
+                    openUpdateShoeButton();
                 }
             }
         }
@@ -68,8 +110,13 @@ public class SellerMain extends AppCompatActivity {
         Intent i = new Intent(SellerMain.this, SellerList.class);
         startActivityForResult(i, 200);
     }
+
+    public void openUpdateShoeButton(){
+        Intent i = new Intent(SellerMain.this, SellerAddShoe.class);
+        startActivityForResult(i, 201);
+    }
     public void openSellerRemoveShoe(){
         Intent i = new Intent(SellerMain.this, SellerRemoveShoe.class);
-        startActivityForResult(i, 201);
+        startActivityForResult(i, 202);
     }
 }
