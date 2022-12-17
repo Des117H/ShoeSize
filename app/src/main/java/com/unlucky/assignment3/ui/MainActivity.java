@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent i  = new Intent (this, WelcomePage.class);
+        startActivity(i);
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         name = findViewById(R.id.name);
         style = findViewById(R.id.style);
@@ -50,24 +53,25 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (checkAllFields()) {
-                    Shoe shoe = new Shoe(name.getText().toString(), style.getText().toString(),
-                            colorway.getText().toString(), releaseDate.getText().toString(),
-                            description.getText().toString(), brand.getText().toString(),
-                            Integer.parseInt(price.getText().toString()));
 
-                    Map<String, Object> shoeDB = new HashMap<>();
-                    shoeDB.put("name", shoe.getName());
-                    shoeDB.put("style", shoe.getStyle());
-                    shoeDB.put("colorway", shoe.getColorway());
-                    shoeDB.put("pictureLink", shoe.getPictureLink());
-                    shoeDB.put("releaseDate", shoe.getReleaseDate());
-                    shoeDB.put("description", shoe.getDescription());
-                    shoeDB.put("price", shoe.getPrice());
-
-                    // Add a new document with a generated ID
-                    db.collection("shoes").document(shoe.name).set(shoeDB);
-                }
+//                if (checkAllFields()) {
+//                    Shoe shoe = new Shoe(name.getText().toString(), style.getText().toString(),
+//                            colorway.getText().toString(), releaseDate.getText().toString(),
+//                            description.getText().toString(), brand.getText().toString(),
+//                            Integer.parseInt(price.getText().toString()));
+//
+//                    Map<String, Object> shoeDB = new HashMap<>();
+//                    shoeDB.put("name", shoe.getName());
+//                    shoeDB.put("style", shoe.getStyle());
+//                    shoeDB.put("colorway", shoe.getColorway());
+//                    shoeDB.put("pictureLink", shoe.getPictureLink());
+//                    shoeDB.put("releaseDate", shoe.getReleaseDate());
+//                    shoeDB.put("description", shoe.getDescription());
+//                    shoeDB.put("price", shoe.getPrice());
+//
+//                    // Add a new document with a generated ID
+//                    db.collection("shoes").document(shoe.name).set(shoeDB);
+//                }
             }
         });
 

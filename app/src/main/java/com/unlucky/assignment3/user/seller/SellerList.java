@@ -13,4 +13,5 @@ public class SellerList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_list);
     }
+
 }

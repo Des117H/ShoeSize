@@ -10,4 +10,10 @@
     <string name="sign_up">Sign Up</string>
     <string name="welcome_to_shoesize">Welcome to SHOESIZE</string>
     <string name="please_fill_up_below_information_to_complete_register">Please fill up below information to complete register</string>
+    <string name="update_new_shoe">Update New Shoe</string>
+    <string name="view_my_list">View My List</string>
+    <string name="remove_shoe">Remove Shoe</string>
+    <string name="add">add</string>
+    <string name="remove">Remove</string>
+    <string name="list">list</string>
 </resources>
