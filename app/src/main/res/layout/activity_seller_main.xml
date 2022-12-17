@@ -24,18 +24,18 @@
                 android:id="@+id/greed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hi, Mr Thanh"
+                android:text="@string/hi_mr_thanh"
                 android:textColor="@color/white"
                 android:textSize="40sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/subtitle"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/quesiton"
+                android:text="@string/seller"
                 android:textColor="@color/white"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -45,8 +45,8 @@
             android:layout_marginStart="40dp"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:contentDescription="avatar"
-            app:srcCompat="@drawable/ava"/>
+            app:srcCompat="@drawable/ava"
+            android:layout_marginBottom="20dp"/>
 
     </LinearLayout>
     <Space

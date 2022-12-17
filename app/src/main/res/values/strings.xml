@@ -38,4 +38,6 @@
     <string name="enter_your_phone_number">Enter your phone number</string>
     <string name="shopping_cart">Shopping Cart</string>
     <string name="search_your_shoe_here">Search your shoe here</string>
+    <string name="hi_mr_thanh">Hi, Mr Thanh</string>
+    <string name="seller">What are you going to do today?</string>
 </resources>
