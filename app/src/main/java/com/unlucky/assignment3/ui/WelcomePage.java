@@ -20,6 +20,7 @@ import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.databinding.ActivityWelcomePageBinding;
 import com.unlucky.assignment3.user.buyer.BuyerDetail;
 import com.unlucky.assignment3.user.buyer.BuyerMain;
+import com.unlucky.assignment3.user.buyer.BuyerPayment;
 import com.unlucky.assignment3.user.seller.SellerMain;
 
 public class WelcomePage extends AppCompatActivity {
@@ -30,7 +31,7 @@ public class WelcomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent i = new Intent(this, BuyerDetail.class);
+        Intent i = new Intent(this, BuyerPayment.class);
         startActivity(i);
 
         binding = ActivityWelcomePageBinding.inflate(getLayoutInflater());
