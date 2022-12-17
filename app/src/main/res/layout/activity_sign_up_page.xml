@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.SignUpPage">
+    tools:context=".ui.SignUpPage"
+    tools:ignore="UseSwitchCompatOrMaterialXml">
 
     <Space
         android:layout_width="match_parent"
@@ -19,14 +20,34 @@
         android:textColor="@color/black"
         android:textSize="24sp" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/SignUpNavMenu"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
-        app:menu="@menu/sign_up_navigation_menu" />
+        android:orientation="horizontal"
+        tools:ignore="UseSwitchCompatOrMaterialXml">
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/buyer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buyer" />
+
+        <Button
+            android:id="@+id/seller_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seller" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,15 +71,101 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerView"
-                android:name="androidx.navigation.fragment.NavHostFragment"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:navGraph="@navigation/sign_up_navigation"
-                tools:layout="@layout/sign_up_layout_fragment" />
 
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/usernameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textSize="20sp"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/usernameEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter your username"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColorHint="#757575" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Password"
+                    android:textSize="20sp"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/passwordEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter your password"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    android:textColorHint="#757575" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone number"
+                    android:textSize="20sp"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/phoneEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter your phone number"
+                    android:inputType="phone"
+                    android:minHeight="48dp"
+                    android:textColorHint="#757575" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Address"
+                    android:textSize="20sp"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/AddressEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter your address"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColorHint="#757575" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"/>
+
+                <EditText
+                    android:id="@+id/emailEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter your email"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:textColorHint="#757575" />
+            </LinearLayout>
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -76,7 +183,7 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/signUpButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_up" />

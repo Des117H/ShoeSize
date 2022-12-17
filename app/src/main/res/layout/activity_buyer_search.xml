@@ -31,6 +31,7 @@
                 app:iconTint="@color/blue" />
 
             <ImageView
+                android:id="@+id/imageView3"
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_marginStart="50dp"
@@ -41,19 +42,19 @@
         </LinearLayout>
 
         <EditText
-            android:layout_marginTop="10dp"
+            android:id="@+id/search"
             android:layout_width="300dp"
-            android:layout_marginStart="50dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/white"
             android:hint="@string/search_your_shoe_here"
+            android:minHeight="48dp"
             android:textAlignment="center"
             android:textColor="@color/blue"
             android:textSize="29sp"
-            android:textStyle="bold"
-            android:background="@color/white"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/search">
-        </EditText>
+            android:textStyle="bold"></EditText>
     </LinearLayout>
 
     <ListView

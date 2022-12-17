@@ -1,21 +1,10 @@
 package com.unlucky.assignment3.ui;
 
-import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
+import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.MenuItem;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.databinding.ActivityWelcomePageBinding;
 import com.unlucky.assignment3.user.buyer.BuyerDetail;
@@ -24,8 +13,6 @@ import com.unlucky.assignment3.user.buyer.BuyerPayment;
 import com.unlucky.assignment3.user.seller.SellerMain;
 
 public class WelcomePage extends AppCompatActivity {
-
-    private ActivityWelcomePageBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,5 +35,6 @@ public class WelcomePage extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
         NavigationUI.setupWithNavController(binding.SignInNavMenu, navController);
+        setContentView(R.layout.activity_welcome_page);
     }
 }

@@ -39,5 +39,7 @@
     <string name="shopping_cart">Shopping Cart</string>
     <string name="search_your_shoe_here">Search your shoe here</string>
     <string name="hi_mr_thanh">Hi, Mr Thanh</string>
-    <string name="seller">What are you going to do today?</string>
+    <string name="ask_user_today">What are you going to do today?</string>
+    <string name="buyer">Buyer</string>
+    <string name="seller">Seller</string>
 </resources>
