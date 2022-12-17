@@ -17,4 +17,12 @@
     <string name="remove">Remove</string>
     <string name="list">list</string>
     <string name="back">back</string>
+    <string name="add_new_shoe">ADD NEW SHOE</string>
+    <string name="shoe_s_name">Shoe\'s name</string>
+    <string name="color">Color</string>
+    <string name="price">Price</string>
+    <string name="release_day">Release day</string>
+    <string name="name_of_the_shoe">Name of the shoe</string>
+    <string name="price_of_the_shoe">price of the shoe</string>
+    <string name="color_of_the_shoe">Color of the shoe</string>
 </resources>
