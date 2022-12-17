@@ -2,48 +2,41 @@ package com.unlucky.assignment3.ui.fragment.welcome;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import com.unlucky.assignment3.R;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.unlucky.assignment3.databinding.FragmentBuyerSignInBinding;
 
 public class BuyerSignInFragment extends Fragment {
-    public interface OnDataPass {
-        public void onDataPass(String data);
-    }
-    EditText usernameEditText, passwordEditText;
-    public BuyerSignInFragment() {
-        super(R.layout.fragment_buyer_sign_in);
-    }
+
+    private FragmentBuyerSignInBinding binding;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(
-                R.layout.fragment_buyer_sign_in, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        BuyerSignInViewModel buyerSignInViewModel =
+                new ViewModelProvider(this).get(BuyerSignInViewModel.class);
+        binding = FragmentBuyerSignInBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
+
+//        final TextView textView = binding.UsernameTextView;
+//        buyerSignInViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        return root;
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        usernameEditText = view.findViewById(R.id.UsernameEditText);
-        passwordEditText = view.findViewById(R.id.PasswordEditText);
-    }
-
-    public List<String> getSignInInfo() {
-        List<String> data = new ArrayList<>();
-        data.add(usernameEditText.getText().toString());
-        data.add(passwordEditText.getText().toString());
-
-        return data;
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }
