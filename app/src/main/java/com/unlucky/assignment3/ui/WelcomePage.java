@@ -48,6 +48,7 @@ public class WelcomePage extends AppCompatActivity {
         signUpButton.setOnClickListener(v -> {
             Intent i = new Intent(this, SignUpPage.class);
             startActivity(i);
+            finish();
         });
 
         signInButton.setOnClickListener(v -> {
@@ -60,6 +61,7 @@ public class WelcomePage extends AppCompatActivity {
                     i = new Intent(this, SellerMain.class);
                 }
                 startActivity(i);
+                finish();
             }
         });
     }
