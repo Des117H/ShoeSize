@@ -5,93 +5,258 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.buyer.BuyerMain"
-    android:orientation="vertical">
+    android:background="@color/white"
+    android:backgroundTint="@color/white"
+    android:orientation="vertical"
+    tools:context=".user.buyer.BuyerMain">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
-            android:background="@color/red"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@color/red"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="50dp">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/greed"
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hi, Mr Thanh"
-                    android:textColor="@color/white"
-                    android:textSize="40sp"
-                    android:textStyle="bold" />
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="50dp"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/subtitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/quesiton"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/greed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Hi, Mr Thanh"
+                        android:textColor="@color/white"
+                        android:textSize="40sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quesiton"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="20dp"
+                    android:contentDescription="avatar"
+                    app:srcCompat="@drawable/ava" />
             </LinearLayout>
 
-            <ImageView
-                android:layout_marginTop="20dp"
-                android:id="@+id/imageView"
-                android:layout_marginStart="40dp"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:contentDescription="avatar"
-                app:srcCompat="@drawable/ava" />
+            <Button
+                android:id="@+id/searchMain"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:background="@drawable/button_background"
+                android:text="@string/search_your_shoe_here"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"/>
 
         </LinearLayout>
 
-        <Button
-            android:background="@color/red"
-            android:id="@+id/searchMain"
-            android:shadowRadius="20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Search your shoe here" />
-
         <LinearLayout
-            android:paddingTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp">
 
             <TextView
-                android:layout_marginStart="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:text="@string/newinstock"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="18sp">
+                android:textSize="25sp"
+                android:textStyle="bold">
 
             </TextView>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:textAlignment="textEnd"
+                android:layout_marginEnd="20dp"
                 android:text="@string/viewall"
-                android:textColor="@color/blue"
+                android:textAlignment="textEnd"
+                android:textColor="#03A9F4"
                 android:textIsSelectable="false"
-                android:textSize="16sp"
-                android:textStyle="italic">
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/yellow"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            app:srcCompat="@drawable/a" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            app:srcCompat="@drawable/a" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            app:srcCompat="@drawable/a"></ImageView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            app:srcCompat="@drawable/a"></ImageView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            app:srcCompat="@drawable/a"></ImageView>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/bestseller"
+                android:textColor="@color/black"
+                android:textSize="25sp"
+                android:textStyle="bold">
+
             </TextView>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:text="@string/viewall"
+                android:textAlignment="textEnd"
+                android:textColor="#03A9F4"
+                android:textIsSelectable="false"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
+
         </LinearLayout>
 
         <HorizontalScrollView
@@ -99,11 +264,10 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:background="@color/yellow"
-                >
+                android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="150dp"
@@ -118,14 +282,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -142,14 +304,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -166,14 +326,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -190,172 +348,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-        </HorizontalScrollView>
-        <LinearLayout
-            android:layout_marginTop="50dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/bestseller"
-                android:textColor="@color/black"
-                android:layout_marginStart="10dp"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="@string/viewall"
-                android:textAlignment="textEnd"
-                android:textSize="16sp"
-                android:textColor="@color/blue"
-                android:textStyle="italic" />
-
-        </LinearLayout>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/yellow">
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -373,44 +371,47 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
         </HorizontalScrollView>
+
         <LinearLayout
-            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/bestseller"
+                android:layout_marginStart="20dp"
+                android:text="@string/newinstock"
                 android:textColor="@color/black"
-                android:layout_marginStart="10dp"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="25sp"
+                android:textStyle="bold">
+
+            </TextView>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="20dp"
                 android:text="@string/viewall"
                 android:textAlignment="textEnd"
-                android:textSize="16sp"
-                android:textColor="@color/blue"
-                android:textStyle="italic" />
+                android:textColor="#03A9F4"
+                android:textIsSelectable="false"
+                android:textSize="20sp"
+                android:textStyle="bold|italic" />
 
         </LinearLayout>
 
@@ -421,8 +422,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:background="@color/yellow">
+                android:background="@color/yellow"
+                android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="150dp"
@@ -437,14 +438,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -461,14 +460,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -485,14 +482,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -509,14 +504,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -534,14 +527,12 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="100dp"
-                            app:srcCompat="@drawable/a">
-                        </ImageView>
+                            app:srcCompat="@drawable/a"></ImageView>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Air-Jordan-1-Mid-Triple-White-GS">
-                        </TextView>
+                            android:text="Air-Jordan-1-Mid-Triple-White-GS"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
