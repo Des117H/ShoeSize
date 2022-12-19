@@ -5,8 +5,7 @@
     <string name="trending">Best Seller</string>
     <string name="newinstock">New In Stock</string>
     <string name="quesiton">What are you look for ?</string>
-    <string name="register">Register</string>
-    <string name="log_in">Log In</string>
+    <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="welcome_to_shoesize">Welcome to SHOESIZE</string>
     <string name="please_fill_up_below_information_to_complete_register">Please fill up below information to complete register</string>
