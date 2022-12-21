@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import java.io.InputStream;
 
+//https://stackoverflow.com/a/34354709
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     ImageView bmImage;
     public DownloadImageTask(ImageView bmImage) {
