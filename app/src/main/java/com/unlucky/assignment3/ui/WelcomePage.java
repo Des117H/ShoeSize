@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.unlucky.assignment3.R;
+import com.unlucky.assignment3.user.buyer.BuyerDetail;
 import com.unlucky.assignment3.user.buyer.BuyerMain;
 import com.unlucky.assignment3.user.seller.SellerMain;
 
@@ -21,6 +22,9 @@ public class WelcomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_welcome_page);
+
+        Intent intent = new Intent(WelcomePage.this, BuyerDetail.class);
+        startActivity(intent);
 
         buyerButton = findViewById(R.id.buyer_button);
         sellerButton = findViewById(R.id.seller_button);

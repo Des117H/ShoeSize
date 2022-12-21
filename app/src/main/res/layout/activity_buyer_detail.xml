@@ -38,7 +38,8 @@
                 android:textColor="@color/black"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                android:id="@+id/name"/>
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
@@ -47,7 +48,8 @@
                 android:text="Chicago Lost and Found"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                android:id="@+id/subName"/>
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
@@ -57,7 +59,8 @@
                 android:textColor="#0BC105"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                tools:ignore="RtlSymmetry" />
+                tools:ignore="RtlSymmetry"
+                android:id="@+id/mainPrice"/>
             <com.google.android.material.divider.MaterialDivider
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"

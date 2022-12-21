@@ -56,10 +56,9 @@ public class listAdapter extends BaseAdapter {
 
         itemInList shoe = this.listData.get(position);
         holder.nameView.setText(shoe.getName());
-        holder.subNameView.setText("Population: " + shoe.getSubName());
-
+        holder.subNameView.setText("subname: " + shoe.getSubName());
+        holder.priceView.setText(shoe.getPrice());
         //int imageId = this.getMipmapResIdByName(country.getFlagName());
-
         //holder.flagView.setImageResource(imageId);
 
         return convertView;
