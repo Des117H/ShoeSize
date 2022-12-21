@@ -56,7 +56,8 @@ public class BuyerDetail extends AppCompatActivity {
         });
         Map<String, Object> shoeData = new HashMap<>();
 
-        db.collection("shoes").whereEqualTo("name", "Air Jordan 1 Mid Light Smoke Grey")
+        db.collection("shoes")
+                .whereEqualTo("name", "Air Jordan 1 Mid Light Smoke Grey")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @SuppressLint("SetTextI18n")
