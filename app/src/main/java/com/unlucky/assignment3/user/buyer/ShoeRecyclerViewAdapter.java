@@ -1,34 +1,26 @@
 package com.unlucky.assignment3.user.buyer;
 
-import static android.content.ContentValues.TAG;
-
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
+import com.unlucky.assignment3.shoe.Shoe;
 import com.unlucky.assignment3.utilities.DownloadImageTask;
 
 import java.util.List;
 
 public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerViewAdapter.ViewHolder> {
-    private List<String> mData;
+    private List<Shoe> mData;
     private LayoutInflater mInflater;
 
     // data is passed into the constructor
-    ShoeRecyclerViewAdapter(Context context, List<String> data) {
+    ShoeRecyclerViewAdapter(Context context, List<Shoe> data) {
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -43,9 +35,9 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.shoeNameRecycle.setText(mData.get(position));
+        holder.shoeNameRecycle.setText(mData.get(position).getName());
         new DownloadImageTask(holder.shoeImageRecycle)
-                .execute(convertNameToPicLink(mData.get(position)));
+                .execute(mData.get(position).getPictureLink());
 
         System.out.println(mData.get(position));
     }
@@ -55,7 +47,6 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
     public int getItemCount() {
         return mData.size();
     }
-
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -67,12 +58,5 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
             shoeNameRecycle = itemView.findViewById(R.id.shoeNameRecylce);
             shoeImageRecycle = itemView.findViewById(R.id.shoeImageRecycle);
         }
-    }
-
-    public String convertNameToPicLink(String name) {
-        String nameLink = name.replaceAll(" ", "-");
-        nameLink = nameLink.replaceAll("[()]", "");
-        return "https://images.stockx.com/360/" + nameLink +
-                "/Images/" + nameLink + "/Lv2/img01.jpg?fm=jpg&amp;";
     }
 }
