@@ -7,9 +7,6 @@ import android.view.View;
 import android.widget.Button;
 
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.shoe.itemInList;
-
-import java.util.List;
 
 public class BuyerSearch extends AppCompatActivity {
 

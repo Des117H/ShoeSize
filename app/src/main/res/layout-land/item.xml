@@ -8,7 +8,7 @@
     tools:ignore="MissingDefaultResource">
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/shoeImageItem"
         android:layout_width="116dp"
         android:layout_height="116dp"
         android:layout_marginStart="16dp"
@@ -24,31 +24,21 @@
         android:layout_marginTop="7dp"
         android:text="Name of the shoe"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toEndOf="@+id/shoeImageItem"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="14sp"
         android:textColor="@color/black" />
 
     <TextView
-        android:id="@+id/subname"
-        android:layout_width="169dp"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:text="Sub name of the shoe"
-        android:textStyle="bold"
-        android:layout_marginStart="22dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
-
-    <TextView
         android:id="@+id/price"
         android:layout_width="169dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="price for the shoe"
         android:textColor="@color/blue"
         android:textSize="18sp"
-        android:text="price for the shoe"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/subname"
-        app:layout_constraintTop_toBottomOf="@+id/subname" />
+        app:layout_constraintStart_toEndOf="@+id/shoeImageItem"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,14 +1,14 @@
 package com.unlucky.assignment3.shoe;
 
-public class itemInList {
+public class ShoeItemList {
 
     private String name;
-    private String subName;
+    private String pictureLink;
     private int price;
 
-    public itemInList(String name, String subName, int price){
+    public ShoeItemList(String name, String pictureLink, int price){
         this.name = name;
-        this.subName = subName;
+        this.pictureLink = pictureLink;
         this.price = price;
     }
 
@@ -16,12 +16,12 @@ public class itemInList {
         return price;
     }
 
-    public String getName() {
-        return name;
+    public String getPictureLink() {
+        return pictureLink;
     }
 
-    public String getSubName() {
-        return subName;
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
@@ -32,12 +32,12 @@ public class itemInList {
         this.price = price;
     }
 
-    public void setSubName(String subName) {
-        this.subName = subName;
+    public void setPictureLink(String pictureLink) {
+        this.pictureLink = pictureLink;
     }
 
     @Override
     public String toString(){
-        return this.name + this.subName + this.price;
+        return this.name + " " + this.price;
     }
 }
