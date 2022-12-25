@@ -1,7 +1,6 @@
 package com.unlucky.assignment3.shoe;
 
 public class ShoeItemList {
-
     private String name;
     private String pictureLink;
     private int price;

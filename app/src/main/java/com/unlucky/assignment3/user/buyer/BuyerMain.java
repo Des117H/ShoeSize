@@ -33,8 +33,9 @@ import java.util.Map;
 
 public class BuyerMain extends AppCompatActivity {
     private RecyclerView shoeRV;
-    private List<Shoe> shoeNameList;
+    private List<String> shoeNameList;
     private ShoeItemAdapter shoeRVAdapter;
+    private ShoeRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +54,8 @@ public class BuyerMain extends AppCompatActivity {
         });
 
         shoeNameList = new ArrayList<>();
-        final boolean[] isComplete = {false};
+
+        shoeRV = findViewById(R.id.shoeRv);
 
         System.out.println("start add data to list");
         db.collection("shoes")
@@ -64,17 +66,21 @@ public class BuyerMain extends AppCompatActivity {
                         if (task.isComplete()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> temp = document.getData();
-                                Shoe shoeData = new Shoe((String) temp.get("name"),
-                                        (String) temp.get("style"), (String) temp.get("colorway"),
-                                        (String) temp.get("releaseDate"), (String) temp.get("description"),
-                                        (Double) temp.get("price"));
-                                shoeNameList.add(shoeData);
+//                                Shoe shoeData = new Shoe((String) temp.get("name"),
+//                                        (String) temp.get("style"), (String) temp.get("colorway"),
+//                                        (String) temp.get("releaseDate"), (String) temp.get("description"),
+//                                        (Double) temp.get("price"));
+                                shoeNameList.add((String) temp.get("name"));
                             }
 
-                            ListView listView = findViewById(R.id.shoeItemList);
+                            shoeRV.setLayoutManager(new LinearLayoutManager(BuyerMain.this));
+                            adapter = new ShoeRecyclerViewAdapter(BuyerMain.this, shoeNameList);
+                            shoeRV.setAdapter(adapter);
 
-                            ListAdapter customAdapter = new ShoeItemAdapter(BuyerMain.this, R.layout.item, shoeNameList);
-                            listView.setAdapter(customAdapter);
+//                            ListView listView = findViewById(R.id.shoeItemList);
+//
+//                            ListAdapter customAdapter = new ShoeItemAdapter(BuyerMain.this, R.layout.item, shoeNameList);
+//                            listView.setAdapter(customAdapter);
 
                             // When the user clicks on the ListItem
 //                            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
