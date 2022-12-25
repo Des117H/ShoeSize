@@ -4,6 +4,8 @@ import static android.content.ContentValues.TAG;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -23,7 +25,9 @@ import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.utilities.DownloadImageTask;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class BuyerMain extends AppCompatActivity {
 
@@ -43,19 +47,28 @@ public class BuyerMain extends AppCompatActivity {
             }
         });
 
-        db.collection("shoes")
+        RecyclerView recyclerView = findViewById(R.id.shoeItemRecyclerView);
+        List<String> shoeNameList = new ArrayList<>();
+
+        Task<QuerySnapshot> task = db.collection("shoes")
                 .orderBy("releaseDate", Query.Direction.DESCENDING)
-                .limit(5).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.get("name") + " " + document.get("releaseDate"));
-                            }
-                        } else {
-                            Log.d(TAG, "Error getting documents: ", task.getException());
-                        }
-                    }
-                });
+                .limit(5).get();
+
+        if (task.isSuccessful()) {
+            for (QueryDocumentSnapshot document : task.getResult()) {
+                shoeNameList.add((String) document.get("name"));
+                System.out.println(shoeNameList.get(shoeNameList.size() - 1));
+            }
+        } else {
+            Log.d(TAG, "Error getting documents: ", task.getException());
+        }
+
+        for (String shoe: shoeNameList) {
+            System.out.println("list: " + shoe);
+        }
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ShoeRecyclerViewAdapter shoeAdapter = new ShoeRecyclerViewAdapter(this, shoeNameList);
+        recyclerView.setAdapter(shoeAdapter);
     }
 }
