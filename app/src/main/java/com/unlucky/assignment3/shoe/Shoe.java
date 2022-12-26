@@ -24,8 +24,6 @@ public class Shoe {
         this.releaseDate = releaseDate;
         this.description = description;
         this.price = price;
-//        https://images.stockx.com/360/Air-Jordan-4-Retro-White-Midnight-Navy/Images/Air-Jordan-4-Retro-White-Midnight-Navy/Lv2/img01.jpg?fm=avif
-//        https://images.stockx.com/360/Air-Jordan-4-Retro-Midnight-Navy/Images/Air-Jordan-4-Retro-Midnight-Navy/Lv2/img01.jpg?fm=jpg&amp;
     }
 
     public String convertNameToPicLink(String name) {
