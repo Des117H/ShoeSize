@@ -85,6 +85,10 @@ public class Shoe {
         return price;
     }
 
+    public String getPriceString() {
+        return "$" + price;
+    }
+
     public void setPrice(double price) {
         this.price = price;
     }

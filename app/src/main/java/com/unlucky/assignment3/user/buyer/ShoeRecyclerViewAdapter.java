@@ -36,6 +36,7 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.shoeNameRecycle.setText(mData.get(position).getName());
+        holder.shoePriceRecycle.setText(mData.get(position).getPriceString());
         new DownloadImageTask(holder.shoeImageRecycle)
                 .execute(mData.get(position).getPictureLink());
 
@@ -50,13 +51,14 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView shoeNameRecycle;
+        TextView shoeNameRecycle, shoePriceRecycle;
         ImageView shoeImageRecycle;
 
         ViewHolder(View itemView) {
             super(itemView);
             shoeNameRecycle = itemView.findViewById(R.id.shoeNameRecylce);
             shoeImageRecycle = itemView.findViewById(R.id.shoeImageRecycle);
+            shoePriceRecycle = itemView.findViewById(R.id.shoePriceRecycle);
         }
     }
 }
