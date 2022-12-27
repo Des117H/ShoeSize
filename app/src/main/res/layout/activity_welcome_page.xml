@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
@@ -8,14 +8,24 @@
     android:orientation="vertical"
     tools:context=".ui.WelcomePage">
 
-    <Space
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="126dp" />
+        android:layout_height="180dp"
+        android:background="@color/red"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseSwitchCompatOrMaterialXml">
 
         <Space
@@ -27,13 +37,20 @@
             android:id="@+id/buyer_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/buyer" />
+            android:text="@string/buyer"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1" />
 
         <Button
             android:id="@+id/seller_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/seller" />
+            android:text="@string/seller"
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="wrap_content"
@@ -44,7 +61,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="288dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Space
             android:layout_width="wrap_content"
@@ -62,7 +83,8 @@
                 android:layout_height="wrap_content"
                 android:text="Username"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/UsernameEditText"
@@ -72,7 +94,8 @@
                 android:hint="Enter your username"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
-                android:textColorHint="#757575" />
+                android:textColorHint="#757575"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/PasswordTextView"
@@ -80,7 +103,8 @@
                 android:layout_height="wrap_content"
                 android:text="Password"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/PasswordEditText"
@@ -90,7 +114,8 @@
                 android:hint="Enter your password"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
-                android:textColorHint="#757575" />
+                android:textColorHint="#757575"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <Space
@@ -103,7 +128,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="460dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Space
             android:layout_width="wrap_content"
@@ -113,9 +143,11 @@
         <Button
             android:id="@+id/signUpWelcomeButton"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="@string/sign_up" />
+            android:background="@drawable/button_background"
+            android:text="@string/sign_up"
+            android:textStyle="bold"/>
 
         <Space
             android:layout_width="wrap_content"
@@ -125,9 +157,11 @@
         <Button
             android:id="@+id/signInButton"
             style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="@string/sign_in" />
+            android:background="@drawable/button_background"
+            android:text="@string/sign_in"
+            android:textStyle="bold"/>
 
         <Space
             android:layout_width="wrap_content"
@@ -135,7 +169,13 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bottom_background" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
