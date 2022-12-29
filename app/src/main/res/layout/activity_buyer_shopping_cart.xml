@@ -51,53 +51,59 @@
         </TextView>
     </LinearLayout>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cart"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:id="@+id/cart">
-    </ListView>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/yellow"
+        android:orientation="vertical">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginTop="20dp"
         android:background="@color/yellow"
-        android:layout_marginTop="20dp">
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
             <TextView
-                android:layout_marginStart="20dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Selected Item: 2"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:id="@+id/selected"
-                android:textColor="@color/white">
-            </TextView>
-            <TextView
-                android:layout_marginStart="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total: $391"
-                android:textStyle="bold"
+                android:layout_marginStart="20dp"
+                android:text="Selected Item: 2"
+                android:textColor="@color/white"
                 android:textSize="20sp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
                 android:id="@+id/total"
-                android:textColor="@color/white">
-            </TextView>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:text="Total: $391"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"></TextView>
         </LinearLayout>
+
         <Button
+            android:id="@+id/checkOut"
+            style="@style/Theme.AppCompat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Check out"
-            style="@style/Theme.AppCompat"
             android:layout_marginStart="150dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
-            android:id="@+id/checkOut">
-        </Button>
+            android:text="Check out"></Button>
     </LinearLayout>
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.unlucky.assignment3.user.buyer;
+package com.unlucky.assignment3.utilities.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
 import com.unlucky.assignment3.utilities.DownloadImageTask;
@@ -18,9 +19,11 @@ import java.util.List;
 public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerViewAdapter.ViewHolder> {
     private List<Shoe> mData;
     private LayoutInflater mInflater;
+    Context mContext;
 
     // data is passed into the constructor
-    ShoeRecyclerViewAdapter(Context context, List<Shoe> data) {
+    public ShoeRecyclerViewAdapter(Context context, List<Shoe> data) {
+        this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
     }
@@ -37,8 +40,10 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.shoeNameRecycle.setText(mData.get(position).getName());
         holder.shoePriceRecycle.setText(mData.get(position).getPriceString());
-        new DownloadImageTask(holder.shoeImageRecycle)
-                .execute(mData.get(position).getPictureLink());
+//        new DownloadImageTask(holder.shoeImageRecycle)
+//                .execute(mData.get(position).getPictureLink());
+
+        Glide.with(mContext).load(mData.get(position).getPictureLink()).into(holder.shoeImageRecycle);
 
         System.out.println(mData.get(position));
     }
@@ -56,7 +61,7 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
 
         ViewHolder(View itemView) {
             super(itemView);
-            shoeNameRecycle = itemView.findViewById(R.id.shoeNameRecylce);
+            shoeNameRecycle = itemView.findViewById(R.id.shoeNameRecycle);
             shoeImageRecycle = itemView.findViewById(R.id.shoeImageRecycle);
             shoePriceRecycle = itemView.findViewById(R.id.shoePriceRecycle);
         }

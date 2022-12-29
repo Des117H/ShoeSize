@@ -18,6 +18,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.utilities.adapter.ShoeRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,11 +36,43 @@ public class BuyerMain extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Button search = findViewById(R.id.searchMain);
+        Button cart = findViewById(R.id.toCartBtn);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent searchIntent = new Intent(BuyerMain.this, BuyerSearch.class);
+                db.collection("shoes")
+                        .orderBy("name", Query.Direction.ASCENDING)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isComplete()) {
+                                    ArrayList<Shoe> shoeList = new ArrayList<Shoe>();
+
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Map<String, Object> temp = document.getData();
+                                        Shoe shoeData = new Shoe((String) temp.get("name"),
+                                                (String) temp.get("style"), (String) temp.get("colorway"),
+                                                (String) temp.get("releaseDate"), (String) temp.get("description"),
+                                                (Double) temp.get("price"));
+                                        shoeList.add(shoeData);
+                                    }
+
+                                    Intent searchIntent = new Intent(BuyerMain.this, BuyerSearch.class);
+
+                                    searchIntent.putExtra("shoe_list", shoeList);
+                                    startActivity(searchIntent);
+                                }
+                            }
+                        });
+            }
+        });
+
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent searchIntent = new Intent(BuyerMain.this, BuyerShoppingCart.class);
                 startActivity(searchIntent);
             }
         });
