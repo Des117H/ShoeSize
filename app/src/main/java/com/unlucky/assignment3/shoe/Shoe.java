@@ -1,6 +1,14 @@
 package com.unlucky.assignment3.shoe;
 
-public class Shoe {
+import static android.content.ContentValues.TAG;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+
+import java.io.Serializable;
+
+public class Shoe implements Serializable {
     public String name, style, pictureLink, colorway, releaseDate, description, brand;
     public double price;
 

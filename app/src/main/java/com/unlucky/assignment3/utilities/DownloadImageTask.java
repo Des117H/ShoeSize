@@ -1,5 +1,7 @@
 package com.unlucky.assignment3.utilities;
 
+import static android.content.ContentValues.TAG;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -7,6 +9,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.InputStream;
+import java.util.Arrays;
 
 //https://stackoverflow.com/a/34354709
 public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -16,11 +19,12 @@ public class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
     }
 
     protected Bitmap doInBackground(String... urls) {
-        String urldisplay = urls[0];
+        String urlDisplay = urls[0];
         Bitmap mIcon11 = null;
         try {
-            InputStream in = new java.net.URL(urldisplay).openStream();
+            InputStream in = new java.net.URL(urlDisplay).openStream();
             mIcon11 = BitmapFactory.decodeStream(in);
+            Log.w(TAG, "complete with url: " + Arrays.toString(urls));
         } catch (Exception e) {
             Log.e("Error", e.getMessage());
             e.printStackTrace();
