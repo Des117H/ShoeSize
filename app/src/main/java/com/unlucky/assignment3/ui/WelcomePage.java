@@ -50,8 +50,8 @@ public class WelcomePage extends AppCompatActivity {
 
         setContentView(R.layout.activity_welcome_page);
 
-        Intent intent = new Intent(WelcomePage.this, BuyerDetail.class);
-        startActivity(intent);
+//        Intent intent = new Intent(WelcomePage.this, BuyerDetail.class);
+//        startActivity(intent);
 
         buyerButton = findViewById(R.id.buyer_button);
         sellerButton = findViewById(R.id.seller_button);

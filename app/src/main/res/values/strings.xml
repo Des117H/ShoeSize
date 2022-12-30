@@ -41,4 +41,7 @@
     <string name="ask_user_today">What are you going to do today?</string>
     <string name="buyer">Buyer</string>
     <string name="seller">Seller</string>
+    <string name="home">HOME</string>
+    <string name="account">ACCOUNT</string>
+    <string name="cart">CART</string>
 </resources>

@@ -36,7 +36,7 @@ public class BuyerMain extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Button search = findViewById(R.id.searchMain);
-        Button cart = findViewById(R.id.toCartBtn);
+       // Button cart = findViewById(R.id.toCartBtn);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,13 +69,13 @@ public class BuyerMain extends AppCompatActivity {
             }
         });
 
-        cart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent searchIntent = new Intent(BuyerMain.this, BuyerShoppingCart.class);
-                startActivity(searchIntent);
-            }
-        });
+//        cart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent searchIntent = new Intent(BuyerMain.this, BuyerShoppingCart.class);
+//                startActivity(searchIntent);
+//            }
+//        });
 
         newShoeList = new ArrayList<>();
         bestSellShoeList = new ArrayList<>();
