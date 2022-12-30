@@ -82,6 +82,7 @@
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -182,12 +183,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        app:itemBackground="@color/black"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@color/custom_color_bottom_nar"
+        app:itemTextColor="@color/custom_color_bottom_nar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/menu_bottom_nar"
-        tools:layout_editor_absoluteX="-37dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_nar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

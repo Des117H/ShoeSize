@@ -8,4 +8,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="unactivated_text">#434343</color>
     <color name="unactivated_background">#777777</color>
+    <color name="button_unselected">#D35757</color>
+    <color name="button_selected">#777777</color>
 </resources>
