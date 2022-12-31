@@ -57,19 +57,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="30dp">
+            >
 
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                app:srcCompat="@drawable/a" />
+                app:srcCompat="@drawable/a"
+                android:layout_gravity="center"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -84,14 +86,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/name_of_the_shoe"
-                    android:id="@+id/shoeName">
+                    android:id="@+id/shoeName"
+                    android:textStyle="bold"
+                    >
                 </EditText>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -107,13 +113,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:hint="@string/color_of_the_shoe" />
+                    android:hint="@string/color_of_the_shoe"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -128,15 +137,17 @@
                     android:layout_marginStart="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="@string/price_of_the_shoe"
-                    android:id="@+id/price">
+                    android:hint="Price of the shoes"
+                    android:id="@+id/price"
+                    android:textStyle="bold">
                 </EditText>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -152,7 +163,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:hint="@string/release_day"
-                    android:id="@+id/releaseDay">
+                    android:id="@+id/releaseDay"
+                    android:textStyle="bold"
+                    >
                 </EditText>
             </LinearLayout>
         </LinearLayout>
@@ -161,9 +174,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="50dp">
-
+            android:layout_marginTop="20dp"
+            >
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
             <Button
 
                 android:id="@+id/list"
@@ -172,13 +188,19 @@
                 android:text="@string/list">
 
             </Button>
-
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5" />
             <Button
                 android:id="@+id/add_remove"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
                 android:text="@string/remove" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
         </LinearLayout>
     </LinearLayout>

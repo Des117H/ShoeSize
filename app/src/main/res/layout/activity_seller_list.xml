@@ -61,9 +61,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="50dp">
-
+        android:layout_marginTop="20dp">
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +80,18 @@
             android:text="@string/remove"
             android:id="@+id/remove">
         </Button>
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/bottom_background" />
+
 
 </LinearLayout>
