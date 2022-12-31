@@ -44,10 +44,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/add_new_shoe"
+                android:text="Let's add in your new shoes here"
                 android:textAlignment="center"
-                android:textColor="#15F6F6"
-                android:textSize="40sp"
+                android:textColor="#BF40BF"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="20dp">
             </TextView>
