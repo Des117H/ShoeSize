@@ -149,7 +149,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:onClick="signUp_action"
                 android:textColor="@color/yellow"
+                android:textStyle="italic"
                 android:text="@string/join_now">
             </TextView>
         </LinearLayout>

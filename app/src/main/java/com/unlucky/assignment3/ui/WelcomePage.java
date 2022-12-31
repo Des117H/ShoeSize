@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -42,7 +43,7 @@ import java.util.Objects;
 
 public class WelcomePage extends AppCompatActivity {
 
-    Button buyerButton, sellerButton, signInButton;
+    Button signInButton;
     TextView signUpButton;
     boolean isBuyer = true;
 
@@ -57,29 +58,6 @@ public class WelcomePage extends AppCompatActivity {
         signInButton = findViewById(R.id.signInButton);
 
 
-        if (isBuyer) {
-            activateBuyerButton();
-        }
-
-        buyerButton.setOnClickListener(v -> {
-            if (!isBuyer) {
-                activateBuyerButton();
-                isBuyer = true;
-            }
-        });
-
-        sellerButton.setOnClickListener(v -> {
-            if (isBuyer) {
-                activateSellerButton();
-                isBuyer = false;
-            }
-        });
-
-        signUpButton.setOnClickListener(v -> {
-            Intent i = new Intent(this, SignUpPage.class);
-            startActivity(i);
-            finish();
-        });
 
         signInButton.setOnClickListener(v -> {
             if (logIn()) {
@@ -96,51 +74,17 @@ public class WelcomePage extends AppCompatActivity {
         });
     }
 
-    public void activateBuyerButton() {
-        sellerButton
-                .setBackgroundColor(ContextCompat
-                        .getColor(this,
-                                R.color.unactivated_background));
-        sellerButton
-                .setTextColor(ContextCompat
-                        .getColor(this,
-                                R.color.unactivated_text));
-
-        buyerButton
-                .setBackgroundColor(ContextCompat
-                        .getColor(this,
-                                R.color.red));
-        buyerButton
-                .setTextColor(ContextCompat
-                        .getColor(this,
-                                R.color.white));
-    }
-
-    public void activateSellerButton() {
-        buyerButton
-                .setBackgroundColor(ContextCompat
-                        .getColor(this,
-                                R.color.unactivated_background));
-        buyerButton
-                .setTextColor(ContextCompat
-                        .getColor(this,
-                                R.color.unactivated_text));
-
-        sellerButton
-                .setBackgroundColor(ContextCompat
-                        .getColor(this,
-                                R.color.red));
-        sellerButton
-                .setTextColor(ContextCompat
-                        .getColor(this,
-                                R.color.white));
-    }
-
     public boolean logIn() {
         boolean isValid = true;
 
-
-
         return  isValid;
+    }
+
+    public void signUp_action(View view) {
+        signUpButton.setOnClickListener(v -> {
+            Intent i = new Intent(this, SignUpPage.class);
+            startActivity(i);
+            finish();
+        });
     }
 }
