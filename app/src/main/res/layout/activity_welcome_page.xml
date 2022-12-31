@@ -10,133 +10,111 @@
     android:background="@color/red"
     android:gravity="center_vertical">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:ignore="UseSwitchCompatOrMaterialXml"
-        android:gravity="center_horizontal">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/buyer_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/buyer" />
-
-        <Button
-            android:id="@+id/seller_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/seller" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal|center_vertical">
-
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/giphy"
+            />
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/user"
-                    app:tint="@color/yellow">
-                </ImageView>
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/black"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    >
-
-                </View>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/UsernameTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif"
-                        android:text="E-MAIL"
-                        android:textColor="@color/yellow"
-                        android:textSize="20sp" />
-
-                    <EditText
-                        android:id="@+id/UsernameEditText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="Enter your e-mail"
-                        android:inputType="textPersonName"
-                        android:minHeight="48dp"
-                        android:textColorHint="#FFFFFF" />
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
+                app:srcCompat="@drawable/user"
+                app:tint="@color/yellow">
+            </ImageView>
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="match_parent"
-                    app:srcCompat="@drawable/padlock"
-                    app:tint="@color/yellow" />
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/black"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    >
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                >
 
-                </View>
+            </View>
 
-                <LinearLayout
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/UsernameTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/PasswordTextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="PASSWORD"
-                        android:textColor="@color/yellow"
-                        android:textSize="20sp" />
+                    android:fontFamily="sans-serif"
+                    android:text="E-MAIL"
+                    android:textColor="@color/yellow"
+                    android:textSize="20sp" />
 
-                    <EditText
-                        android:id="@+id/PasswordEditText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:hint="Enter your password"
-                        android:inputType="textPassword"
-                        android:minHeight="48dp"
-                        android:textColorHint="#FFFFFF" />
-                </LinearLayout>
+                <EditText
+                    android:id="@+id/UsernameEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter your e-mail"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColorHint="#FFFFFF" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/padlock"
+                app:tint="@color/yellow" />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                >
+            </View>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/PasswordTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PASSWORD"
+                    android:textColor="@color/yellow"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/PasswordEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter your password"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    android:textColorHint="#FFFFFF" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

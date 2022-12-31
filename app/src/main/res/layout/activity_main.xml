@@ -6,99 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints,UseSwitchCompatOrMaterialXml"
+        android:gravity="center_horizontal">
 
-    <EditText
-        android:id="@+id/style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:ems="10"
-        android:hint="Style"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/price"
-        app:layout_constraintTop_toTopOf="@+id/price" />
+        <Button
+            android:id="@+id/buyer_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/yellow"
+            android:text="@string/buyer" />
 
-    <EditText
-        android:id="@+id/colorway"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:ems="10"
-        android:hint="Colorway"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/style"
-        app:layout_constraintTop_toTopOf="@+id/style" />
-
-    <EditText
-        android:id="@+id/releaseDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:ems="10"
-        android:hint="Release"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/description"
-        app:layout_constraintTop_toTopOf="@+id/description" />
-
-    <EditText
-        android:id="@+id/description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:ems="10"
-        android:hint="Des"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/brand"
-        app:layout_constraintTop_toTopOf="@+id/brand" />
-
-    <EditText
-        android:id="@+id/brand"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:ems="10"
-        android:hint="Brnad"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/colorway"
-        app:layout_constraintTop_toTopOf="@+id/colorway" />
-
-    <EditText
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:ems="10"
-        android:hint="price"
-        android:inputType="number"
-        android:minHeight="48dp"
-        app:layout_constraintStart_toStartOf="@+id/name"
-        app:layout_constraintTop_toTopOf="@+id/name" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="49dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="@+id/releaseDate"
-        app:layout_constraintTop_toBottomOf="@+id/releaseDate" />
+        <Button
+            android:id="@+id/seller_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seller"
+            android:layout_marginStart="50dp"
+            android:background="@color/yellow"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

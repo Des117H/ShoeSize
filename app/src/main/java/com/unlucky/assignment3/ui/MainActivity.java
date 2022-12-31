@@ -31,85 +31,15 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    String name;
-    String mainPrice;
-    String style;
-    String colorway;
-    String releaseDay;
-    String description;
-    String shoeImage;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        Map<String, Object> shoeData = new HashMap<>();
-
-        db.collection("shoes")
-                //.whereEqualTo("name", "Air Jordan 1 Mid Light Smoke Grey")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                shoeData.putAll(document.getData());
-                                name = (String)shoeData.get("name");
-                                mainPrice = "$" + shoeData.get("price");
-                                style = (String) shoeData.get("style");
-                                colorway = (String) shoeData.get("colorway");
-                                releaseDay = (String) shoeData.get("releaseDate");
-                                description = (String) shoeData.get("description");
-                                shoeImage = (String) shoeData.get("pictureLink");
-
-                            }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                        }
-                    }
-                });
+        Button buyerButton = findViewById(R.id.buyer_button);
+        Button sellerButton = findViewById(R.id.seller_button);
 
     }
-
-//    private boolean checkAllFields() {
-//        boolean checked = true;
-//        if (name.getText().length() == 0) {
-//            name.setError("Full name is required");
-//            checked = false;
-//        }
-//
-//        if (style.getText().length() == 0) {
-//            style.setError("Full name is required");
-//            checked = false;
-//        }
-//        if (colorway.getText().length() == 0) {
-//            colorway.setError("Full name is required");
-//            checked = false;
-//        }
-//        if (releaseDate.getText().length() == 0) {
-//            releaseDate.setError("Full name is required");
-//            checked = false;
-//        }
-//        if (description.getText().length() == 0) {
-//            description.setError("Full name is required");
-//            checked = false;
-//        }
-//        if (brand.getText().length() == 0) {
-//            brand.setError("Full name is required");
-//            checked = false;
-//        }
-//        if (price.getText().length() == 0) {
-//            price.setError("Full name is required");
-//            checked = false;
-//        }
-
-        // after all validation return true.
-       // return checked;
 }
 

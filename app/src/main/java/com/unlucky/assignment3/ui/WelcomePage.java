@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,7 +42,8 @@ import java.util.Objects;
 
 public class WelcomePage extends AppCompatActivity {
 
-    Button buyerButton, sellerButton, signUpButton, signInButton;
+    Button buyerButton, sellerButton, signInButton;
+    TextView signUpButton;
     boolean isBuyer = true;
 
     @Override
@@ -50,47 +52,11 @@ public class WelcomePage extends AppCompatActivity {
 
         setContentView(R.layout.activity_welcome_page);
 
-//        Intent intent = new Intent(WelcomePage.this, BuyerDetail.class);
-//        startActivity(intent);
 
-        buyerButton = findViewById(R.id.buyer_button);
-        sellerButton = findViewById(R.id.seller_button);
         signUpButton = findViewById(R.id.signUpWelcomeButton);
         signInButton = findViewById(R.id.signInButton);
 
 
-//        db.collection("shoes")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        for (QueryDocumentSnapshot document : task.getResult()) {
-//                            Map<String, Object> shoeData = new HashMap<>(document.getData());
-//                            String strDay = (String) shoeData.get("releaseDate");
-//
-//                            LocalDate ld = null;
-//
-//                            try {
-//                                DateTimeFormatter fIn = DateTimeFormatter.ofPattern( "dd/MM/uuuu", Locale.UK);
-//                                ld = LocalDate.parse( (String) shoeData.get("releaseDate"), fIn );
-//                                System.out.println("convert: " + ld);
-//                                shoeData.replace("releaseDate", ld);
-//                            } catch (DateTimeParseException e) {
-//                                DateTimeFormatter fOut = DateTimeFormatter.ofPattern( "MM/dd/uuuu", Locale.UK);
-//                                ld = LocalDate.parse( (String) shoeData.get("releaseDate"), fOut );
-//                                System.out.println("convert: " + ld);
-//                                shoeData.replace("releaseDate", ld);
-//                            }
-//
-//                            db.collection("shoes")
-//                                    .document((String) shoeData.get("name"))
-//                                    .update("releaseDate", ld.toString());
-//
-//                            String data = shoeData.get("name") + " " + shoeData.get("releaseDate");
-//                            System.out.println(data);
-//                        }
-//                    }
-//                });
         if (isBuyer) {
             activateBuyerButton();
         }
