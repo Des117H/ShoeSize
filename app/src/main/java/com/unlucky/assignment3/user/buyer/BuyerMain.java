@@ -141,9 +141,6 @@ public class BuyerMain extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.action_home:
-                        Toast.makeText(BuyerMain.this,"Home",Toast.LENGTH_SHORT).show();
-                        break;
                     case R.id.action_cart:
                         Intent i = new Intent(BuyerMain.this, BuyerShoppingCart.class);
                         startActivity(i);

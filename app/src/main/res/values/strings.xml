@@ -44,4 +44,6 @@
     <string name="home">HOME</string>
     <string name="account">ACCOUNT</string>
     <string name="cart">CART</string>
+    <string name="not_a_member">Not a member ?</string>
+    <string name="join_now">Join now</string>
 </resources>
