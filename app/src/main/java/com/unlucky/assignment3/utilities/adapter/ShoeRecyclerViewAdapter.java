@@ -55,7 +55,7 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
     }
 
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView shoeNameRecycle, shoePriceRecycle;
         ImageView shoeImageRecycle;
 
@@ -64,6 +64,11 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
             shoeNameRecycle = itemView.findViewById(R.id.shoeNameRecycle);
             shoeImageRecycle = itemView.findViewById(R.id.shoeImageRecycle);
             shoePriceRecycle = itemView.findViewById(R.id.shoePriceRecycle);
+        }
+
+        @Override
+        public void onClick(View view) {
+//            code
         }
     }
 }
