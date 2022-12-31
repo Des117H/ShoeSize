@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/remove_shoe"
             android:textAlignment="center"
-            android:textColor="#15F6F6"
+            android:textColor="#BF40BF"
             android:textSize="40sp"
             android:textStyle="bold"
             android:layout_marginBottom="20dp">
@@ -56,9 +56,9 @@
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="50dp">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -87,14 +87,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Chicago Lost and Found"
-                        android:id="@+id/supName">
+                        android:id="@+id/supName"
+                        android:paddingTop="20dp">
                     </TextView>
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="$281"
                         android:textColor="@color/blue"
-                        android:id="@+id/price">
+                        android:id="@+id/price"
+                        android:paddingTop="20dp">
                     </TextView>
                 </LinearLayout>
             </LinearLayout>
