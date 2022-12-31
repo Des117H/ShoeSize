@@ -114,6 +114,27 @@
                     android:textColorHint="#FFFFFF" />
             </LinearLayout>
         </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_marginTop="20dp"
+           android:gravity="center_horizontal">
+           <Button
+               android:id="@+id/buyer_button"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:background="@color/yellow"
+               android:text="@string/as_buyer" />
+
+           <Button
+               android:layout_marginStart="30dp"
+               android:id="@+id/seller_button"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/as_seller"
+               android:background="@color/yellow"/>
+       </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -135,7 +156,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:onClick="signUp_action">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

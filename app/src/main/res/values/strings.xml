@@ -46,4 +46,6 @@
     <string name="cart">CART</string>
     <string name="not_a_member">Not a member ?</string>
     <string name="join_now"><u>Join now</u></string>
+    <string name="as_buyer">as buyer</string>
+    <string name="as_seller">as seller</string>
 </resources>
