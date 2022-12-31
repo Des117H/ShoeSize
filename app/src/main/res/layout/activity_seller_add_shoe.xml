@@ -62,7 +62,7 @@
 
             <ImageView
                 android:id="@+id/imageView2"
-                android:layout_width="300dp"
+                android:layout_width="wrap_content"
                 android:layout_height="300dp"
                 app:srcCompat="@drawable/a"
                 android:layout_gravity="center"/>
@@ -74,7 +74,7 @@
                 android:paddingLeft="20dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="@string/shoe_s_name"
                     android:textColor="@color/red"
@@ -100,7 +100,7 @@
                 >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="@string/color"
                     android:textColor="@color/red"
@@ -125,7 +125,7 @@
                 >
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="@string/price"
                     android:textColor="@color/red"
@@ -150,7 +150,7 @@
                 android:paddingLeft="20dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:text="@string/release_day"
                     android:textColor="@color/red"
