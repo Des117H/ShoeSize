@@ -41,7 +41,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/remove_shoe"
+            android:text="Remove Shoes"
             android:textAlignment="center"
             android:textColor="#BF40BF"
             android:textSize="40sp"
