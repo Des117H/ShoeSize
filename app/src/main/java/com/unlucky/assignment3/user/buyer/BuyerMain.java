@@ -11,6 +11,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -36,6 +39,8 @@ public class BuyerMain extends AppCompatActivity {
     private RecyclerView newShoeRV, bestSellShoeRV;
     private List<Shoe> newShoeList, bestSellShoeList;
     private ShoeRecyclerViewAdapter adapter;
+
+    //private Animation topToBottom, bottomToTop;
 
 //    public adapter(Context context, )
 
@@ -110,6 +115,8 @@ public class BuyerMain extends AppCompatActivity {
                                         (Double) temp.get("price"));
                                 newShoeList.add(shoeData);
                             }
+                            LayoutAnimationController ani = AnimationUtils.loadLayoutAnimation(BuyerMain.this,R.anim.layout_animation_down_to_up);
+                            newShoeRV.setLayoutAnimation(ani);
                             newShoeRV.setHasFixedSize(true);
                             newShoeRV.setLayoutManager(new GridLayoutManager(BuyerMain.this,2));
                             adapter = new ShoeRecyclerViewAdapter(BuyerMain.this, newShoeList);
@@ -117,6 +124,7 @@ public class BuyerMain extends AppCompatActivity {
                         }
                     }
                 });
+
 
         newShoeRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

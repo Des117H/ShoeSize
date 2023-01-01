@@ -58,6 +58,7 @@
     </LinearLayout>
 
     <ListView
+        android:layoutAnimation="@anim/layout_animation_down_to_up"
         android:id="@+id/search_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

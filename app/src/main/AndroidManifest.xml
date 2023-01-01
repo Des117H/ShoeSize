@@ -105,6 +105,7 @@
                 <data
                     android:host="example.com"
                     android:scheme="https" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
