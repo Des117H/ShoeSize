@@ -12,10 +12,10 @@ import com.bumptech.glide.Glide;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShoeListAdapter extends BaseAdapter {
+
     private List<Shoe> shoeDataList = null;
     Context mContext;
     LayoutInflater inflater;
@@ -48,6 +48,7 @@ public class ShoeListAdapter extends BaseAdapter {
             viewHolder.shoePriceTextSearch = convertView.findViewById(R.id.shoePriceRecycle);
             viewHolder.shoeImageViewSearch = convertView.findViewById(R.id.shoeImageRecycle);
 
+
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ShoeListAdapter.ViewHolder) convertView.getTag();
@@ -67,6 +68,8 @@ public class ShoeListAdapter extends BaseAdapter {
         this.shoeDataList =  shoeDataList;
         inflater = LayoutInflater.from(mContext);
     }
+
+
 
     @Override
     public int getCount() {

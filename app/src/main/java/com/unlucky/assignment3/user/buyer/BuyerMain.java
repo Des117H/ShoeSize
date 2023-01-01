@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -29,9 +30,13 @@ import java.util.List;
 import java.util.Map;
 
 public class BuyerMain extends AppCompatActivity {
+
+
     private RecyclerView newShoeRV, bestSellShoeRV;
     private List<Shoe> newShoeList, bestSellShoeList;
     private ShoeRecyclerViewAdapter adapter;
+
+//    public adapter(Context context, )
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,9 @@ public class BuyerMain extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         Button search = findViewById(R.id.searchMain);
+
+        Intent i = new Intent(BuyerMain.this,BuyerDetail.class);
+        startActivity(i);
        // Button cart = findViewById(R.id.toCartBtn);
 
         search.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +119,7 @@ public class BuyerMain extends AppCompatActivity {
                     }
                 });
 
+
         db.collection("shoes")
                 .orderBy("name", Query.Direction.ASCENDING)
                 .limit(5).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -153,7 +162,7 @@ public class BuyerMain extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
-
-
 }

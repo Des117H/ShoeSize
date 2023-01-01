@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <pl.droidsonroids.gif.GifImageView
@@ -135,51 +136,41 @@
                android:text="@string/as_seller"
                android:background="@color/yellow"/>
        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="20dp">
 
         <Button
             android:id="@+id/signInButton"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_signin"
+
+            android:layout_marginTop="20dp"
             android:text="@string/sign_in"
             />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:onClick="signUp_action">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:text="@string/not_a_member">
-            </TextView>
-            <TextView
-                android:id="@+id/signUpWelcomeButton"
-                android:layout_marginStart="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"
-                android:textSize="20sp"
-                android:onClick="signUp_action"
-                android:textColor="@color/yellow"
-                android:textStyle="italic"
-                android:text="@string/join_now">
-            </TextView>
-        </LinearLayout>
     </LinearLayout>
-
-    <Space
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:onClick="signUp_action"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_a_member"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/signUpWelcomeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:onClick="signUp_action"
+            android:text="@string/join_now"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+    </LinearLayout>
 </LinearLayout>

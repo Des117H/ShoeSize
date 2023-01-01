@@ -13,10 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -43,10 +46,21 @@ public class BuyerDetail extends AppCompatActivity {
         TextView mainPrice = findViewById(R.id.mainPrice);
         TextView style = findViewById(R.id.style);
         TextView colorway = findViewById(R.id.colorway);
-        TextView retailPrice = findViewById(R.id.retailPrice);
+
         TextView releaseDay = findViewById(R.id.releaseDay);
         TextView description = findViewById(R.id.description);
         ImageView shoeImage = findViewById(R.id.shoeImage);
+
+        FloatingActionButton cart = findViewById(R.id.floatingActionButton);
+        ScrollView scrollView = findViewById(R.id.scroll2);
+
+        // code o day
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //code de add shoe vao cart o day nha
+            }
+        });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +87,7 @@ public class BuyerDetail extends AppCompatActivity {
                                 mainPrice.setText(shoePrice);
                                 style.setText((CharSequence) shoeData.get("style"));
                                 colorway.setText((CharSequence) shoeData.get("colorway"));
-                                retailPrice.setText(shoePrice);
+
                                 releaseDay.setText((CharSequence) shoeData.get("releaseDate"));
                                 description.setText((CharSequence) shoeData.get("description"));
                                 new DownloadImageTask(shoeImage)
@@ -84,5 +98,7 @@ public class BuyerDetail extends AppCompatActivity {
                         }
                     }
                 });
+
+
     }
 }

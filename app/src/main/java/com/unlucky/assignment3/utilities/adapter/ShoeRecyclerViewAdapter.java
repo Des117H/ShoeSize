@@ -1,6 +1,7 @@
 package com.unlucky.assignment3.utilities.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.user.buyer.BuyerDetail;
 import com.unlucky.assignment3.utilities.DownloadImageTask;
 
 import java.util.List;
@@ -68,7 +70,7 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
 
         @Override
         public void onClick(View view) {
-//            code
+
         }
     }
 }
