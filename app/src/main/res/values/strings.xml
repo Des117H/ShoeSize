@@ -36,7 +36,7 @@
     <string name="enter_your_address">Enter your address</string>
     <string name="enter_your_phone_number">Enter your phone number</string>
     <string name="shopping_cart">Shopping Cart</string>
-    <string name="search_your_shoe_here">Search your shoe here</string>
+    <string name="search_your_shoe_here"><u>Search your shoe here</u></string>
     <string name="hi_mr_thanh">Hi, Mr Thanh</string>
     <string name="ask_user_today">What are you going to do today?</string>
     <string name="buyer">Buyer</string>
@@ -49,4 +49,5 @@
     <string name="as_buyer">as buyer</string>
     <string name="as_seller">as seller</string>
     <string name="image_of_shoe">Image of Shoe</string>
+    <string name="shoesize"><u>ShoeSize</u></string>
 </resources>

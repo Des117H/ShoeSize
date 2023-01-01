@@ -2,6 +2,7 @@ package com.unlucky.assignment3.user.buyer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,6 +45,7 @@ public class BuyerMain extends AppCompatActivity {
         setContentView(R.layout.activity_buyer_main);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
         Button search = findViewById(R.id.searchMain);
 
         Intent i = new Intent(BuyerMain.this,BuyerDetail.class);
@@ -96,7 +98,7 @@ public class BuyerMain extends AppCompatActivity {
 
         db.collection("shoes")
                 .orderBy("releaseDate", Query.Direction.DESCENDING)
-                .limit(5).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                .limit(20).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isComplete()) {
@@ -108,18 +110,26 @@ public class BuyerMain extends AppCompatActivity {
                                         (Double) temp.get("price"));
                                 newShoeList.add(shoeData);
                             }
-                            LinearLayoutManager layoutManager =
-                                    new LinearLayoutManager(BuyerMain.this,
-                                            LinearLayoutManager.HORIZONTAL, false);
-
-                            newShoeRV.setLayoutManager(layoutManager);
+                            newShoeRV.setHasFixedSize(true);
+                            newShoeRV.setLayoutManager(new GridLayoutManager(BuyerMain.this,2));
                             adapter = new ShoeRecyclerViewAdapter(BuyerMain.this, newShoeList);
                             newShoeRV.setAdapter(adapter);
                         }
                     }
                 });
 
-
+        newShoeRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                if(dy > 0){
+                    bottom_nav.setVisibility(View.INVISIBLE);
+                }
+                else {
+                    bottom_nav.setVisibility(View.VISIBLE);
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
 //        db.collection("shoes")
 //                .orderBy("name", Query.Direction.ASCENDING)
 //                .limit(5).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
