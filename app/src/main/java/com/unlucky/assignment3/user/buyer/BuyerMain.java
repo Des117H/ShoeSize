@@ -92,7 +92,7 @@ public class BuyerMain extends AppCompatActivity {
         newShoeList = new ArrayList<>();
         bestSellShoeList = new ArrayList<>();
         newShoeRV = findViewById(R.id.newShoeRV);
-        bestSellShoeRV = findViewById(R.id.bestSellShoeRV);
+        //bestSellShoeRV = findViewById(R.id.bestSellShoeRV);
 
         db.collection("shoes")
                 .orderBy("releaseDate", Query.Direction.DESCENDING)
@@ -120,30 +120,30 @@ public class BuyerMain extends AppCompatActivity {
                 });
 
 
-        db.collection("shoes")
-                .orderBy("name", Query.Direction.ASCENDING)
-                .limit(5).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isComplete()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Map<String, Object> temp = document.getData();
-                                Shoe shoeData = new Shoe((String) temp.get("name"),
-                                        (String) temp.get("style"), (String) temp.get("colorway"),
-                                        (String) temp.get("releaseDate"), (String) temp.get("description"),
-                                        (Double) temp.get("price"));
-                                bestSellShoeList.add(shoeData);
-                            }
-                            LinearLayoutManager layoutManager =
-                                    new LinearLayoutManager(BuyerMain.this,
-                                            LinearLayoutManager.HORIZONTAL, false);
-
-                            bestSellShoeRV.setLayoutManager(layoutManager);
-                            adapter = new ShoeRecyclerViewAdapter(BuyerMain.this, bestSellShoeList);
-                            bestSellShoeRV.setAdapter(adapter);
-                        }
-                    }
-                });
+//        db.collection("shoes")
+//                .orderBy("name", Query.Direction.ASCENDING)
+//                .limit(5).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isComplete()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                Map<String, Object> temp = document.getData();
+//                                Shoe shoeData = new Shoe((String) temp.get("name"),
+//                                        (String) temp.get("style"), (String) temp.get("colorway"),
+//                                        (String) temp.get("releaseDate"), (String) temp.get("description"),
+//                                        (Double) temp.get("price"));
+//                                bestSellShoeList.add(shoeData);
+//                            }
+//                            LinearLayoutManager layoutManager =
+//                                    new LinearLayoutManager(BuyerMain.this,
+//                                            LinearLayoutManager.HORIZONTAL, false);
+//
+//                            bestSellShoeRV.setLayoutManager(layoutManager);
+//                            adapter = new ShoeRecyclerViewAdapter(BuyerMain.this, bestSellShoeList);
+//                            bestSellShoeRV.setAdapter(adapter);
+//                        }
+//                    }
+//                });
 
         BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
         navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {

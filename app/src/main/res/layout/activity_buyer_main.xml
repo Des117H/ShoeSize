@@ -34,35 +34,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="50dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"/>
 
-                    <TextView
-                        android:id="@+id/greed"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Hi, Mr Thanh"
-                        android:textColor="@color/white"
-                        android:textSize="40sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/subtitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/quesiton"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="20dp"
-                    android:contentDescription="avatar"
-                    app:srcCompat="@drawable/ava" />
             </LinearLayout>
 
             <Button
@@ -83,7 +56,7 @@
 
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout3"
         android:orientation="vertical">
 
@@ -137,39 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:text="@string/bestseller"
-                    android:textColor="@color/black"
-                    android:textSize="25sp"
-                    android:textStyle="bold">
-
-                </TextView>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:text="@string/viewall"
-                    android:textAlignment="textEnd"
-                    android:textColor="#03A9F4"
-                    android:textIsSelectable="false"
-                    android:textSize="20sp"
-                    android:textStyle="bold|italic" />
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/bestSellShoeRV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/yellow">
-
-            </androidx.recyclerview.widget.RecyclerView>
+                android:orientation="horizontal"/>
 
         </LinearLayout>
 
@@ -178,16 +119,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
-        android:layout_centerHorizontal="true"
-        android:layout_width="315dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
         app:elevation="20dp"
-        app:itemBackground="@color/white"
+        android:background="@drawable/menu_bar"
         app:itemIconTint="@color/custom_color_bottom_nar"
         app:itemTextColor="@color/custom_color_bottom_nar"
         app:menu="@menu/menu_bottom_nar" />

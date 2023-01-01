@@ -52,7 +52,6 @@ public class BuyerDetail extends AppCompatActivity {
         ImageView shoeImage = findViewById(R.id.shoeImage);
 
         FloatingActionButton cart = findViewById(R.id.floatingActionButton);
-        ScrollView scrollView = findViewById(R.id.scroll2);
 
         // code o day
         cart.setOnClickListener(new View.OnClickListener() {

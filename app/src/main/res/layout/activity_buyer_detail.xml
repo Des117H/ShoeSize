@@ -4,14 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.buyer.BuyerDetail"
-    android:orientation="vertical">
+    tools:context=".user.buyer.BuyerDetail">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <View
+            android:id="@+id/viewWhite"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:layout_height="0dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:background="@color/red"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/layout2">
+        <Button
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/back"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageView
+            android:id="@+id/shoeImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:contentDescription="@string/image_of_shoe" />
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/scroll2"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout2"
         android:layout_margin="10dp">
 
         <LinearLayout
@@ -19,26 +55,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/back"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <ImageView
-                android:id="@+id/shoeImage"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:contentDescription="@string/image_of_shoe" />
-
             <TextView
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
                 android:text="Name"
-                android:textColor="@color/red"
+                android:textColor="@color/yellow"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -47,10 +70,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-
                 android:text="$180"
                 android:textAlignment="viewEnd"
-                android:textColor="@color/blue"
+                android:textColor="#C9FF8B"
                 android:textSize="30sp"
                 android:textStyle="bold" />
 
@@ -60,7 +82,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="monospace"
                 android:text="@string/description"
-                android:textColor="@color/red"
+                android:textColor="@color/yellow"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -68,7 +90,7 @@
                 android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -78,7 +100,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="monospace"
                 android:text="@string/release_day"
-                android:textColor="@color/red"
+                android:textColor="@color/yellow"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -86,7 +108,7 @@
                 android:id="@+id/releaseDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -96,7 +118,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="monospace"
                 android:text="Style"
-                android:textColor="@color/red"
+                android:textColor="@color/yellow"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -104,7 +126,7 @@
                 android:id="@+id/style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -114,7 +136,7 @@
                 android:layout_marginTop="20dp"
                 android:fontFamily="monospace"
                 android:text="Colorway"
-                android:textColor="@color/red"
+                android:textColor="@color/yellow"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -122,12 +144,12 @@
                 android:id="@+id/colorway"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
     </ScrollView>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
