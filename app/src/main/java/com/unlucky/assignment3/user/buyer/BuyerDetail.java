@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -53,11 +55,19 @@ public class BuyerDetail extends AppCompatActivity {
 
         FloatingActionButton cart = findViewById(R.id.floatingActionButton);
 
-        // code o day
+        Bundle bundle = getIntent().getExtras();
+
+        String shoeName = bundle.getString("shoe_name");
+
         cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //code de add shoe vao cart o day nha
+                Intent intent = new Intent();
+                intent.putExtra("shoe_to_cart", shoeName);
+                setResult(1, intent);
+                finish();
+//                finish();
+//                startActivityForResult();
             }
         });
 
@@ -70,7 +80,7 @@ public class BuyerDetail extends AppCompatActivity {
         Map<String, Object> shoeData = new HashMap<>();
 
         db.collection("shoes")
-                .whereEqualTo("name", "Air Jordan 1 Mid Light Smoke Grey")
+                .whereEqualTo("name", shoeName)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @SuppressLint("SetTextI18n")
@@ -91,6 +101,9 @@ public class BuyerDetail extends AppCompatActivity {
                                 description.setText((CharSequence) shoeData.get("description"));
                                 new DownloadImageTask(shoeImage)
                                         .execute((String) shoeData.get("pictureLink"));
+                                Glide.with(BuyerDetail.this)
+                                        .load(shoeData.get("pictureLink"))
+                                        .into(shoeImage);
                             }
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());

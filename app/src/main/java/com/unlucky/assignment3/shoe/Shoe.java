@@ -34,6 +34,17 @@ public class Shoe implements Serializable {
         this.price = price;
     }
 
+    public Shoe(String name, String style, String pictureLink, String colorway, String releaseDate, String description, String brand, double price) {
+        this.name = name;
+        this.style = style;
+        this.pictureLink = pictureLink;
+        this.colorway = colorway;
+        this.releaseDate = releaseDate;
+        this.description = description;
+        this.brand = brand;
+        this.price = price;
+    }
+
     public String convertNameToPicLink(String name) {
         String nameLink = this.name.replaceAll(" ", "-");
         nameLink = nameLink.replaceAll("[()]", "");

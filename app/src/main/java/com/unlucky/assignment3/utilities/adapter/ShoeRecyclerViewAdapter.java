@@ -19,7 +19,7 @@ import com.unlucky.assignment3.utilities.DownloadImageTask;
 import java.util.List;
 
 public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerViewAdapter.ViewHolder> {
-    private List<Shoe> mData;
+    List<Shoe> mData;
     private LayoutInflater mInflater;
     Context mContext;
 
@@ -54,8 +54,12 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
         return mData.size();
     }
 
+    public Shoe getItemAtPosition(int position) {
+        return mData.get(position);
+    }
+
     // stores and recycles views as they are scrolled off screen
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView shoeNameRecycle, shoePriceRecycle;
         ImageView shoeImageRecycle;
 
@@ -64,11 +68,6 @@ public class ShoeRecyclerViewAdapter extends RecyclerView.Adapter<ShoeRecyclerVi
             shoeNameRecycle = itemView.findViewById(R.id.shoeNameRecycle);
             shoeImageRecycle = itemView.findViewById(R.id.shoeImageRecycle);
             shoePriceRecycle = itemView.findViewById(R.id.shoePriceRecycle);
-        }
-
-        @Override
-        public void onClick(View view) {
-
         }
     }
 }

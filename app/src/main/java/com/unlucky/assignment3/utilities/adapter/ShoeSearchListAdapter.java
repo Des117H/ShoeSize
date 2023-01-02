@@ -66,7 +66,7 @@ public class ShoeSearchListAdapter extends BaseAdapter {
         viewHolder.shoePriceTextSearch.setText(dataModel.getPriceString());
 
         Glide.with(convertView).load(dataModel.getPictureLink()).into(viewHolder.shoeImageViewSearch);
-
+        System.out.println("pic link: " + dataModel.getPictureLink());
         // Return the completed view to render on screen
         return convertView;
     }
