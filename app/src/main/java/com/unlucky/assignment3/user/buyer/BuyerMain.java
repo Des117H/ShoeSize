@@ -70,6 +70,17 @@ public class BuyerMain extends AppCompatActivity {
                                         .getString("shoe_to_cart"));
                         if (!cart.contains(shoeToCart)) {
                             cart.add(shoeToCart);
+                        }
+                    } else if (result.getResultCode() == 2) {
+                        System.out.println("done search");
+                        ArrayList<String> shoeToCart = result.
+                                getData()
+                                .getExtras()
+                                .getStringArrayList("shoe_list_to_cart");
+                        for (String shoeName: shoeToCart) {
+                            if (!cart.contains(shoeName)) {
+                                cart.add(shoeName);
+                            }
 
                             for (String name: cart) {
                                 System.out.println("a: " + name);
@@ -112,7 +123,7 @@ public class BuyerMain extends AppCompatActivity {
                                     Intent searchIntent = new Intent(BuyerMain.this, BuyerSearch.class);
 
                                     searchIntent.putExtra("shoe_list", shoeList);
-                                    startActivity(searchIntent);
+                                    activityResultLaunch.launch(searchIntent);
                                 }
                             }
                         });
@@ -122,9 +133,6 @@ public class BuyerMain extends AppCompatActivity {
         newShoeList = new ArrayList<>();
         shoeCart = new ArrayList<>();
         newShoeRV = findViewById(R.id.newShoeRV);
-        //bestSellShoeRV = findViewById(R.id.bestSellShoeRV);
-
-
 
         db.collection("shoes")
                 .orderBy("releaseDate", Query.Direction.DESCENDING)
@@ -205,10 +213,6 @@ public class BuyerMain extends AppCompatActivity {
                     case R.id.action_cart:
                         Intent i = new Intent(BuyerMain.this, BuyerShoppingCart.class);
                         i.putStringArrayListExtra("cart", cart);
-
-                        for (String name: cart) {
-                            System.out.println("b: " + name);
-                        }
                         startActivity(i);
                         break;
 
