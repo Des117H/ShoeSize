@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -26,12 +29,18 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.shoe.photo;
 import com.unlucky.assignment3.ui.Account;
 import com.unlucky.assignment3.utilities.adapter.ShoeRecyclerViewAdapter;
+import com.unlucky.assignment3.utilities.adapter.photoAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import me.relex.circleindicator.CircleIndicator;
 
 public class BuyerMain extends AppCompatActivity {
 
@@ -39,6 +48,12 @@ public class BuyerMain extends AppCompatActivity {
     private RecyclerView newShoeRV, bestSellShoeRV;
     private List<Shoe> newShoeList, bestSellShoeList;
     private ShoeRecyclerViewAdapter adapter;
+
+    private ViewPager viewPager;
+    private CircleIndicator circleIndicator;
+    private photoAdapter photoAdapter;
+    private List<photo> mListPhoto;
+    private Timer mTimer;
 
     //private Animation topToBottom, bottomToTop;
 
@@ -52,11 +67,7 @@ public class BuyerMain extends AppCompatActivity {
 
         BottomNavigationView bottom_nav = findViewById(R.id.bottom_nav);
         Button search = findViewById(R.id.searchMain);
-
-        Intent i = new Intent(BuyerMain.this,BuyerDetail.class);
-        startActivity(i);
-       // Button cart = findViewById(R.id.toCartBtn);
-
+        
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -125,17 +136,29 @@ public class BuyerMain extends AppCompatActivity {
                     }
                 });
 
+        viewPager = findViewById(R.id.viewpaper);
+        circleIndicator = findViewById(R.id.circle_indicator);
+
+        mListPhoto =getListPhoto();
+
+        photoAdapter = new photoAdapter(this,mListPhoto);
+        viewPager.setAdapter(photoAdapter);
+
+        circleIndicator.setViewPager(viewPager);
+        photoAdapter.registerDataSetObserver(circleIndicator.getDataSetObserver());
+
+        autoSlideImage();
 
         newShoeRV.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                if(dy > 0){
-                    bottom_nav.setVisibility(View.INVISIBLE);
-                }
-                else {
-                    bottom_nav.setVisibility(View.VISIBLE);
-                }
-                super.onScrolled(recyclerView, dx, dy);
+    @Override
+    public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+        if(dy > 0){
+            bottom_nav.setVisibility(View.INVISIBLE);
+        }
+        else {
+            bottom_nav.setVisibility(View.VISIBLE);
+        }
+        super.onScrolled(recyclerView, dx, dy);
             }
         });
 //        db.collection("shoes")
@@ -181,6 +204,56 @@ public class BuyerMain extends AppCompatActivity {
             }
         });
 
+        
 
+    }
+
+    private List<photo> getListPhoto() {
+        List<photo> list = new ArrayList<>();
+        list.add(new photo(R.drawable.poster1));
+        list.add(new photo(R.drawable.poster2));
+        list.add(new photo(R.drawable.poster3));
+        list.add(new photo(R.drawable.poster4));
+
+        return list;
+    }
+
+    private void autoSlideImage(){
+        if(mListPhoto == null || mListPhoto.isEmpty() || viewPager == null){
+            return;
+        }
+
+        if(mTimer == null){
+            mTimer = new Timer();
+        }
+
+        mTimer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        int currentItem = viewPager.getCurrentItem();
+                        int totalItem = mListPhoto.size()-1;
+                        if (currentItem < totalItem){
+                            currentItem++;
+                            viewPager.setCurrentItem(currentItem);
+                        }
+                        else{
+                            viewPager.setCurrentItem(0);
+                        }
+                    }
+                });
+            }
+        },  500,2000);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mTimer != null){
+            mTimer.cancel();
+            mTimer = null;
+        }
     }
 }
