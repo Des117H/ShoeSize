@@ -52,12 +52,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
+            android:fontFamily="monospace"
             android:text="@string/name"
             android:textColor="@color/red"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginStart="30dp"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/name"
@@ -71,12 +72,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
+            android:fontFamily="monospace"
             android:text="@string/address"
             android:textColor="@color/red"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_marginStart="30dp"/>
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/address"
@@ -89,10 +91,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
+            android:fontFamily="monospace"
             android:text="@string/phone_number"
             android:textColor="@color/red"
-            android:layout_marginStart="30dp"
             android:textSize="20sp"
             android:textStyle="bold" />
 

@@ -30,8 +30,8 @@
     <string name="current_selling_list">CHECKOUT</string>
     <string name="description">Description</string>
     <string name="name">Name:</string>
-    <string name="address">Address</string>
-    <string name="phone_number">Phone Number</string>
+    <string name="address">Address:</string>
+    <string name="phone_number">Phone Number:</string>
     <string name="enter_your_name">Enter your name</string>
     <string name="enter_your_address">Enter your address</string>
     <string name="enter_your_phone_number">Enter your phone number</string>
@@ -55,4 +55,7 @@
     <string name="agree_with_term_of_purchase_agreement">Agree with term of purchase agreement</string>
     <string name="selected_item_0">Selected Item: 0</string>
     <string name="total_0">Total: $0</string>
+    <string name="my_profile">My Profile</string>
+    <string name="unlucky_team">Unlucky Team</string>
+    <string name="_702_nguy_n_v_n_linh_t_n_h_ng_qu_n_7_th_nh_ph_h_ch_minh">702 Nguyễn Văn Linh, Tân Hưng, Quận 7, Thánh Phố Hồ Chí Minh</string>
 </resources>
