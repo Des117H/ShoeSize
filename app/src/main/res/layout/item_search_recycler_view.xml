@@ -5,14 +5,16 @@
 
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/red">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        app:cardCornerRadius="8dp">
+        app:cardCornerRadius="8dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +24,7 @@
             <ImageView
                 android:id="@+id/shoeSearchImageRecycle"
                 android:layout_width="150dp"
-                android:layout_height="100dp"
+                android:layout_height="117dp"
                 android:contentDescription="Shoe image"
                 tools:ignore="ImageContrastCheck" />
 
@@ -35,15 +37,20 @@
                     android:id="@+id/shoeSearchNameRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="name" />
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/shoeSearchPriceRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="$1" />
+                    android:layout_marginEnd="30dp"
+                    android:textAlignment="viewEnd"
+                    android:textColor="@color/blue"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>

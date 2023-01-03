@@ -10,44 +10,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/red">
-
-        <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        android:padding="30dp"
+        android:orientation="horizontal">
 
             <Button
-                android:id="@+id/back"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/back"/>
-
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:layout_marginStart="90dp"
-                app:srcCompat="@drawable/ava">
-
-            </ImageView>
-
-        </LinearLayout>
+            android:id="@+id/back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/back" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="casual"
             android:text="@string/current_selling_list"
             android:textAlignment="center"
-            android:textColor="#15F6F6"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="20dp">
-        </TextView>
+            android:textColor="@color/red"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
     <ScrollView
@@ -80,13 +61,14 @@
                 android:textStyle="bold"
                 android:textSize="20sp">
             </TextView>
+
             <EditText
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/enter_your_name"
                 android:inputType="text"
-                android:id="@+id/name">
-            </EditText>
+                android:minHeight="48dp"></EditText>
             <TextView
                 android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
@@ -112,13 +94,14 @@
                 android:textStyle="bold"
                 android:textSize="20sp">
             </TextView>
+
             <EditText
+                android:id="@+id/phoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/enter_your_phone_number"
                 android:inputType="number"
-                android:id="@+id/phoneNumber">
-            </EditText>
+                android:minHeight="48dp"></EditText>
         </LinearLayout>
     </ScrollView>
 

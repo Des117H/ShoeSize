@@ -27,7 +27,7 @@
     <string name="confirmation">CONFIRMATION</string>
     <string name="confirmation_check">Enter the work \'confirm\' into the box for the confirmation.</string>
     <string name="confirm">confirm</string>
-    <string name="current_selling_list">Current Selling List</string>
+    <string name="current_selling_list">CHECKOUT</string>
     <string name="description">Description</string>
     <string name="name">Name:</string>
     <string name="address">Address</string>
@@ -35,7 +35,7 @@
     <string name="enter_your_name">Enter your name</string>
     <string name="enter_your_address">Enter your address</string>
     <string name="enter_your_phone_number">Enter your phone number</string>
-    <string name="shopping_cart">Shopping Cart</string>
+    <string name="shopping_cart"><u>Cart Page</u></string>
     <string name="search_your_shoe_here"><u>Search your shoe here</u></string>
     <string name="hi_mr_thanh">Hi, Mr Thanh</string>
     <string name="ask_user_today">What are you going to do today?</string>
@@ -50,4 +50,5 @@
     <string name="as_seller">as seller</string>
     <string name="image_of_shoe">Image of Shoe</string>
     <string name="shoesize"><u>ShoeSize</u></string>
+    <string name="search"><u>Search</u></string>
 </resources>
