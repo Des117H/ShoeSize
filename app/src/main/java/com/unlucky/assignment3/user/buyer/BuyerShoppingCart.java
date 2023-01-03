@@ -1,11 +1,16 @@
 package com.unlucky.assignment3.user.buyer;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +23,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.utilities.RecyclerItemClickListener;
 import com.unlucky.assignment3.utilities.adapter.ShoeSearchRecyclerViewAdapter;
 
 import java.util.ArrayList;
@@ -30,6 +36,14 @@ public class BuyerShoppingCart extends AppCompatActivity {
     private ShoeSearchRecyclerViewAdapter adapter;
     ArrayList<String> cart = new ArrayList<>();
     TextView selected, total;
+
+    ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                }
+            });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +100,25 @@ public class BuyerShoppingCart extends AppCompatActivity {
                                 cartRV.setLayoutManager(layoutManager);
                                 adapter = new ShoeSearchRecyclerViewAdapter(BuyerShoppingCart.this, shoeList);
                                 cartRV.setAdapter(adapter);
+
+                                cartRV.addOnItemTouchListener(new RecyclerItemClickListener(BuyerShoppingCart.this, cartRV, new RecyclerItemClickListener.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(View view, int position) {
+                                        Intent toShoeDetail = new Intent(BuyerShoppingCart.this, BuyerDetail.class);
+                                        toShoeDetail
+                                                .putExtra("shoe_name",
+                                                        shoeList.get(
+                                                                cartRV
+                                                                        .getChildAdapterPosition(view)
+                                                        ).getName());
+                                        activityResultLaunch.launch(toShoeDetail);
+                                    }
+
+                                    @Override
+                                    public void onItemLongClick(View view, int position) {
+
+                                    }
+                                }));
 
                                 selected.setText("Selected Item: " + cart.size());
                                 total.setText("Total: " + price);
