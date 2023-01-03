@@ -39,7 +39,6 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:layoutAnimation="@anim/layout_animation_down_to_up">
-
     </androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
@@ -61,7 +60,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="casual"
-                android:text="Selected Item: 2"
+                android:text="@string/selected_item_0"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -71,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="casual"
-                android:text="Total: $391"
+                android:text="@string/total_0"
                 android:textColor="@color/blue"
                 android:textSize="40sp"
                 android:textStyle="bold" />

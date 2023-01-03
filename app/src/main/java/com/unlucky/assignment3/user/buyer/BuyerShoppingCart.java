@@ -34,6 +34,7 @@ public class BuyerShoppingCart extends AppCompatActivity {
     private RecyclerView cartRV;
     private List<Shoe> shoeList;
     private ShoeSearchRecyclerViewAdapter adapter;
+    private double price = 0.0;
     ArrayList<String> cart = new ArrayList<>();
     TextView selected, total;
 
@@ -77,7 +78,6 @@ public class BuyerShoppingCart extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isComplete()) {
-                            double price = 0.0;
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Map<String, Object> temp = document.getData();
 
@@ -121,11 +121,21 @@ public class BuyerShoppingCart extends AppCompatActivity {
                                 }));
 
                                 selected.setText("Selected Item: " + cart.size());
-                                total.setText("Total: " + price);
+                                total.setText("Total: $" + price);
 
                             }
                         }
                     }
                 });
+
+        Button checkOut = findViewById(R.id.checkOut);
+        checkOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(BuyerShoppingCart.this,BuyerPayment.class);
+                i.putExtra("price", price);
+                startActivity(i);
+            }
+        });
     }
 }

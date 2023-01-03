@@ -51,4 +51,8 @@
     <string name="image_of_shoe">Image of Shoe</string>
     <string name="shoesize"><u>ShoeSize</u></string>
     <string name="search"><u>Search</u></string>
+    <string name="place_order">Place Order</string>
+    <string name="agree_with_term_of_purchase_agreement">Agree with term of purchase agreement</string>
+    <string name="selected_item_0">Selected Item: 0</string>
+    <string name="total_0">Total: $0</string>
 </resources>
