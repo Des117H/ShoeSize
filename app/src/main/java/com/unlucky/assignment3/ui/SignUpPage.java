@@ -24,37 +24,6 @@ public class SignUpPage extends AppCompatActivity {
         buyerButton = findViewById(R.id.buyer_button);
         sellerButton = findViewById(R.id.seller_button);
         signUpButton = findViewById(R.id.signUpButton);
-
-        if (isBuyer) {
-            activateBuyerButton();
-        }
-
-        buyerButton.setOnClickListener(v -> {
-            if (!isBuyer) {
-                activateBuyerButton();
-                isBuyer = true;
-            }
-        });
-
-        sellerButton.setOnClickListener(v -> {
-            if (isBuyer) {
-                activateSellerButton();
-                isBuyer = false;
-            }
-        });
-
-        signUpButton.setOnClickListener(v -> {
-            if (signUp()) {
-                Intent i;
-                if (isBuyer) {
-                    i = new Intent(this, BuyerMain.class);
-                } else {
-
-                    i = new Intent(this, SellerMain.class);
-                }
-                startActivity(i);
-            }
-        });
     }
 
     public void activateBuyerButton() {

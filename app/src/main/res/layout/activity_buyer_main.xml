@@ -1,153 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:backgroundTint="@color/white"
     android:orientation="vertical"
     tools:context=".user.buyer.BuyerMain">
 
     <LinearLayout
+
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/red"
+            android:layout_height="match_parent"
             android:orientation="vertical">
+
 
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/red"
                 android:orientation="horizontal">
 
-                <LinearLayout
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="50dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/greed"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Hi, Mr Thanh"
-                        android:textColor="@color/white"
-                        android:textSize="40sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/subtitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/quesiton"
-                        android:textColor="@color/white"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="casual"
+                    android:text="@string/shoesize"
+                    android:textColor="@color/yellow"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
 
                 <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="20dp"
-                    android:contentDescription="avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="100dp"
                     app:srcCompat="@drawable/ava" />
+
+
             </LinearLayout>
 
-            <Button
-                android:id="@+id/searchMain"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:background="@drawable/button_background"
-                android:text="@string/search_your_shoe_here"
-                android:layout_marginBottom="20dp"
-                android:layout_marginTop="20dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@string/newinstock"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold">
-
-            </TextView>
-
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:text="@string/viewall"
-                android:textAlignment="textEnd"
-                android:textColor="#03A9F4"
-                android:textIsSelectable="false"
-                android:textSize="20sp"
-                android:textStyle="bold|italic" />
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <Button
+                    android:id="@+id/searchMain"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/button_background"
+                    android:text="@string/search_your_shoe_here" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/newShoeRV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/yellow"/>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    app:srcCompat="@drawable/glass" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@string/bestseller"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold">
+            </LinearLayout>
 
-            </TextView>
-
-            <TextView
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:text="@string/viewall"
-                android:textAlignment="textEnd"
-                android:textColor="#03A9F4"
-                android:textIsSelectable="false"
-                android:textSize="20sp"
-                android:textStyle="bold|italic" />
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/viewpaper"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp" >
+
+                    </androidx.viewpager.widget.ViewPager>
+
+                    <me.relex.circleindicator.CircleIndicator
+                        android:id="@+id/circle_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@color/red">
+
+                    </me.relex.circleindicator.CircleIndicator>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/newShoeRV"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/bestSellShoeRV"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/yellow" />
     </LinearLayout>
-</ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/menu_bar"
+        app:elevation="20dp"
+        app:itemIconTint="@color/custom_color_bottom_nar"
+        app:itemTextColor="@color/custom_color_bottom_nar"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_bottom_nar">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</RelativeLayout>

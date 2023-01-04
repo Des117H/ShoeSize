@@ -6,7 +6,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,56 +43,21 @@ import java.util.Objects;
 
 public class WelcomePage extends AppCompatActivity {
 
-    Button buyerButton, sellerButton, signUpButton, signInButton;
+    Button signInButton,buyerButton,sellerButton;
+    TextView signUpButton;
     boolean isBuyer = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_welcome_page);
-
-        Intent intent = new Intent(WelcomePage.this, BuyerDetail.class);
-        startActivity(intent);
-
         buyerButton = findViewById(R.id.buyer_button);
         sellerButton = findViewById(R.id.seller_button);
         signUpButton = findViewById(R.id.signUpWelcomeButton);
         signInButton = findViewById(R.id.signInButton);
 
-
-//        db.collection("shoes")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        for (QueryDocumentSnapshot document : task.getResult()) {
-//                            Map<String, Object> shoeData = new HashMap<>(document.getData());
-//                            String strDay = (String) shoeData.get("releaseDate");
-//
-//                            LocalDate ld = null;
-//
-//                            try {
-//                                DateTimeFormatter fIn = DateTimeFormatter.ofPattern( "dd/MM/uuuu", Locale.UK);
-//                                ld = LocalDate.parse( (String) shoeData.get("releaseDate"), fIn );
-//                                System.out.println("convert: " + ld);
-//                                shoeData.replace("releaseDate", ld);
-//                            } catch (DateTimeParseException e) {
-//                                DateTimeFormatter fOut = DateTimeFormatter.ofPattern( "MM/dd/uuuu", Locale.UK);
-//                                ld = LocalDate.parse( (String) shoeData.get("releaseDate"), fOut );
-//                                System.out.println("convert: " + ld);
-//                                shoeData.replace("releaseDate", ld);
-//                            }
-//
-//                            db.collection("shoes")
-//                                    .document((String) shoeData.get("name"))
-//                                    .update("releaseDate", ld.toString());
-//
-//                            String data = shoeData.get("name") + " " + shoeData.get("releaseDate");
-//                            System.out.println(data);
-//                        }
-//                    }
-//                });
         if (isBuyer) {
             activateBuyerButton();
         }
@@ -110,9 +77,16 @@ public class WelcomePage extends AppCompatActivity {
         });
 
         signUpButton.setOnClickListener(v -> {
-            Intent i = new Intent(this, SignUpPage.class);
-            startActivity(i);
-            finish();
+            if (signUp()) {
+                Intent i;
+                if (isBuyer) {
+                    i = new Intent(this, BuyerMain.class);
+                } else {
+
+                    i = new Intent(this, SellerMain.class);
+                }
+                startActivity(i);
+            }
         });
 
         signInButton.setOnClickListener(v -> {
@@ -130,6 +104,14 @@ public class WelcomePage extends AppCompatActivity {
         });
     }
 
+    private boolean signUp() {
+        return false;
+    }
+
+    public boolean logIn() {
+        return true;
+    }
+
     public void activateBuyerButton() {
         sellerButton
                 .setBackgroundColor(ContextCompat
@@ -143,7 +125,7 @@ public class WelcomePage extends AppCompatActivity {
         buyerButton
                 .setBackgroundColor(ContextCompat
                         .getColor(this,
-                                R.color.red));
+                                R.color.yellow));
         buyerButton
                 .setTextColor(ContextCompat
                         .getColor(this,
@@ -163,18 +145,18 @@ public class WelcomePage extends AppCompatActivity {
         sellerButton
                 .setBackgroundColor(ContextCompat
                         .getColor(this,
-                                R.color.red));
+                                R.color.yellow));
         sellerButton
                 .setTextColor(ContextCompat
                         .getColor(this,
                                 R.color.white));
     }
 
-    public boolean logIn() {
-        boolean isValid = true;
-
-
-
-        return  isValid;
+    public void signUp_action(View view) {
+        signUpButton.setOnClickListener(v -> {
+            Intent i = new Intent(this, SignUpPage.class);
+            startActivity(i);
+            finish();
+        });
     }
 }

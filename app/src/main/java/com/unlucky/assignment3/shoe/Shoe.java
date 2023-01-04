@@ -1,6 +1,14 @@
 package com.unlucky.assignment3.shoe;
 
-public class Shoe {
+import static android.content.ContentValues.TAG;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+
+import java.io.Serializable;
+
+public class Shoe implements Serializable {
     public String name, style, pictureLink, colorway, releaseDate, description, brand;
     public double price;
 
@@ -23,6 +31,17 @@ public class Shoe {
         this.pictureLink = convertNameToPicLink(name);
         this.releaseDate = releaseDate;
         this.description = description;
+        this.price = price;
+    }
+
+    public Shoe(String name, String style, String pictureLink, String colorway, String releaseDate, String description, String brand, double price) {
+        this.name = name;
+        this.style = style;
+        this.pictureLink = pictureLink;
+        this.colorway = colorway;
+        this.releaseDate = releaseDate;
+        this.description = description;
+        this.brand = brand;
         this.price = price;
     }
 
