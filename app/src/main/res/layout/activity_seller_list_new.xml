@@ -67,36 +67,10 @@
         android:textSize="25sp"
         android:textStyle="bold" />
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@drawable/a"
-            android:id="@+id/shoeImage"></ImageView>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Nike Air Force 1"
-            android:layout_toRightOf="@+id/shoeImage"
-            android:layout_marginLeft="20dp"
-            android:textSize="30dp"
-            android:id="@+id/shoeName"></TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="110$"
-            android:layout_toRightOf="@+id/shoeImage"
-            android:layout_marginLeft="20dp"
-            android:textSize="20dp"
-            android:id="@+id/shoePrice"
-            android:layout_below="@+id/shoeName"></TextView>
-    </RelativeLayout>
+    <ListView
+        android:layoutAnimation="@anim/layout_animation_down_to_up"
+        android:id="@+id/search_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>
