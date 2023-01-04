@@ -31,7 +31,9 @@
                 android:text="@string/hi_mr_thanh"
                 android:textColor="@color/white"
                 android:textSize="35sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="casual"
+                />
 
             <TextView
                 android:id="@+id/subtitle"
@@ -40,7 +42,8 @@
                 android:text="@string/ask_user_today"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="casual"/>
         </LinearLayout>
 
         <ImageView
@@ -71,7 +74,8 @@
             android:layout_gravity="center_vertical|center_horizontal"
             android:background="@drawable/button_background"
             android:text="@string/update_new_shoe"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="casual"/>
 
         <Button
             android:id="@+id/viewListButton"
@@ -79,10 +83,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/button_background"
             android:text="@string/view_my_list"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="casual"/>
 
         <Button
             android:id="@+id/removeShoeButton"
@@ -90,10 +95,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/button_background"
             android:text="@string/remove_shoe"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="casual"/>
     </LinearLayout>
 
     <ImageView

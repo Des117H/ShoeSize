@@ -41,18 +41,19 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/current_selling_list"
+            android:text="YOUR SHOES LIST"
             android:textAlignment="center"
             android:textColor="#15F6F6"
             android:textSize="40sp"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
         </TextView>
     </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="350dp"
         android:layout_marginTop="50dp">
     </ListView>
 
@@ -61,7 +62,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        >
+
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -86,12 +89,4 @@
             android:layout_weight="1" />
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/bottom_background" />
-
-
 </LinearLayout>
