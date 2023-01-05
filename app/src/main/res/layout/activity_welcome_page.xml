@@ -6,136 +6,180 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.WelcomePage">
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="126dp" />
+    tools:context=".ui.WelcomePage"
+    android:background="@color/red"
+    android:gravity="center_vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:ignore="UseSwitchCompatOrMaterialXml">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <Space
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:fontFamily="cursive"
+            android:text="@string/shoesize"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/yellow"
+            android:textSize="100sp" />
 
-        <Button
-            android:id="@+id/buyer_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/buyer" />
-
-        <Button
-            android:id="@+id/seller_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/seller" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/giphy"
+            />
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/UsernameTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Username"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/user"
+                app:tint="@color/yellow">
+            </ImageView>
 
-            <EditText
-                android:id="@+id/UsernameEditText"
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                >
+
+            </View>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter your username"
-                android:inputType="textPersonName"
-                android:minHeight="48dp"
-                android:textColorHint="#757575" />
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/PasswordTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Password"
-                android:textColor="@color/black"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/UsernameTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="E-MAIL"
+                    android:textColor="@color/yellow"
+                    android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/PasswordEditText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Enter your password"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:textColorHint="#757575" />
+                <EditText
+                    android:id="@+id/UsernameEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter your e-mail"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp"
+                    android:textColorHint="#FFFFFF" />
+            </LinearLayout>
+
         </LinearLayout>
-
-        <Space
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal">
 
-    </LinearLayout>
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/padlock"
+                app:tint="@color/yellow" />
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                >
+            </View>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/PasswordTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PASSWORD"
+                    android:textColor="@color/yellow"
+                    android:textSize="20sp" />
 
-        <Space
-            android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/PasswordEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Enter your password"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    android:textColorHint="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal">
+            <Button
+                android:id="@+id/buyer_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/yellow"
+                android:text="@string/as_buyer" />
 
-        <Button
-            android:id="@+id/signUpWelcomeButton"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_up" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            <Button
+                android:layout_marginStart="30dp"
+                android:id="@+id/seller_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/as_seller"
+                android:background="@color/yellow"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/signInButton"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="@string/sign_in" />
+            android:background="@drawable/button_signin"
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_marginTop="20dp"
+            android:text="@string/sign_in"
+            />
     </LinearLayout>
-
-    <Space
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:onClick="signUp_action"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_a_member"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/signUpWelcomeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:onClick="signUp_action"
+            android:text="@string/join_now"
+            android:textColor="@color/yellow"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+    </LinearLayout>
 </LinearLayout>
