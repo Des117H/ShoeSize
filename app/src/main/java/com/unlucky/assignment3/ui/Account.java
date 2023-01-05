@@ -17,6 +17,7 @@ public class Account extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         Button back = findViewById(R.id.back);
+        Button logOut = findViewById(R.id.logOut);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,5 +25,15 @@ public class Account extends AppCompatActivity {
                 finish();
             }
         });
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Account.this,WelcomePage.class);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
     }
 }

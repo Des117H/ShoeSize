@@ -22,27 +22,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".user.seller.SellerRemoveShoe"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".user.seller.SellerAddShoe"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".user.seller.SellerList"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".user.seller.SellerMain"
             android:exported="false">
             <meta-data

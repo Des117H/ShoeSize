@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +32,7 @@ import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
 import com.unlucky.assignment3.shoe.photo;
 import com.unlucky.assignment3.ui.Account;
+import com.unlucky.assignment3.ui.WelcomePage;
 import com.unlucky.assignment3.utilities.RecyclerItemClickListener;
 import com.unlucky.assignment3.utilities.adapter.ShoeRecyclerViewAdapter;
 import com.unlucky.assignment3.utilities.adapter.photoAdapter;
@@ -89,6 +91,19 @@ public class BuyerMain extends AppCompatActivity {
                     }
                 }
             });
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 202) {
+            if (resultCode == RESULT_OK){
+                Intent x = new Intent(BuyerMain.this, WelcomePage.class);
+                startActivity(x);
+                finish();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,13 +233,17 @@ public class BuyerMain extends AppCompatActivity {
 
                     case R.id.action_account:
                         Intent x = new Intent(BuyerMain.this, Account.class);
-                        startActivity(x);
+                        startActivityForResult(x,202);
                         break;
                 }
                 return true;
             }
         });
+
+
+
     }
+
 
     private List<photo> getListPhoto() {
         List<photo> list = new ArrayList<>();
