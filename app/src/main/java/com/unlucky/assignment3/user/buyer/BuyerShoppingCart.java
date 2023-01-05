@@ -86,7 +86,7 @@ public class BuyerShoppingCart extends AppCompatActivity {
                                     Shoe shoeData = new Shoe((String) temp.get("name"),
                                             (String) temp.get("style"), (String) temp.get("colorway"),
                                             (String) temp.get("releaseDate"), (String) temp.get("description"),
-                                            (Double) temp.get("price"));
+                                            (Double) temp.get("price"), (String) temp.get("pictureLink"));
                                     shoeList.add(shoeData);
                                     price += shoeData.getPrice();
                                 }

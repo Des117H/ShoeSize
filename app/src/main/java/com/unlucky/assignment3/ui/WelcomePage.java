@@ -22,8 +22,10 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
+import com.unlucky.assignment3.shoe.Shoe;
 import com.unlucky.assignment3.user.buyer.BuyerDetail;
 import com.unlucky.assignment3.user.buyer.BuyerMain;
+import com.unlucky.assignment3.user.buyer.BuyerSearch;
 import com.unlucky.assignment3.user.seller.SellerMain;
 import com.google.firebase.firestore.Query.Direction;
 
@@ -34,6 +36,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -46,11 +49,12 @@ public class WelcomePage extends AppCompatActivity {
     Button signInButton,buyerButton,sellerButton;
     TextView signUpButton;
     boolean isBuyer = true;
-
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = FirebaseFirestore.getInstance();
 
         setContentView(R.layout.activity_welcome_page);
         buyerButton = findViewById(R.id.buyer_button);
@@ -82,7 +86,6 @@ public class WelcomePage extends AppCompatActivity {
                 if (isBuyer) {
                     i = new Intent(this, BuyerMain.class);
                 } else {
-
                     i = new Intent(this, SellerMain.class);
                 }
                 startActivity(i);
@@ -94,11 +97,37 @@ public class WelcomePage extends AppCompatActivity {
                 Intent i;
                 if (isBuyer) {
                     i = new Intent(this, BuyerMain.class);
+                    startActivity(i);
                 } else {
+                    db.collection("shoes")
+                            .orderBy("name", Query.Direction.ASCENDING)
+                            .get()
+                            .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                    if (task.isComplete()) {
+                                        ArrayList<Shoe> shoeList = new ArrayList<Shoe>();
 
-                    i = new Intent(this, SellerMain.class);
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            Map<String, Object> temp = document.getData();
+                                            Shoe shoeData = new Shoe((String) temp.get("name"),
+                                                    (String) temp.get("style"),
+                                                    (String) temp.get("colorway"),
+                                                    (String) temp.get("releaseDate"),
+                                                    (String) temp.get("description"),
+                                                    Double.parseDouble(temp.get("price").toString()),
+                                                    (String) temp.get("pictureLink"));
+                                            shoeList.add(shoeData);
+                                        }
+
+                                        Intent searchIntent = new Intent(WelcomePage.this, SellerMain.class);
+
+                                        searchIntent.putExtra("shoe_list", shoeList);
+                                        startActivity(searchIntent);
+                                    }
+                                }
+                            });
                 }
-                startActivity(i);
                 finish();
             }
         });

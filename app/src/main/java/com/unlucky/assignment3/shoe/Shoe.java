@@ -9,7 +9,7 @@ import android.util.Log;
 import java.io.Serializable;
 
 public class Shoe implements Serializable {
-    public String name, style, pictureLink, colorway, releaseDate, description, brand;
+    public String name, style, pictureLink, colorway, releaseDate, description;
     public double price;
 
     public Shoe() {
@@ -19,29 +19,27 @@ public class Shoe implements Serializable {
         this.pictureLink = "";
         this.releaseDate = "";
         this.description = "";
-        this.brand = "";
         this.price = 0;
     }
 
-    public Shoe(String name, String style, String colorway, String releaseDate,
-                String description, double price) {
-        this.name = name.replaceAll("-", " ");
-        this.style = style;
-        this.colorway = colorway;
-        this.pictureLink = convertNameToPicLink(name);
-        this.releaseDate = releaseDate;
-        this.description = description;
-        this.price = price;
-    }
+//    public Shoe(String name, String style, String colorway, String releaseDate,
+//                String description, double price) {
+//        this.name = name.replaceAll("-", " ");
+//        this.style = style;
+//        this.colorway = colorway;
+//        this.pictureLink = convertNameToPicLink(name);
+//        this.releaseDate = releaseDate;
+//        this.description = description;
+//        this.price = price;
+//    }
 
-    public Shoe(String name, String style, String pictureLink, String colorway, String releaseDate, String description, String brand, double price) {
+    public Shoe(String name, String style, String colorway, String releaseDate, String description, double price, String pictureLink) {
         this.name = name;
         this.style = style;
         this.pictureLink = pictureLink;
         this.colorway = colorway;
         this.releaseDate = releaseDate;
         this.description = description;
-        this.brand = brand;
         this.price = price;
     }
 

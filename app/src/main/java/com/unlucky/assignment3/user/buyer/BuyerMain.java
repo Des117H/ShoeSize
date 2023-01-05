@@ -131,7 +131,7 @@ public class BuyerMain extends AppCompatActivity {
                                         Shoe shoeData = new Shoe((String) temp.get("name"),
                                                 (String) temp.get("style"), (String) temp.get("colorway"),
                                                 (String) temp.get("releaseDate"), (String) temp.get("description"),
-                                                (Double) Double.parseDouble(temp.get("price").toString()));
+                                                (Double) Double.parseDouble(temp.get("price").toString()), (String) temp.get("pictureLink"));
                                         shoeList.add(shoeData);
                                     }
 
@@ -160,7 +160,7 @@ public class BuyerMain extends AppCompatActivity {
                                 Shoe shoeData = new Shoe((String) temp.get("name"),
                                         (String) temp.get("style"), (String) temp.get("colorway"),
                                         (String) temp.get("releaseDate"), (String) temp.get("description"),
-                                        (Double) temp.get("price"));
+                                        (Double) temp.get("price"), (String) temp.get("pictureLink"));
                                 newShoeList.add(shoeData);
                             }
                             LayoutAnimationController ani = AnimationUtils.loadLayoutAnimation(BuyerMain.this,R.anim.layout_animation_down_to_up);

@@ -38,7 +38,7 @@
     </LinearLayout>
 
     <SearchView
-        android:id="@+id/shoeSearchView"
+        android:id="@+id/shoeSellSearchView"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -53,7 +53,7 @@
 
     <ListView
         android:layoutAnimation="@anim/layout_animation_down_to_up"
-        android:id="@+id/search_list_view"
+        android:id="@+id/sell_search_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

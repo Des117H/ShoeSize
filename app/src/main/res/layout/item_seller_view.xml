@@ -18,7 +18,6 @@
             android:id="@+id/delete"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@drawable/delete"
             android:layout_gravity="end" />
 
         <LinearLayout
@@ -28,12 +27,12 @@
             android:layout_marginTop="50dp">
 
             <ImageView
-                android:id="@+id/shoeImageRecycle"
+                android:id="@+id/shoeSellerImageRecycle"
                 android:layout_width="160dp"
                 android:layout_height="160dp"/>
 
             <TextView
-                android:id="@+id/shoeNameRecycle"
+                android:id="@+id/shoeSellerNameRecycle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -42,7 +41,7 @@
                 android:layout_margin="5dp"/>
 
             <TextView
-                android:id="@+id/shoePriceRecycle"
+                android:id="@+id/shoeSellerPriceRecycle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
