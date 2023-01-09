@@ -45,9 +45,9 @@ public class BuyerPayment extends AppCompatActivity implements OnMapReadyCallbac
         price = findViewById(R.id.price);
         placeOrder = findViewById(R.id.placeOrder);
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+//                .findFragmentById(R.id.map);
+//        mapFragment.getMapAsync(this);
 
         double priceNumber = (double) i.getExtras().get("price");
         String total = "Total :$" + priceNumber;
