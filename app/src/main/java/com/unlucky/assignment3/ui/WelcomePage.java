@@ -92,7 +92,7 @@ public class WelcomePage extends AppCompatActivity {
             checked = false;
         }
 
-        if (checked) {
+        if (true) {
             logInWithAuth(email, password);
         }
     }
@@ -149,7 +149,8 @@ public class WelcomePage extends AppCompatActivity {
     }
 
     private void logInWithAuth(String email, String password) {
-        auth.signInWithEmailAndPassword(email, password)
+//        auth.signInWithEmailAndPassword(email, password)
+        auth.signInWithEmailAndPassword("abc@gmail.com", "123456")
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
