@@ -41,8 +41,6 @@ public class ShoeSearchRecyclerViewAdapter  extends RecyclerView.Adapter<ShoeSea
         if (!mData.isEmpty()) {
             holder.shoeSearchNameRecycle.setText(mData.get(position).getName());
             holder.shoeSearchPriceRecycle.setText(mData.get(position).getPriceString());
-//            new DownloadImageTask(holder.shoeSearchImageRecycle)
-//                    .execute(mData.get(position).getPictureLink());
 
             Glide.with(mContext).load(mData.get(position).getPictureLink()).into(holder.shoeSearchImageRecycle);
         }

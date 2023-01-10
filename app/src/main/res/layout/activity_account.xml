@@ -5,13 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="10dp"
-    tools:context=".ui.Account">
+    tools:context=".ui.AccountPage">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
         android:orientation="horizontal">
 
         <Button
@@ -47,73 +45,75 @@
         android:text="@string/unlucky_team"
         android:textColor="@color/red"
         android:textSize="30sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="monospace"
-            android:text="@string/name"
-            android:textColor="@color/red"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:fontFamily="monospace"
+            android:text="Name: "
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:text="@string/unlucky_team"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="monospace"
-            android:text="@string/address"
-            android:textColor="@color/red"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:fontFamily="monospace"
-            android:text="@string/_702_nguy_n_v_n_linh_t_n_h_ng_qu_n_7_th_nh_ph_h_ch_minh"
+            android:text="Email:"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:text="@string/unlucky_team"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
+
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="monospace"
-            android:text="Phone number:"
-            android:textColor="@color/red"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:fontFamily="monospace"
+            android:text="Phone:"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="monospace"
             android:text="(+84) 28 3776 1369"
             android:textColor="@color/black"
@@ -121,16 +121,25 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
     <Button
-        android:layout_marginTop="20dp"
         android:id="@+id/logOut"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@color/yellow"
-        android:background="@drawable/button_background"
-        android:layout_gravity="center"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="@string/log_out" />
+        android:layout_gravity="center"
+        android:background="@drawable/button_background"
+        android:text="@string/log_out"
+        android:textColor="@color/yellow"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
 </LinearLayout>

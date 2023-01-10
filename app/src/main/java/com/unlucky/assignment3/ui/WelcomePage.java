@@ -79,20 +79,20 @@ public class WelcomePage extends AppCompatActivity {
         String email = emailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
 
-        if (email.length() == 0) {
-            emailEditText.setError("Email is required");
-            checked = false;
-        } else if (!isValidEmail(email)) {
-            emailEditText.setError("Email is not valid");
-            checked = false;
-        }
+//        if (email.length() == 0) {
+//            emailEditText.setError("Email is required");
+//            checked = false;
+//        } else if (!isValidEmail(email)) {
+//            emailEditText.setError("Email is not valid");
+//            checked = false;
+//        }
+//
+//        if (password.length() == 0) {
+//            passwordEditText.setError("Password is required");
+//            checked = false;
+//        }
 
-        if (password.length() == 0) {
-            passwordEditText.setError("Password is required");
-            checked = false;
-        }
-
-        if (true) {
+        if (checked) {
             logInWithAuth(email, password);
         }
     }
@@ -171,9 +171,7 @@ public class WelcomePage extends AppCompatActivity {
             i = new Intent(WelcomePage.this, BuyerMain.class);
             startActivity(i);
         } else {
-            db.collection("users")
-                    .document(currentUser.getEmail())
-                    .collection("shoeSell")
+            db.collection("shoes")
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                         @Override

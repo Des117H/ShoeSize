@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.unlucky.assignment3.R;
 
-public class Account extends AppCompatActivity {
+public class AccountPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class Account extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Account.this,WelcomePage.class);
+                Intent intent = new Intent(AccountPage.this,WelcomePage.class);
                 setResult(RESULT_OK, intent);
                 finish();
             }

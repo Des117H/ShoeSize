@@ -40,8 +40,6 @@ public class ShoeSellerRVAdapter extends RecyclerView.Adapter<ShoeSellerRVAdapte
         if (!mData.isEmpty()) {
             holder.shoeSellerNameRecycle.setText(mData.get(position).getName());
             holder.shoeSellerPriceRecycle.setText(mData.get(position).getPriceString());
-//            new DownloadImageTask(holder.shoeSellerImageRecycle)
-//                    .execute(mData.get(position).getPictureLink());
 
             Glide.with(mContext).load(mData.get(position).getPictureLink()).into(holder.shoeSellerImageRecycle);
         }

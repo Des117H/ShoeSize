@@ -89,7 +89,7 @@ public class SignUpPage extends AppCompatActivity {
         buyerButton
                 .setBackgroundColor(ContextCompat
                         .getColor(this,
-                                R.color.red));
+                                R.color.yellow));
         buyerButton
                 .setTextColor(ContextCompat
                         .getColor(this,
@@ -109,7 +109,7 @@ public class SignUpPage extends AppCompatActivity {
         sellerButton
                 .setBackgroundColor(ContextCompat
                         .getColor(this,
-                                R.color.red));
+                                R.color.yellow));
         sellerButton
                 .setTextColor(ContextCompat
                         .getColor(this,

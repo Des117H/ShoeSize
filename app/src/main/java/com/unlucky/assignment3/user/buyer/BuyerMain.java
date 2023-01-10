@@ -31,7 +31,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
 import com.unlucky.assignment3.shoe.photo;
-import com.unlucky.assignment3.ui.Account;
+import com.unlucky.assignment3.ui.AccountPage;
 import com.unlucky.assignment3.ui.WelcomePage;
 import com.unlucky.assignment3.utilities.RecyclerItemClickListener;
 import com.unlucky.assignment3.utilities.adapter.ShoeRecyclerViewAdapter;
@@ -232,7 +232,7 @@ public class BuyerMain extends AppCompatActivity {
                         break;
 
                     case R.id.action_account:
-                        Intent x = new Intent(BuyerMain.this, Account.class);
+                        Intent x = new Intent(BuyerMain.this, AccountPage.class);
                         startActivityForResult(x,202);
                         break;
                 }

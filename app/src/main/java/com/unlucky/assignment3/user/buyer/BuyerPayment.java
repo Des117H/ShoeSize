@@ -23,7 +23,6 @@ import com.unlucky.assignment3.R;
 public class BuyerPayment extends AppCompatActivity implements OnMapReadyCallback {
     TextView price;
     Button placeOrder;
-    boolean confirm = true;
     private GoogleMap mMap;
 
     @Override
@@ -53,31 +52,26 @@ public class BuyerPayment extends AppCompatActivity implements OnMapReadyCallbac
         String total = "Total :$" + priceNumber;
         price.setText(total);
 
-        placeOrder.setOnClickListener(view -> {
-            AlertDialog alertDialog = new AlertDialog.Builder(BuyerPayment.this).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(BuyerPayment.this).create();
 
-            alertDialog.setTitle("Confirmation");
-            alertDialog.setMessage("Do you want to place this order?");
+        alertDialog.setTitle("Confirmation");
+        alertDialog.setMessage("Do you want to place this order?");
 
-            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes", (dialog, which) -> {
-                Toast.makeText(BuyerPayment.this, "Ordered", Toast.LENGTH_SHORT).show();
-                confirm = true;
-            });
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes", (dialog, which) -> {
+            Toast.makeText(BuyerPayment.this, "Ordered", Toast.LENGTH_SHORT).show();
 
-            alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "No", (dialog, which) -> {
-                dialog.dismiss();
-                confirm = false;
-            });
-
-            alertDialog.show();
-
-            if (confirm) {
-                Intent y = new Intent(BuyerPayment.this,BuyerMain.class);
-                startActivity(y);
-                finish();
-            }
+            Intent y = new Intent(BuyerPayment.this,BuyerMain.class);
+            startActivity(y);
+            finish();
         });
 
+        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "No", (dialog, which) -> {
+            dialog.dismiss();
+        });
+
+        placeOrder.setOnClickListener(view -> {
+            alertDialog.show();
+        });
     }
 
     /**

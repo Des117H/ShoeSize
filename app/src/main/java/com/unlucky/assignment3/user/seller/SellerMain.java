@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,17 +21,24 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.ui.WelcomePage;
 import com.unlucky.assignment3.user.buyer.BuyerDetail;
 import com.unlucky.assignment3.user.buyer.BuyerSearch;
 import com.unlucky.assignment3.utilities.adapter.ShoeSearchListAdapter;
 import com.unlucky.assignment3.utilities.adapter.ShoeSellerRVAdapter;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class SellerMain extends AppCompatActivity implements SearchView.OnQueryTextListener{
     private ListView searchListView;
@@ -80,6 +88,31 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
             if (shoeList!= null && !shoeList.isEmpty()) {
                 // Pass results to ListViewAdapter Class
                 adapter = new ShoeSearchListAdapter(this, shoeList);
+
+//                add all
+//                db.collection("shoes")
+//                        .get()
+//                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                                if (task.isComplete()) {
+//                                    ArrayList<Shoe> shoeList = new ArrayList<>();
+//
+//                                    for (QueryDocumentSnapshot document : task.getResult()) {
+//                                        Map<String, Object> temp = document.getData();
+//
+//                                        db.collection("users")
+//                                                .document(currentUser.getEmail())
+//                                                .collection("shoeSell").add(temp).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+//                                                    @Override
+//                                                    public void onComplete(@NonNull Task<DocumentReference> task) {
+//                                                        Toast.makeText(SellerMain.this, "added", Toast.LENGTH_SHORT).show();
+//                                                    }
+//                                                });
+//                                    }
+//                                }
+//                            }
+//                        });
 
                 // Binds the Adapter to the ListView
                 searchListView.setAdapter(adapter);
