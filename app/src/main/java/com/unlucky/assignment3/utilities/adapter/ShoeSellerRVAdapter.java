@@ -30,7 +30,7 @@ public class ShoeSellerRVAdapter extends RecyclerView.Adapter<ShoeSellerRVAdapte
     // inflates the row layout from xml when needed
     @Override
     public ShoeSellerRVAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_search_recycler_view, parent, false);
+        View view = mInflater.inflate(R.layout.item_seller_view, parent, false);
         return new ShoeSellerRVAdapter.ViewHolder(view);
     }
 
