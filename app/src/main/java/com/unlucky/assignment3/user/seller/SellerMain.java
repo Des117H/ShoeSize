@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
@@ -35,7 +37,10 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
     private SearchView searchBox;
     FirebaseFirestore db;
     private ArrayList<Shoe> shoeList = new ArrayList<>();
+    private ArrayList<Shoe> newAddedShoeList = new ArrayList<>();
     private ShoeSearchListAdapter adapter;
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser currentUser;
 
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -59,33 +64,41 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
         db = FirebaseFirestore.getInstance();
 
         searchBox = findViewById(R.id.shoeSellSearchView);
+        searchListView = findViewById(R.id.sell_search_list_view);
 
         Bundle bundle = getIntent().getExtras();
 
-        shoeList = (ArrayList<Shoe>) bundle.getSerializable("shoe_list");
-        searchListView = findViewById(R.id.sell_search_list_view);
+        currentUser = auth.getCurrentUser();
 
-        if (shoeList!= null && !shoeList.isEmpty()) {
-            // Pass results to ListViewAdapter Class
-            adapter = new ShoeSearchListAdapter(this, shoeList);
+        if (currentUser != null) {
+            System.out.println("email: " + currentUser.getEmail());
+        }
 
-            // Binds the Adapter to the ListView
-            searchListView.setAdapter(adapter);
+        if (bundle != null) {
+            shoeList = (ArrayList<Shoe>) bundle.getSerializable("shoe_list");
 
-            searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
-//                    shoeNameList.add(selectedItem.name);
-                    Intent toShoeDetail = new Intent(SellerMain.this, BuyerDetail.class);
-                    toShoeDetail.putExtra("shoe_name",selectedItem.name);
-                    activityResultLaunch.launch(toShoeDetail);
-                }
-            });
+            if (shoeList!= null && !shoeList.isEmpty()) {
+                // Pass results to ListViewAdapter Class
+                adapter = new ShoeSearchListAdapter(this, shoeList);
 
-            // Locate the EditText in listview_main.xml
-            searchBox = findViewById(R.id.shoeSellSearchView);
-            searchBox.setOnQueryTextListener(this);
+                // Binds the Adapter to the ListView
+                searchListView.setAdapter(adapter);
+
+                searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
+
+                        Intent toShoeDetail = new Intent(SellerMain.this, BuyerDetail.class);
+                        toShoeDetail.putExtra("shoe_name",selectedItem.name);
+                        activityResultLaunch.launch(toShoeDetail);
+                    }
+                });
+
+                // Locate the EditText in listview_main.xml
+                searchBox = findViewById(R.id.shoeSellSearchView);
+                searchBox.setOnQueryTextListener(this);
+            }
         }
     }
 
@@ -95,19 +108,17 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.shoe_list_menu, menu);
 
-        // Initialise menu item search bar
-        // with id and take its object
+        // Initialise menu item search bar with id and take its object
         MenuItem searchViewItem = menu.findItem(R.id.search_bar);
         SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchViewItem);
 
-        // attach setOnQueryTextListener
-        // to search view defined above
+        // attach setOnQueryTextListener to search view defined above
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             // Override onQueryTextSubmit method which is call when submit query is searched
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // If the list contains the search query than filter the adapter
-                // using the filter method with the query as its argument
+                // If the list contains the search query than filter the adapter using the filter
+                // method with the query as its argument
                 if (shoeList.contains(query)) {
                     adapter.filter(query);
                 } else {

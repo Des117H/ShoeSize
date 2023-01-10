@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".user.buyer.BuyerPayment"
@@ -55,26 +56,6 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
             android:fontFamily="monospace"
-            android:text="@string/name"
-            android:textColor="@color/red"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/enter_your_name"
-            android:inputType="text"
-            android:minHeight="48dp"
-            android:layout_marginStart="30dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="monospace"
             android:text="@string/address"
             android:textColor="@color/red"
             android:textSize="20sp"
@@ -84,36 +65,18 @@
             android:id="@+id/address"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
             android:hint="@string/enter_your_address"
             android:inputType="text"
-            android:layout_marginStart="30dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="30dp"
-            android:fontFamily="monospace"
-            android:text="@string/phone_number"
-            android:textColor="@color/red"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/phoneNumber"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:hint="@string/enter_your_phone_number"
-            android:inputType="phone"
             android:minHeight="48dp" />
 
         <CheckBox
             android:id="@+id/checkBox"
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:minHeight="48dp"
             android:text="@string/agree_with_term_of_purchase_agreement"
             android:textSize="18sp"
             android:textStyle="bold" />
