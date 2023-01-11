@@ -22,32 +22,31 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/shoeSellerImageRecycle"
+                android:id="@+id/shoeSellerSearchImageRecycle"
                 android:layout_width="150dp"
                 android:layout_height="117dp"
                 android:contentDescription="Shoe image"
                 tools:ignore="ImageContrastCheck" />
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/shoeSellerNameRecycle"
+                    android:id="@+id/shoeSellerSearchNameRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_margin="10dp"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/shoeSellerPriceRecycle"
+                    android:id="@+id/shoeSellerSearchPriceRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_marginEnd="30dp"
                     android:textAlignment="viewEnd"
                     android:textColor="@color/blue"
                     android:textSize="30sp"
@@ -55,6 +54,5 @@
             </LinearLayout>
 
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 </LinearLayout>

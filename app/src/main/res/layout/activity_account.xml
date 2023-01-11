@@ -37,6 +37,7 @@
         app:srcCompat="@drawable/ava" />
 
     <TextView
+        android:id="@+id/nameBig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -62,6 +63,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/nameSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
@@ -87,6 +89,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/emailTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"
@@ -112,6 +115,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/phoneTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="monospace"

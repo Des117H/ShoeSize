@@ -47,7 +47,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class BuyerMain extends AppCompatActivity {
 
-    private RecyclerView newShoeRV, bestSellShoeRV;
+    private RecyclerView newShoeRV;
     private List<Shoe> newShoeList, shoeCart;
     private ShoeRecyclerViewAdapter adapter;
 
@@ -56,6 +56,7 @@ public class BuyerMain extends AppCompatActivity {
     private photoAdapter photoAdapter;
     private List<photo> mListPhoto;
     private Timer mTimer;
+
     ArrayList<String> cart = new ArrayList<>();
     FirebaseFirestore db;
 

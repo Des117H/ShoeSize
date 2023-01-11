@@ -191,7 +191,7 @@ public class SignUpPage extends AppCompatActivity {
 
         String email = emailEditText.getText().toString();
 
-        user.put("username", usernameEditText.getText().toString());
+        user.put("name", usernameEditText.getText().toString());
         user.put("password", passwordEditText.getText().toString());
         user.put("phone", phoneEditText.getText().toString());
         user.put("email", emailEditText.getText().toString());

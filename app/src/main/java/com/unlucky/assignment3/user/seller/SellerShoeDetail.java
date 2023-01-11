@@ -21,15 +21,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.user.buyer.BuyerDetail;
-import com.unlucky.assignment3.utilities.DownloadImageTask;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class SellerShoeDetail extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,8 +59,6 @@ public class SellerShoeDetail extends AppCompatActivity {
                 intent.putExtra("shoe_to_cart", shoeName);
                 setResult(1, intent);
                 finish();
-//                finish();
-//                startActivityForResult();
             }
         });
 
@@ -94,8 +90,7 @@ public class SellerShoeDetail extends AppCompatActivity {
 
                                 releaseDay.setText((CharSequence) shoeData.get("releaseDate"));
                                 description.setText((CharSequence) shoeData.get("description"));
-                                new DownloadImageTask(shoeImage)
-                                        .execute((String) shoeData.get("pictureLink"));
+
                                 Glide.with(SellerShoeDetail.this)
                                         .load(shoeData.get("pictureLink"))
                                         .into(shoeImage);

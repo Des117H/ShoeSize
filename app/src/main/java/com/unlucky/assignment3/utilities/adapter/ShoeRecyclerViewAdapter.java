@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
-import com.unlucky.assignment3.user.buyer.BuyerDetail;
-import com.unlucky.assignment3.utilities.DownloadImageTask;
 
 import java.util.List;
 

@@ -34,7 +34,7 @@ import com.unlucky.assignment3.shoe.Shoe;
 import com.unlucky.assignment3.ui.WelcomePage;
 import com.unlucky.assignment3.user.buyer.BuyerDetail;
 import com.unlucky.assignment3.user.buyer.BuyerSearch;
-import com.unlucky.assignment3.utilities.adapter.ShoeSearchListAdapter;
+import com.unlucky.assignment3.utilities.adapter.SellerShoeSearchListAdapter;
 import com.unlucky.assignment3.utilities.adapter.ShoeSellerRVAdapter;
 
 import java.util.ArrayList;
@@ -46,7 +46,7 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
     FirebaseFirestore db;
     private ArrayList<Shoe> shoeList = new ArrayList<>();
     private ArrayList<Shoe> newAddedShoeList = new ArrayList<>();
-    private ShoeSearchListAdapter adapter;
+    private SellerShoeSearchListAdapter adapter;
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser;
 
@@ -87,7 +87,7 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
 
             if (shoeList!= null && !shoeList.isEmpty()) {
                 // Pass results to ListViewAdapter Class
-                adapter = new ShoeSearchListAdapter(this, shoeList);
+                adapter = new SellerShoeSearchListAdapter(this, shoeList);
 
 //                add all
 //                db.collection("shoes")
@@ -121,6 +121,8 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
+
+                        Toast.makeText(SellerMain.this, "clicked", Toast.LENGTH_SHORT).show();
 
                         Intent toShoeDetail = new Intent(SellerMain.this, SellerShoeDetail.class);
                         toShoeDetail.putExtra("shoe_name",selectedItem.name);
