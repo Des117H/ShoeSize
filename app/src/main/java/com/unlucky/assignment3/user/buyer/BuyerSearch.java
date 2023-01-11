@@ -75,17 +75,6 @@ public class BuyerSearch extends AppCompatActivity implements SearchView.OnQuery
             }
         });
 
-//        Button cart = findViewById(R.id.cart);
-//
-//        cart.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent l = new Intent(BuyerSearch.this,BuyerShoppingCart.class);
-//                l.putStringArrayListExtra("cart", cart);
-//                startActivity(l);
-//            }
-//        });
-
         searchListView = findViewById(R.id.search_list_view);
 
         Bundle bundle = getIntent().getExtras();

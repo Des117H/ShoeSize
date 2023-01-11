@@ -18,7 +18,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAtiP5fs2z7xr9MjhbYzbvHMy0dC0PxXHI" />
         <activity
-            android:name="user.seller.SellerShoeDetail"
+            android:name=".user.seller.SellerShoeDetail"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

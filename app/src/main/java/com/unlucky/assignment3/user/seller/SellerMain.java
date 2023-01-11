@@ -122,7 +122,7 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
 
-                        Intent toShoeDetail = new Intent(SellerMain.this, BuyerDetail.class);
+                        Intent toShoeDetail = new Intent(SellerMain.this, SellerShoeDetail.class);
                         toShoeDetail.putExtra("shoe_name",selectedItem.name);
                         activityResultLaunch.launch(toShoeDetail);
                     }
