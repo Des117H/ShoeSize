@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".user.seller.SellerAddShoe">
+
+    <LinearLayout
+        android:id="@+id/firstLinear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/back"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:text="Adding New Shoe"
+            android:textAlignment="center"
+            android:textColor="@color/yellow"
+            android:textSize="33sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstLinear">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:text="Fill up below information"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name of the Shoe"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                android:textStyle="bold"
+            />
+
+            <EditText
+                android:id="@+id/nameId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="URL image"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/imageID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price of the shoe"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/priceId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/descriptionId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/release_day"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/dayID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/style_of_shoe"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/styleId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Colorway"
+                android:textColor="@color/yellow"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
+            <EditText
+                android:id="@+id/colorwayId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
