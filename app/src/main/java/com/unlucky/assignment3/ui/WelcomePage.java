@@ -37,14 +37,13 @@ public class WelcomePage extends AppCompatActivity {
     TextView signUpButton;
     EditText emailEditText, passwordEditText;
     boolean isBuyer = true;
-    FirebaseFirestore db;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        db = FirebaseFirestore.getInstance();
 
         setContentView(R.layout.activity_welcome_page);
         buyerButton = findViewById(R.id.buyer_button);

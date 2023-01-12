@@ -125,7 +125,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <Space
+    <android.widget.Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />
@@ -141,7 +141,7 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <Space
+    <android.widget.Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1" />

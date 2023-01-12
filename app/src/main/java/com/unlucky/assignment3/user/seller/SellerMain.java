@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -47,6 +48,7 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
     private ArrayList<Shoe> shoeList = new ArrayList<>();
     private ArrayList<Shoe> newAddedShoeList = new ArrayList<>();
     private SellerShoeSearchListAdapter adapter;
+    Button addShoeButton;
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser;
 
@@ -73,6 +75,7 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
 
         searchBox = findViewById(R.id.shoeSellSearchView);
         searchListView = findViewById(R.id.sell_search_list_view);
+        addShoeButton = findViewById(R.id.addShoeButton);
 
         Bundle bundle = getIntent().getExtras();
 
@@ -135,6 +138,15 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
                 searchBox.setOnQueryTextListener(this);
             }
         }
+
+        addShoeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SellerMain.this, SellerAddShoe.class);
+
+                activityResultLaunch.launch(i);
+            }
+        });
     }
 
     @Override

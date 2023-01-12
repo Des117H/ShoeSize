@@ -130,9 +130,13 @@ public class BuyerMain extends AppCompatActivity {
                                     for (QueryDocumentSnapshot document : task.getResult()) {
                                         Map<String, Object> temp = document.getData();
                                         Shoe shoeData = new Shoe((String) temp.get("name"),
-                                                (String) temp.get("style"), (String) temp.get("colorway"),
-                                                (String) temp.get("releaseDate"), (String) temp.get("description"),
-                                                (Double) Double.parseDouble(temp.get("price").toString()), (String) temp.get("pictureLink"));
+                                                (String) temp.get("style"),
+                                                (String) temp.get("colorway"),
+                                                (String) temp.get("releaseDate"),
+                                                (String) temp.get("description"),
+                                                (Double) Double.parseDouble(
+                                                        (String) temp.get("price")),
+                                                (String) temp.get("pictureLink"));
                                         shoeList.add(shoeData);
                                     }
 
@@ -222,23 +226,20 @@ public class BuyerMain extends AppCompatActivity {
         });
 
         BottomNavigationView navigationView = findViewById(R.id.bottom_nav);
-        navigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_cart:
-                        Intent i = new Intent(BuyerMain.this, BuyerShoppingCart.class);
-                        i.putStringArrayListExtra("cart", cart);
-                        startActivity(i);
-                        break;
+        navigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.action_cart:
+                    Intent i = new Intent(BuyerMain.this, BuyerShoppingCart.class);
+                    i.putStringArrayListExtra("cart", cart);
+                    startActivity(i);
+                    break;
 
-                    case R.id.action_account:
-                        Intent x = new Intent(BuyerMain.this, AccountPage.class);
-                        startActivityForResult(x,202);
-                        break;
-                }
-                return true;
+                case R.id.action_account:
+                    Intent x = new Intent(BuyerMain.this, AccountPage.class);
+                    startActivityForResult(x,202);
+                    break;
             }
+            return true;
         });
 
 
