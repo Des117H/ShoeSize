@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.data.Shoe;
 import com.unlucky.assignment3.utilities.adapter.ShoeSearchListAdapter;
 
 import java.util.ArrayList;

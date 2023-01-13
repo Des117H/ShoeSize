@@ -15,7 +15,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
@@ -29,8 +28,8 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.shoe.Shoe;
-import com.unlucky.assignment3.shoe.photo;
+import com.unlucky.assignment3.data.Shoe;
+import com.unlucky.assignment3.data.Photo;
 import com.unlucky.assignment3.ui.AccountPage;
 import com.unlucky.assignment3.ui.WelcomePage;
 import com.unlucky.assignment3.utilities.RecyclerItemClickListener;
@@ -54,7 +53,7 @@ public class BuyerMain extends AppCompatActivity {
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
     private photoAdapter photoAdapter;
-    private List<photo> mListPhoto;
+    private List<Photo> mListPhoto;
     private Timer mTimer;
 
     ArrayList<String> cart = new ArrayList<>();
@@ -252,12 +251,12 @@ public class BuyerMain extends AppCompatActivity {
     }
 
 
-    private List<photo> getListPhoto() {
-        List<photo> list = new ArrayList<>();
-        list.add(new photo(R.drawable.poster1));
-        list.add(new photo(R.drawable.poster2));
-        list.add(new photo(R.drawable.poster3));
-        list.add(new photo(R.drawable.poster4));
+    private List<Photo> getListPhoto() {
+        List<Photo> list = new ArrayList<>();
+        list.add(new Photo(R.drawable.poster1));
+        list.add(new Photo(R.drawable.poster2));
+        list.add(new Photo(R.drawable.poster3));
+        list.add(new Photo(R.drawable.poster4));
 
         return list;
     }

@@ -1,10 +1,4 @@
-package com.unlucky.assignment3.shoe;
-
-import static android.content.ContentValues.TAG;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
+package com.unlucky.assignment3.data;
 
 import java.io.Serializable;
 

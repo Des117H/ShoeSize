@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.data.Shoe;
 import com.unlucky.assignment3.ui.WelcomePage;
 import com.unlucky.assignment3.utilities.RecyclerItemClickListener;
 import com.unlucky.assignment3.utilities.adapter.ShoeSearchRecyclerViewAdapter;
@@ -79,12 +80,7 @@ public class BuyerShoppingCart extends AppCompatActivity {
             cart = bundle.getStringArrayList("cart");
         }
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        back.setOnClickListener(view -> finish());
 
         shoeList = new ArrayList<>();
         cartRV = findViewById(R.id.cart);
@@ -93,9 +89,13 @@ public class BuyerShoppingCart extends AppCompatActivity {
         checkOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(BuyerShoppingCart.this,BuyerPayment.class);
-                i.putExtra("price", price);
-                startActivityForResult(i,202);
+                if (cart.size() != 0) {
+                    Intent i = new Intent(BuyerShoppingCart.this,BuyerPayment.class);
+                    i.putExtra("price", price);
+                    startActivityForResult(i,202);
+                } else {
+                    Toast.makeText(BuyerShoppingCart.this, "There is no shoe in cart!!!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

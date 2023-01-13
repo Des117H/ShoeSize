@@ -11,9 +11,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
         android:orientation="horizontal"
         android:background="@color/yellow">
+
+        <Button
+            android:id="@+id/sellerLogOutButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/log_out"
+            android:backgroundTint="@color/black">
+
+        </Button>
 
         <TextView
             android:layout_width="0dp"
@@ -24,7 +33,7 @@
             android:textAlignment="center"
             android:textColor="@color/red"
             android:layout_weight="1"
-            android:textSize="33sp"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"/>
 

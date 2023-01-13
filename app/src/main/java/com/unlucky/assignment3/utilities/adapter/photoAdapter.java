@@ -1,7 +1,6 @@
 package com.unlucky.assignment3.utilities.adapter;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,16 +11,16 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.shoe.photo;
+import com.unlucky.assignment3.data.Photo;
 
 import java.util.List;
 
 public class photoAdapter extends PagerAdapter {
 
     private Context mContext;
-    private List<photo> mListPhoto;
+    private List<Photo> mListPhoto;
 
-    public photoAdapter(Context mContext, List<photo> mListPhoto) {
+    public photoAdapter(Context mContext, List<Photo> mListPhoto) {
         this.mContext = mContext;
         this.mListPhoto = mListPhoto;
     }
@@ -32,7 +31,7 @@ public class photoAdapter extends PagerAdapter {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.item_photo,container,false);
         ImageView imgPhoto = view.findViewById(R.id.img_photo);
 
-        photo photo = mListPhoto.get(position);
+        Photo photo = mListPhoto.get(position);
         if (photo != null){
             Glide.with(mContext).load(photo.getResourcedID()).into(imgPhoto);
         }

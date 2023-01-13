@@ -1,7 +1,6 @@
 package com.unlucky.assignment3.utilities.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.data.Shoe;
 
 import java.util.List;
 

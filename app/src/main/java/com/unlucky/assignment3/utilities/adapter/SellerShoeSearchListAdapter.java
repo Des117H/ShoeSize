@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.data.Shoe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.Locale;
 
 public class SellerShoeSearchListAdapter extends BaseAdapter {
 
-    private List<Shoe> shoeDataList = null;
+    List<Shoe> shoeDataList = null;
     private ArrayList<Shoe> shoeDataArraylist;
     Context mContext;
     LayoutInflater inflater;
@@ -111,5 +111,13 @@ public class SellerShoeSearchListAdapter extends BaseAdapter {
         }
 
         notifyDataSetChanged();
+    }
+
+    public void addShoe(Shoe shoe) {
+        this.shoeDataList.add(shoe);
+    }
+
+    public void removeShoe(String shoeName) {
+        shoeDataList.removeIf(shoe -> shoe.name.equals(shoeName));
     }
 }

@@ -20,11 +20,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.data.Shoe;
 import com.unlucky.assignment3.user.buyer.BuyerMain;
 import com.unlucky.assignment3.user.seller.SellerMain;
 

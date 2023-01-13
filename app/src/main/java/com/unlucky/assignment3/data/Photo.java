@@ -1,9 +1,9 @@
-package com.unlucky.assignment3.shoe;
+package com.unlucky.assignment3.data;
 
-public class photo {
+public class Photo {
     private int resourcedID;
 
-    public photo(int resourcedID) {
+    public Photo(int resourcedID) {
         this.resourcedID = resourcedID;
     }
 

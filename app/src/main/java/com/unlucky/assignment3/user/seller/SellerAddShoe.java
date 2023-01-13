@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,18 +20,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.shoe.Shoe;
-import com.unlucky.assignment3.utilities.DatePickerFragment;
+import com.unlucky.assignment3.data.Shoe;
 
-import java.text.DateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
-import java.time.temporal.TemporalAccessor;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.Locale;
 
 public class SellerAddShoe extends AppCompatActivity {
     EditText name, price, style, colorway, releaseDay, description, imageURL;
@@ -137,7 +127,7 @@ public class SellerAddShoe extends AppCompatActivity {
                                             Double.parseDouble(priceStr), imageURLStr);
                                     Intent intent = new Intent();
                                     intent.putExtra("shoe_to_add", shoe);
-                                    setResult(2, intent);
+                                    setResult(1, intent);
                                     finish();
                                 }
                             }

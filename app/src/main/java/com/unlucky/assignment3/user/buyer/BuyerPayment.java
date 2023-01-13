@@ -45,12 +45,7 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
 
         Button back = findViewById(R.id.back);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        back.setOnClickListener(view -> finish());
 
         Intent i = getIntent();
 
