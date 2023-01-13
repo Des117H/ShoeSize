@@ -5,6 +5,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.shoe.Shoe;
+import com.unlucky.assignment3.ui.WelcomePage;
 import com.unlucky.assignment3.utilities.RecyclerItemClickListener;
 import com.unlucky.assignment3.utilities.adapter.ShoeSearchRecyclerViewAdapter;
 
@@ -37,20 +39,36 @@ public class BuyerShoppingCart extends AppCompatActivity {
     private double price = 0.0;
     ArrayList<String> cart = new ArrayList<>();
     TextView selected, total;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
+
                 }
             });
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 202) {
+            if (resultCode == RESULT_OK){
+                cart.clear();
+                getShoppingCart();
+                Intent intent = new Intent(BuyerShoppingCart.this, BuyerMain.class);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer_shopping_cart);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
         Button back = findViewById(R.id.back);
         selected = findViewById(R.id.selected);
@@ -71,6 +89,22 @@ public class BuyerShoppingCart extends AppCompatActivity {
         shoeList = new ArrayList<>();
         cartRV = findViewById(R.id.cart);
 
+        Button checkOut = findViewById(R.id.checkOut);
+        checkOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(BuyerShoppingCart.this,BuyerPayment.class);
+                i.putExtra("price", price);
+                startActivityForResult(i,202);
+            }
+        });
+
+        getShoppingCart();
+
+
+    }
+
+    public void getShoppingCart() {
         db.collection("shoes")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -127,15 +161,6 @@ public class BuyerShoppingCart extends AppCompatActivity {
                         }
                     }
                 });
-
-        Button checkOut = findViewById(R.id.checkOut);
-        checkOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(BuyerShoppingCart.this,BuyerPayment.class);
-                i.putExtra("price", price);
-                startActivity(i);
-            }
-        });
     }
+
 }

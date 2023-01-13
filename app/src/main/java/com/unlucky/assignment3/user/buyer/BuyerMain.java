@@ -104,6 +104,11 @@ public class BuyerMain extends AppCompatActivity {
                 finish();
             }
         }
+        if (requestCode == 203) {
+            if (resultCode == RESULT_OK){
+                cart.clear();
+            }
+        }
     }
 
     @Override
@@ -231,7 +236,7 @@ public class BuyerMain extends AppCompatActivity {
                 case R.id.action_cart:
                     Intent i = new Intent(BuyerMain.this, BuyerShoppingCart.class);
                     i.putStringArrayListExtra("cart", cart);
-                    startActivity(i);
+                    startActivityForResult(i,203);
                     break;
 
                 case R.id.action_account:

@@ -125,7 +125,7 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
 
-                        Toast.makeText(SellerMain.this, "clicked", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(SellerMain.this, "clicked", Toast.LENGTH_SHORT).show();
 
                         Intent toShoeDetail = new Intent(SellerMain.this, SellerShoeDetail.class);
                         toShoeDetail.putExtra("shoe_name",selectedItem.name);

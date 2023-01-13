@@ -60,4 +60,13 @@
     <string name="_702_nguy_n_v_n_linh_t_n_h_ng_qu_n_7_th_nh_ph_h_ch_minh">702 Nguyễn Văn Linh, Tân Hưng, Quận 7, Thánh Phố Hồ Chí Minh</string>
     <string name="log_out">Log Out</string>
     <string name="style_of_shoe">Style of Shoe</string>
+    <string name="namenotdot">Name</string>
+    <string name="phone_numberNoDot">Phone Number</string>
+    <string name="payment_method">Select Payment Method</string>
+    <string name="total">Total:</string>
+    <string-array name="payment_method">
+        <item>Cash</item>
+        <item>Visa</item>
+        <item>MaterCard</item>
+    </string-array>
 </resources>
