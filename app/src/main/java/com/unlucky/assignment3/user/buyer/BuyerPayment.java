@@ -1,11 +1,16 @@
 package com.unlucky.assignment3.user.buyer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,21 +21,30 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.ui.AccountPage;
 import com.unlucky.assignment3.ui.WelcomePage;
 
 import java.util.ArrayList;
 
-public class BuyerPayment extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class BuyerPayment extends AppCompatActivity implements AdapterView.OnItemSelectedListener, OnMapReadyCallback{
     TextView price;
     Button placeOrder;
     private GoogleMap mMap;
+    Boolean isPermissionGranted;
+    MapView mapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +66,6 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
         price = findViewById(R.id.price);
         placeOrder = findViewById(R.id.placeOrder);
 
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-//                .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
-
         double priceNumber = (double) i.getExtras().get("price");
         String total = "Total :$" + priceNumber;
         price.setText(total);
@@ -68,8 +78,6 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Yes", (dialog, which) -> {
             Toast.makeText(BuyerPayment.this, "Ordered", Toast.LENGTH_SHORT).show();
 
-//            Intent y = new Intent(BuyerPayment.this,BuyerMain.class);
-//            startActivity(y);
             Intent intent = new Intent(BuyerPayment.this, BuyerSearch.class);
             setResult(RESULT_OK, intent);
             finish();
@@ -82,26 +90,41 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
         placeOrder.setOnClickListener(view -> {
             alertDialog.show();
         });
+
+        checkMyPermission();
+        mapView = findViewById(R.id.mapView);
+
+        if(isPermissionGranted){
+            mapView.getMapAsync(this);
+            mapView.onCreate(savedInstanceState);
+        }
+
     }
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-//    @Override
-//    public void onMapReady(GoogleMap googleMap) {
-//        mMap = googleMap;
-//
-//        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-//    }
+    private void checkMyPermission() {
+        Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
+            @Override
+            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                Toast.makeText(BuyerPayment.this,"Permission Granted",Toast.LENGTH_SHORT).show();
+                isPermissionGranted = true;
+            }
+
+            @Override
+            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                Intent intent = new Intent();
+                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                Uri uri = Uri.fromParts("packet",getPackageName(),"");
+                intent.setData(uri);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                permissionToken.continuePermissionRequest();
+            }
+        }).check();
+
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -111,5 +134,52 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        mapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 }
