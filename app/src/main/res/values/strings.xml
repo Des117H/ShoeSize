@@ -66,7 +66,5 @@
     <string name="total">Total:</string>
     <string-array name="payment_method">
         <item>Cash</item>
-        <item>Visa</item>
-        <item>MaterCard</item>
     </string-array>
 </resources>
