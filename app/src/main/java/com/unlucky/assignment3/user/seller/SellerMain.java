@@ -4,10 +4,11 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,55 +17,53 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
-import com.unlucky.assignment3.data.Shoe;
+import com.unlucky.assignment3.shoe.Shoe;
 import com.unlucky.assignment3.ui.WelcomePage;
+import com.unlucky.assignment3.user.buyer.BuyerDetail;
+import com.unlucky.assignment3.user.buyer.BuyerSearch;
 import com.unlucky.assignment3.utilities.adapter.SellerShoeSearchListAdapter;
+import com.unlucky.assignment3.utilities.adapter.ShoeSellerRVAdapter;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class SellerMain extends AppCompatActivity implements SearchView.OnQueryTextListener{
     private ListView searchListView;
     private SearchView searchBox;
     FirebaseFirestore db;
-    private ArrayList<Shoe> shoeList = null;
-    private ArrayList<String> addList = new ArrayList<>();
-    private ArrayList<String> deleteList = new ArrayList<>();
+    private ArrayList<Shoe> shoeList = new ArrayList<>();
+    private ArrayList<Shoe> newAddedShoeList = new ArrayList<>();
     private SellerShoeSearchListAdapter adapter;
-    Button addShoeButton, logOutButton;
+    Button addShoeButton;
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser;
 
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            result -> {
-                if (result.getResultCode() == 1){
-                    Shoe shoeAdd = (Shoe) result.getData().getExtras().get("shoe_to_add");
-                    if (!addList.contains(shoeAdd.getName())){
-                        addList.add(shoeAdd.getName());
-                        adapter.addShoe(shoeAdd);
-                        shoeList.add(shoeAdd);
-                        adapter.notifyDataSetChanged();
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == 1) {
+                        String shoeToCart =
+                                String.valueOf(result
+                                        .getData()
+                                        .getExtras()
+                                        .getString("shoe_to_cart"));
                     }
-                } else if (result.getResultCode() == 2) {
-                    String shoeDelete = String.valueOf(result
-                            .getData()
-                            .getExtras()
-                            .getString("shoe_to_delete"));
-                    if (!deleteList.contains(shoeDelete)){
-                        adapter.removeShoe(shoeDelete);
-                        deleteList.add(shoeDelete);
-                        shoeList.removeIf(shoe -> shoe.getName().equals(shoeDelete));
-                        adapter.notifyDataSetChanged();
-                    }
-
                 }
             });
 
@@ -77,22 +76,6 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
         searchBox = findViewById(R.id.shoeSellSearchView);
         searchListView = findViewById(R.id.sell_search_list_view);
         addShoeButton = findViewById(R.id.addShoeButton);
-        logOutButton = findViewById(R.id.sellerLogOutButton);
-        searchBox = findViewById(R.id.shoeSellSearchView);
-        shoeList = new ArrayList<>();
-
-        logOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                auth.signOut();
-                if (auth.getCurrentUser() == null) {
-                    Toast.makeText(SellerMain.this, "Signed out", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(SellerMain.this, WelcomePage.class);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                }
-            }
-        });
 
         Bundle bundle = getIntent().getExtras();
 
@@ -151,11 +134,10 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
                 });
 
                 // Locate the EditText in listview_main.xml
+                searchBox = findViewById(R.id.shoeSellSearchView);
                 searchBox.setOnQueryTextListener(this);
             }
         }
-
-        searchBox.setOnClickListener(view -> adapter.notifyDataSetChanged());
 
         addShoeButton.setOnClickListener(new View.OnClickListener() {
             @Override
