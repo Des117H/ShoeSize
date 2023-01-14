@@ -39,6 +39,7 @@ public class WelcomePage extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser;
+    int clicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,8 @@ public class WelcomePage extends AppCompatActivity {
         signInButton = findViewById(R.id.signInButton);
         emailEditText = findViewById(R.id.EmailEditText);
         passwordEditText = findViewById(R.id.PasswordEditText);
+
+        clicked = 0;
 
         if (isBuyer) {
             activateBuyerButton();
@@ -148,19 +151,25 @@ public class WelcomePage extends AppCompatActivity {
 
     private void logInWithAuth(String email, String password) {
 //        auth.signInWithEmailAndPassword(email, password)
-        auth.signInWithEmailAndPassword("abc@gmail.com", "123456")
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            Toast.makeText(WelcomePage.this, "Login successful!",
-                                    Toast.LENGTH_SHORT).show();
-                            currentUser = auth.getCurrentUser();
+        clicked++;
 
-                            switchUserType();
+        if (clicked == 1) {
+            auth.signInWithEmailAndPassword("abc@gmail.com", "123456")
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()) {
+                                Toast.makeText(WelcomePage.this, "Login successful!",
+                                        Toast.LENGTH_SHORT).show();
+                                currentUser = auth.getCurrentUser();
+
+                                switchUserType();
+                            }
                         }
-                    }
-                });
+                    });
+        } else {
+            Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void switchUserType() {
@@ -169,35 +178,34 @@ public class WelcomePage extends AppCompatActivity {
             i = new Intent(WelcomePage.this, BuyerMain.class);
             startActivity(i);
         } else {
-            db.collection("shoes")
-                    .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isComplete()) {
-                                ArrayList<Shoe> shoeList = new ArrayList<>();
+            i = new Intent(WelcomePage.this, SellerMain.class);
+//            searchIntent.putExtra("shoe_list", shoeList);
+            startActivity(i);
 
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    Map<String, Object> temp = document.getData();
-                                    Shoe shoeData = new Shoe((String) temp.get("name"),
-                                            (String) temp.get("style"),
-                                            (String) temp.get("colorway"),
-                                            (String) temp.get("releaseDate"),
-                                            (String) temp.get("description"),
-                                            Double.parseDouble(temp.get("price").toString()),
-                                            (String) temp.get("pictureLink"));
-                                    shoeList.add(shoeData);
-                                }
-
-                                Intent searchIntent =
-                                        new Intent(WelcomePage.this,
-                                                SellerMain.class);
-
-                                searchIntent.putExtra("shoe_list", shoeList);
-                                startActivity(searchIntent);
-                            }
-                        }
-                    });
+//            db.collection("shoes")
+//                    .get()
+//                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                            if (task.isComplete()) {
+//                                ArrayList<Shoe> shoeList = new ArrayList<>();
+//
+//                                for (QueryDocumentSnapshot document : task.getResult()) {
+//                                    Map<String, Object> temp = document.getData();
+//                                    Shoe shoeData = new Shoe((String) temp.get("name"),
+//                                            (String) temp.get("style"),
+//                                            (String) temp.get("colorway"),
+//                                            (String) temp.get("releaseDate"),
+//                                            (String) temp.get("description"),
+//                                            Double.parseDouble(temp.get("price").toString()),
+//                                            (String) temp.get("pictureLink"));
+//                                    shoeList.add(shoeData);
+//                                }
+//
+//
+//                            }
+//                        }
+//                    });
         }
     }
 }
