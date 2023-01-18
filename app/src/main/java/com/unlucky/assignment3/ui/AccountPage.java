@@ -38,7 +38,7 @@ public class AccountPage extends AppCompatActivity {
         nameBig = findViewById(R.id.nameBig);
         nameSmall = findViewById(R.id.nameSmall);
         emailTV = findViewById(R.id.emailTV);
-        phoneTV = findViewById(R.id.phoneTV);
+        phoneTV = findViewById(R.id.Phone);
 
         db.collection("users")
                 .document(currentUser.getEmail())
