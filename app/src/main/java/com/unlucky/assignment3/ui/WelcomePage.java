@@ -1,6 +1,8 @@
 package com.unlucky.assignment3.ui;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -40,6 +43,7 @@ public class WelcomePage extends AppCompatActivity {
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser;
     int clicked;
+    boolean allowed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +75,20 @@ public class WelcomePage extends AppCompatActivity {
                 isBuyer = false;
             }
         });
+
+        if (ActivityCompat.checkSelfPermission
+                (this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                &&
+                ActivityCompat.checkSelfPermission
+                        (this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+        {
+            requestPermissions(new String[]{
+                    Manifest.permission.ACCESS_COARSE_LOCATION,
+                    Manifest.permission.ACCESS_FINE_LOCATION
+            }, 1); // 1 is requestCode
+            return;
+
+        }
 
         signInButton.setOnClickListener(view -> logIn());
     }
@@ -159,6 +177,7 @@ public class WelcomePage extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()) {
+                                clicked = 0;
                                 Toast.makeText(WelcomePage.this, "Login successful!",
                                         Toast.LENGTH_SHORT).show();
                                 currentUser = auth.getCurrentUser();
@@ -178,34 +197,51 @@ public class WelcomePage extends AppCompatActivity {
             i = new Intent(WelcomePage.this, BuyerMain.class);
             startActivity(i);
         } else {
-            i = new Intent(WelcomePage.this, SellerMain.class);
+//            i = new Intent(WelcomePage.this, SellerMain.class);
 //            searchIntent.putExtra("shoe_list", shoeList);
-            startActivity(i);
+//            startActivity(i);
 
-//            db.collection("shoes")
-//                    .get()
-//                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                            if (task.isComplete()) {
-//                                ArrayList<Shoe> shoeList = new ArrayList<>();
-//
-//                                for (QueryDocumentSnapshot document : task.getResult()) {
-//                                    Map<String, Object> temp = document.getData();
-//                                    Shoe shoeData = new Shoe((String) temp.get("name"),
-//                                            (String) temp.get("style"),
-//                                            (String) temp.get("colorway"),
-//                                            (String) temp.get("releaseDate"),
-//                                            (String) temp.get("description"),
-//                                            Double.parseDouble(temp.get("price").toString()),
-//                                            (String) temp.get("pictureLink"));
-//                                    shoeList.add(shoeData);
-//                                }
-//
-//
-//                            }
-//                        }
-//                    });
+            db.collection("shoes")
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if (task.isComplete()) {
+                                ArrayList<Shoe> shoeList = new ArrayList<>();
+
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    Map<String, Object> temp = document.getData();
+                                    Shoe shoeData = new Shoe((String) temp.get("name"),
+                                            (String) temp.get("style"),
+                                            (String) temp.get("colorway"),
+                                            (String) temp.get("releaseDate"),
+                                            (String) temp.get("description"),
+                                            Double.parseDouble(temp.get("price").toString()),
+                                            (String) temp.get("pictureLink"));
+                                    shoeList.add(shoeData);
+                                }
+
+                                Intent searchIntent = new Intent(WelcomePage.this, SellerMain.class);
+
+                                searchIntent.putExtra("shoe_list", shoeList);
+                                startActivity(searchIntent);
+                            }
+                        }
+                    });
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(WelcomePage.this, "PERMISSION_DENIED", Toast.LENGTH_SHORT).show();
+//                allowed = true;
+            } else {
+                Toast.makeText(WelcomePage.this, "PERMISSION_GRANTED", Toast.LENGTH_SHORT).show();
+                // permission granted do something
+            }
         }
     }
 }

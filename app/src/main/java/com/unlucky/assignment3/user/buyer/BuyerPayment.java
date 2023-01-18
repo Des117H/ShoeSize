@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -19,6 +20,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -27,6 +30,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -43,13 +47,27 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
     TextView price;
     Button placeOrder;
     private GoogleMap mMap;
-    Boolean isPermissionGranted;
+    Boolean isPermissionGranted = false;
     MapView mapView;
+    private FusedLocationProviderClient fusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer_payment);
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        // Got last known location. In some rare situations this can be null.
+                        if (location != null) {
+                            // Logic to handle location object
+                        }
+                    }
+                });
+
 
         Spinner spinner = findViewById(R.id.paymenMethod);
         ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.payment_method, android.R.layout.simple_spinner_item);
@@ -94,11 +112,10 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
         checkMyPermission();
         mapView = findViewById(R.id.mapView);
 
-        if(isPermissionGranted){
+        if (isPermissionGranted) {
             mapView.getMapAsync(this);
             mapView.onCreate(savedInstanceState);
         }
-
     }
 
     private void checkMyPermission() {
@@ -123,7 +140,6 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
                 permissionToken.continuePermissionRequest();
             }
         }).check();
-
     }
 
     @Override

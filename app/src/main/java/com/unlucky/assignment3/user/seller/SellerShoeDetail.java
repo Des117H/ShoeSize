@@ -28,6 +28,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.user.buyer.BuyerMain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,10 +81,39 @@ public class SellerShoeDetail extends AppCompatActivity {
         deleteShoeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.putExtra("shoe_to_delete", shoeName);
-                setResult(2, intent);
-                finish();
+                db.collection("shoes")
+                        .whereEqualTo("name", shoeName)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    Map<String, Object> sData = new HashMap<>();
+//
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        sData.putAll(document.getData());
+
+                                        ArrayList<String> data = new ArrayList<>();
+                                        data.add((String) sData.get("name"));
+                                        data.add((String) sData.get("style"));
+                                        data.add((String) sData.get("colorway"));
+                                        data.add((String) sData.get("releaseDate"));
+                                        data.add((String) sData.get("description"));
+                                        data.add(sData.get("price").toString());
+                                        data.add((String) sData.get("pictureLink"));
+
+                                        Intent intent = new Intent();
+                                        intent.putStringArrayListExtra("shoe_data", data);
+                                        setResult(2, intent);
+                                        finish();
+                                    }
+                                } else {
+                                    Log.w(TAG, "Error getting documents.", task.getException());
+                                }
+                            }
+                        });
+
             }
         });
 

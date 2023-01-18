@@ -138,7 +138,7 @@ public class BuyerMain extends AppCompatActivity {
                                                 (String) temp.get("colorway"),
                                                 (String) temp.get("releaseDate"),
                                                 (String) temp.get("description"),
-                                                (Double) Double.parseDouble(
+                                                Double.parseDouble(
                                                         (String) temp.get("price")),
                                                 (String) temp.get("pictureLink"));
                                         shoeList.add(shoeData);

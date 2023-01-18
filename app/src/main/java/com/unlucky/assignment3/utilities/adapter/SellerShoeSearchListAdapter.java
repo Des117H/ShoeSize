@@ -113,11 +113,27 @@ public class SellerShoeSearchListAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void addShoe(Shoe shoe) {
-        this.shoeDataList.add(shoe);
+    public void addShoe(ArrayList<String> shoe) {
+        ArrayList<Shoe> tempList = new ArrayList<>(this.shoeDataList);
+        tempList.add(new Shoe(shoe.get(0), shoe.get(1), shoe.get(2), shoe.get(3),
+                shoe.get(4), Double.parseDouble(shoe.get(5)), shoe.get(6)));
+
+        this.shoeDataList = new ArrayList<>(tempList);
     }
 
-    public void removeShoe(String shoeName) {
-        shoeDataList.removeIf(shoe -> shoe.name.equals(shoeName));
+    public void removeShoe(ArrayList<Shoe> shoe) {
+        this.shoeDataList= new ArrayList<>(shoe);
+    }
+
+    public List<Shoe> getDataList() {
+        return this.shoeDataList;
+    }
+
+    public void setDataList(ArrayList<Shoe> data) {
+        this.shoeDataList = new ArrayList<>(data);
+    }
+
+    public boolean findShoe(Shoe shoe) {
+        return this.shoeDataList.contains(shoe);
     }
 }
