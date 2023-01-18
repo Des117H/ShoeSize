@@ -1,6 +1,9 @@
 package com.unlucky.assignment3.data;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Shoe implements Serializable {
     public String name, style, pictureLink, colorway, releaseDate, description;
@@ -102,5 +105,33 @@ public class Shoe implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public ArrayList<String> toArrayList() {
+        ArrayList<String> data = new ArrayList<>();
+
+        data.add(name);
+        data.add(style);
+        data.add(colorway);
+        data.add(releaseDate);
+        data.add(description);
+        data.add(String.valueOf(price));
+        data.add(pictureLink);
+
+        return data;
+    }
+
+    public Map<String, Object> toMap() {
+        Map<String, Object> sData = new HashMap<>();
+
+        sData.put("name", name);
+        sData.put("style", style);
+        sData.put("colorway", colorway);
+        sData.put("releaseDate", releaseDate);
+        sData.put("description", description);
+        sData.put("price", price);
+        sData.put("pictureLink", pictureLink);
+
+        return sData;
     }
 }

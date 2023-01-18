@@ -64,6 +64,8 @@
     <string name="phone_numberNoDot">Phone Number</string>
     <string name="payment_method">Select Payment Method</string>
     <string name="total">Total:</string>
+    <string name="map">Map view</string>
+    <string name="Payment_methoc">Payment Method</string>
     <string-array name="payment_method">
         <item>Cash</item>
     </string-array>

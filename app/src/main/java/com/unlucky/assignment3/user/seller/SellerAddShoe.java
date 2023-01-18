@@ -1,5 +1,7 @@
 package com.unlucky.assignment3.user.seller;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,24 +9,33 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.data.Shoe;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SellerAddShoe extends AppCompatActivity {
     EditText name, price, style, colorway, releaseDay, description, imageURL;
@@ -33,6 +44,7 @@ public class SellerAddShoe extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser;
+    String nameStr, priceStr, styleStr, colorwayStr, releaseDayStr, descriptionStr,imageURLStr;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -105,37 +117,27 @@ public class SellerAddShoe extends AppCompatActivity {
     }
 
     public void checkShoe() {
-        String nameStr = name.getText().toString();
-        String priceStr = price.getText().toString();
-        String styleStr = style.getText().toString();
-        String colorwayStr = colorway.getText().toString();
-        String releaseDayStr = releaseDay.getText().toString();
-        String descriptionStr = description.getText().toString();
-        String imageURLStr = imageURL.getText().toString();
-        db.collection("users")
-                .document(currentUser.getEmail())
-                .collection("shoeSell")
-                .whereEqualTo("name", name.getText().toString())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isComplete()) {
+        getDataToString();
 
+        if (isValid()) {
+            db.collection("users")
+                    .document(currentUser.getEmail())
+                    .collection("shoeSell")
+                    .whereEqualTo("name", name.getText().toString())
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isComplete()) {
                             if (task.getResult().size() == 0) {
                                 if (isValid()) {
-                                    ArrayList<String> data = new ArrayList<>();
-                                    data.add(nameStr);
-                                    data.add(styleStr);
-                                    data.add(colorwayStr);
-                                    data.add(releaseDayStr);
-                                    data.add(descriptionStr);
-                                    data.add(priceStr);
-                                    data.add(imageURLStr);
+                                    Shoe newShoe = new Shoe(nameStr, styleStr, colorwayStr,
+                                            releaseDayStr, descriptionStr,
+                                            Double.parseDouble(priceStr), imageURLStr);
+                                    Map<String, Object> sData = newShoe.toMap();
+
+                                    addShoeToDatabase(sData);
+                                    addShoeToUserList(sData);
 
                                     Intent intent = new Intent();
-//                                    intent.putExtra("shoe_to_add",  data);
-                                    intent.putStringArrayListExtra("shoe_data",  data);
                                     setResult(1, intent);
                                     finish();
                                 }
@@ -144,19 +146,21 @@ public class SellerAddShoe extends AppCompatActivity {
                                 name.setError("This shoe is already exist!!!");
                             }
                         }
-                    }
-                });
+                    });
+        }
+    }
+
+    public void getDataToString() {
+        nameStr = name.getText().toString();
+        priceStr = price.getText().toString();
+        styleStr = style.getText().toString();
+        colorwayStr = colorway.getText().toString();
+        releaseDayStr = releaseDay.getText().toString();
+        descriptionStr = description.getText().toString();
+        imageURLStr = imageURL.getText().toString();
     }
 
     public boolean isValid() {
-        String nameStr = name.getText().toString();
-        String priceStr = price.getText().toString();
-        String styleStr = style.getText().toString();
-        String colorwayStr = colorway.getText().toString();
-        String releaseDayStr = releaseDay.getText().toString();
-        String descriptionStr = description.getText().toString();
-        String imageURLStr = imageURL.getText().toString();
-
         boolean checked = true;
         if (nameStr.length() == 0) {
             name.setError("Name is required");
@@ -187,6 +191,16 @@ public class SellerAddShoe extends AppCompatActivity {
         if (releaseDayStr.length() == 0) {
             releaseDay.setError("Release day is required");
             checked = false;
+        } else {
+            try {
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+                df.setLenient(false);
+                df.parse(releaseDayStr);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                releaseDay.setError("Release date is not valid");
+                checked = false;
+            }
         }
 
         if (descriptionStr.length() == 0) {
@@ -200,5 +214,44 @@ public class SellerAddShoe extends AppCompatActivity {
         }
 
         return checked;
+    }
+
+    public void addShoeToUserList(Map<String, Object> sData) {
+        db.collection("users")
+                .document(currentUser.getEmail())
+                .collection("shoeSell")
+                .document(nameStr)
+                .set(sData)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @SuppressLint("RestrictedApi")
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "shoe added to user");
+                        }
+                    }
+                });
+    }
+
+    @SuppressLint("RestrictedApi")
+    public void addShoeToDatabase(Map<String, Object> sData) {
+        db.collection("shoes")
+                .whereEqualTo("name", nameStr)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isComplete()) {
+                        if (task.getResult().size() == 0) {
+                            if (isValid()) {
+                                db.collection("shoes")
+                                        .document(nameStr)
+                                        .set(sData)
+                                        .addOnCompleteListener(task1 -> {
+                                            if (task1.isSuccessful()) {
+                                                Log.d(TAG, "Shoe added to database");}
+                                        });
+                            }
+                        }
+                    }
+                });
     }
 }

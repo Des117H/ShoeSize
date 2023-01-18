@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -53,35 +54,10 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
-                ArrayList<String> data = result
-                        .getData()
-                        .getExtras()
-                        .getStringArrayList("shoe_data");
-                Shoe shoeData = new Shoe(data.get(0), data.get(1), data.get(2), data.get(3),
-                        data.get(4), Double.parseDouble(data.get(5)), data.get(6));
-
-                ArrayList<Shoe> tempList = new ArrayList<>(adapter.getDataList());
-
-                if (result.getResultCode() == 1){
-                    if (!addList.contains(shoeData.getName())){
-                        tempList.add(shoeData);
-                        shoeList.add(shoeData);
-
-                        adapter.setDataList(tempList);
-                        addList.add(shoeData.getName());
-                    }
-                } else if (result.getResultCode() == 2) {
-                    if (!deleteList.contains(shoeData.getName())){
-                        tempList.remove(shoeData);
-                        shoeList.remove(shoeData);
-
-                        adapter.setDataList(tempList);
-                        deleteList.add(shoeData.getName());
-                    }
-                }
-
-                searchListView.invalidateViews();
-                adapter.notifyDataSetChanged();
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+                overridePendingTransition(0, 0);
             });
 
     @Override
@@ -111,13 +87,65 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
         });
 
         currentUser = auth.getCurrentUser();
-        Bundle bundle = getIntent().getExtras();
-
-        shoeList = (ArrayList<Shoe>) bundle.getSerializable("shoe_list");
 
         if (currentUser != null) {
             System.out.println("email: " + currentUser.getEmail());
         }
+
+        db.collection("users")
+                .document(currentUser.getEmail())
+                .collection("shoeSell")
+                .orderBy("name", Query.Direction.ASCENDING)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isComplete()) {
+                            ArrayList<Shoe> shoeList = new ArrayList<>();
+
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map<String, Object> temp = document.getData();
+                                Shoe shoeData = new Shoe((String) temp.get("name"),
+                                        (String) temp.get("style"), (String) temp.get("colorway"),
+                                        (String) temp.get("releaseDate"), (String) temp.get("description"),
+                                        Double.parseDouble(temp.get("price").toString()), (String) temp.get("pictureLink"));
+
+                                shoeList.add(shoeData);
+                            }
+
+                            adapter = new SellerShoeSearchListAdapter(SellerMain.this, shoeList);
+
+                            // Binds the Adapter to the ListView
+                            searchListView.setAdapter(adapter);
+
+                            searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
+
+                                    //Toast.makeText(SellerMain.this, "clicked", Toast.LENGTH_SHORT).show();
+
+                                    Intent toShoeDetail = new Intent(SellerMain.this, SellerShoeDetail.class);
+                                    toShoeDetail.putExtra("shoe_name",selectedItem.name);
+                                    activityResultLaunch.launch(toShoeDetail);
+                                }
+                            });
+
+                            // Locate the EditText in listview_main.xml
+                            searchBox.setOnQueryTextListener(SellerMain.this);
+                        }
+                    }
+                });
+
+        searchBox.setOnClickListener(view -> adapter.notifyDataSetChanged());
+
+        addShoeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(SellerMain.this, SellerAddShoe.class);
+
+                activityResultLaunch.launch(i);
+            }
+        });
 
         if (shoeList!= null && !shoeList.isEmpty()) {
             // Pass results to ListViewAdapter Class

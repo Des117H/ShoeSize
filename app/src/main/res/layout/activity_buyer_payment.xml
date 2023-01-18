@@ -95,18 +95,20 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/namenotdot"
                         android:inputType="text"
-                        android:minHeight="48dp" />
+                        android:minHeight="48dp"
+                        android:textColorHint="#546E7A" />
 
                     <EditText
                         android:id="@+id/phoneNumber"
                         android:layout_width="0dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginStart="20dp"
-                        android:hint="@string/phone_numberNoDot"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_weight="1"
+                        android:hint="@string/phone_numberNoDot"
                         android:inputType="phone"
-                        android:minHeight="48dp" />
+                        android:minHeight="48dp"
+                        tools:ignore="TextContrastCheck" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -127,9 +129,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="30dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginTop="30dp">
-            </Spinner>
+                android:contentDescription="@string/Payment_methoc"></Spinner>
 
 
             <TextView
@@ -144,20 +146,22 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/address"
+                android:id="@+id/addressPayTV"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
+                android:layout_marginBottom="30dp"
                 android:hint="@string/enter_your_address"
                 android:inputType="text"
-                android:layout_marginBottom="30dp"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textColorHint="#546E7A" />
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp"
+                android:contentDescription="@string/map" />
 
             <CheckBox
                 android:id="@+id/checkBox"
