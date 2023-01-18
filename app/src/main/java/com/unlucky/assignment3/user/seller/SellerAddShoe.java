@@ -22,7 +22,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.data.Shoe;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class SellerAddShoe extends AppCompatActivity {
     EditText name, price, style, colorway, releaseDay, description, imageURL;
@@ -83,8 +85,8 @@ public class SellerAddShoe extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                                   int dayOfMonth) {
-                                releaseDay.setText(year + "/" +
-                                        (monthOfYear + 1) + "/" + dayOfMonth);
+                                releaseDay.setText(year + "-" +
+                                        (monthOfYear + 1) + "-" + dayOfMonth);
                             }
                         },
                         year, month, day);
@@ -93,13 +95,13 @@ public class SellerAddShoe extends AppCompatActivity {
             }
         });
 //
-//        name.setText("Air Jordan 18 Retro Yellow Ochre");
-//        price.setText("1");
-//        style.setText("1");
-//        colorway.setText("1");
-//
-//        description.setText("1");
-//        imageURL.setText("1");
+        name.setText("Air Jordan 007 Abc");
+        price.setText("100");
+        style.setText("DH6927-140");
+        colorway.setText("White/Midnight Navy/Light Smoke Grey-Fire Red");
+        releaseDay.setText("2023-01-16");
+        description.setText("111");
+        imageURL.setText("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Falone%2F&psig=AOvVaw3zpfm1Bb4T0xV-32taSv_V&ust=1674033266213000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJC9ioSizvwCFQAAAAAdAAAAABAI");
     }
 
     public void checkShoe() {
@@ -122,11 +124,18 @@ public class SellerAddShoe extends AppCompatActivity {
 
                             if (task.getResult().size() == 0) {
                                 if (isValid()) {
-                                    Shoe shoe = new Shoe(nameStr, styleStr, colorwayStr,
-                                            releaseDayStr, descriptionStr,
-                                            Double.parseDouble(priceStr), imageURLStr);
+                                    ArrayList<String> data = new ArrayList<>();
+                                    data.add(nameStr);
+                                    data.add(styleStr);
+                                    data.add(colorwayStr);
+                                    data.add(releaseDayStr);
+                                    data.add(descriptionStr);
+                                    data.add(priceStr);
+                                    data.add(imageURLStr);
+
                                     Intent intent = new Intent();
-                                    intent.putExtra("shoe_to_add", shoe);
+//                                    intent.putExtra("shoe_to_add",  data);
+                                    intent.putStringArrayListExtra("shoe_data",  data);
                                     setResult(1, intent);
                                     finish();
                                 }

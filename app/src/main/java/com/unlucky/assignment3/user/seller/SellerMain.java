@@ -48,31 +48,40 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
     Button addShoeButton, logOutButton;
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseUser currentUser;
+//    Shoe shoeAdd;
 
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
+                ArrayList<String> data = result
+                        .getData()
+                        .getExtras()
+                        .getStringArrayList("shoe_data");
+                Shoe shoeData = new Shoe(data.get(0), data.get(1), data.get(2), data.get(3),
+                        data.get(4), Double.parseDouble(data.get(5)), data.get(6));
+
+                ArrayList<Shoe> tempList = new ArrayList<>(adapter.getDataList());
+
                 if (result.getResultCode() == 1){
-                    Shoe shoeAdd = (Shoe) result.getData().getExtras().get("shoe_to_add");
-                    if (!addList.contains(shoeAdd.getName())){
-                        addList.add(shoeAdd.getName());
-                        adapter.addShoe(shoeAdd);
-                        shoeList.add(shoeAdd);
-                        adapter.notifyDataSetChanged();
+                    if (!addList.contains(shoeData.getName())){
+                        tempList.add(shoeData);
+                        shoeList.add(shoeData);
+
+                        adapter.setDataList(tempList);
+                        addList.add(shoeData.getName());
                     }
                 } else if (result.getResultCode() == 2) {
-                    String shoeDelete = String.valueOf(result
-                            .getData()
-                            .getExtras()
-                            .getString("shoe_to_delete"));
-                    if (!deleteList.contains(shoeDelete)){
-                        adapter.removeShoe(shoeDelete);
-                        deleteList.add(shoeDelete);
-                        shoeList.removeIf(shoe -> shoe.getName().equals(shoeDelete));
-                        adapter.notifyDataSetChanged();
-                    }
+                    if (!deleteList.contains(shoeData.getName())){
+                        tempList.remove(shoeData);
+                        shoeList.remove(shoeData);
 
+                        adapter.setDataList(tempList);
+                        deleteList.add(shoeData.getName());
+                    }
                 }
+
+                searchListView.invalidateViews();
+                adapter.notifyDataSetChanged();
             });
 
     @Override
@@ -102,65 +111,45 @@ public class SellerMain extends AppCompatActivity implements SearchView.OnQueryT
         });
 
         currentUser = auth.getCurrentUser();
+        Bundle bundle = getIntent().getExtras();
+
+        shoeList = (ArrayList<Shoe>) bundle.getSerializable("shoe_list");
 
         if (currentUser != null) {
             System.out.println("email: " + currentUser.getEmail());
         }
 
-        db.collection("users")
-                .document(currentUser.getEmail())
-                .collection("shoeSell")
-                .orderBy("name", Query.Direction.ASCENDING)
-                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isComplete()) {
-                            ArrayList<Shoe> shoeList = new ArrayList<>();
+        if (shoeList!= null && !shoeList.isEmpty()) {
+            // Pass results to ListViewAdapter Class
+            adapter = new SellerShoeSearchListAdapter(this, shoeList);
 
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Map<String, Object> temp = document.getData();
-                                Shoe shoeData = new Shoe((String) temp.get("name"),
-                                        (String) temp.get("style"), (String) temp.get("colorway"),
-                                        (String) temp.get("releaseDate"), (String) temp.get("description"),
-                                        Double.parseDouble(temp.get("price").toString()), (String) temp.get("pictureLink"));
+            // Binds the Adapter to the ListView
+            searchListView.setAdapter(adapter);
 
-                                shoeList.add(shoeData);
-                            }
+            searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
+//                    shoeNameList.add(selectedItem.name);
+                    Intent toShoeDetail = new Intent(SellerMain.this, SellerShoeDetail.class);
+                    toShoeDetail.putExtra("shoe_name", selectedItem.name);
+                    activityResultLaunch.launch(toShoeDetail);
+                }
+            });
 
-                            adapter = new SellerShoeSearchListAdapter(SellerMain.this, shoeList);
+            // Locate the EditText in listview_main.xml
+            searchBox.setOnQueryTextListener(SellerMain.this);
+            searchBox.setOnClickListener(view -> adapter.notifyDataSetChanged());
 
-                            // Binds the Adapter to the ListView
-                            searchListView.setAdapter(adapter);
+            addShoeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent i = new Intent(SellerMain.this, SellerAddShoe.class);
 
-                            searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                @Override
-                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                    Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
-
-                                    //Toast.makeText(SellerMain.this, "clicked", Toast.LENGTH_SHORT).show();
-
-                                    Intent toShoeDetail = new Intent(SellerMain.this, SellerShoeDetail.class);
-                                    toShoeDetail.putExtra("shoe_name",selectedItem.name);
-                                    activityResultLaunch.launch(toShoeDetail);
-                                }
-                            });
-
-                            // Locate the EditText in listview_main.xml
-                            searchBox.setOnQueryTextListener(SellerMain.this);
-                        }
-                    }
-                });
-
-        searchBox.setOnClickListener(view -> adapter.notifyDataSetChanged());
-
-        addShoeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(SellerMain.this, SellerAddShoe.class);
-
-                activityResultLaunch.launch(i);
-            }
-        });
+                    activityResultLaunch.launch(i);
+                }
+            });
+        }
     }
 
     @Override
