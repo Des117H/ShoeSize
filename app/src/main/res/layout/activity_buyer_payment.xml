@@ -144,17 +144,29 @@
                 android:textColor="@color/red"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/addressPayTV"
-                android:layout_width="300dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginBottom="30dp"
-                android:hint="@string/enter_your_address"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:textColorHint="#546E7A" />
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/addressPayTV"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginBottom="30dp"
+                    android:hint="@string/enter_your_address"
+                    android:inputType="text"
+                    android:minHeight="48dp"
+                    android:textColorHint="#546E7A" />
+                <Button
+                    android:id="@+id/search"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/glass">
+                </Button>
+
+
+            </LinearLayout>
 
             <com.google.android.gms.maps.MapView
                 android:id="@+id/mapView"

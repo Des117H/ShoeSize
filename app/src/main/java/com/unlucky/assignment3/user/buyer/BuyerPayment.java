@@ -28,12 +28,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.OnMapsSdkInitializedCallback;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -42,12 +46,13 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 import com.unlucky.assignment3.R;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
 public class BuyerPayment extends AppCompatActivity implements AdapterView.OnItemSelectedListener, OnMapReadyCallback, OnMapsSdkInitializedCallback {
-    TextView price, address;
-    Button placeOrder;
+    TextView price, searchText;
+    Button placeOrder,search;
     private GoogleMap mMap;
 
     Boolean isPermissionGranted = false;
@@ -75,12 +80,13 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
         spinner.setOnItemSelectedListener(this);
 
         Button back = findViewById(R.id.back);
+        search = findViewById(R.id.search);
         back.setOnClickListener(view -> finish());
 
         Intent i = getIntent();
 
         price = findViewById(R.id.price);
-        address = findViewById(R.id.addressPayTV);
+        searchText = findViewById(R.id.addressPayTV);
         placeOrder = findViewById(R.id.placeOrder);
 
         double priceNumber = (double) i.getExtras().get("price");
@@ -117,6 +123,36 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
             mapView.getMapAsync(this);
             mapView.onCreate(savedInstanceState);
         }
+
+        search.setOnClickListener(this::geoLocate);
+    }
+
+    private void geoLocate(View view) {
+        String locationName = searchText.getText().toString();
+        Geocoder geocoder = new Geocoder(this,Locale.getDefault());
+
+        try {
+            List<Address>  addressList = geocoder.getFromLocationName(locationName,1);
+
+            if(addressList.size()>0){
+                Address address = addressList.get(0);
+                gotoLocation(address.getLatitude(),address.getLongitude());
+                mMap.addMarker(new MarkerOptions().position(new LatLng(address.getLatitude(),address.getLongitude())));
+
+                Toast.makeText(this,address.getLocality(),Toast.LENGTH_SHORT).show();
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void gotoLocation(double latitude, double longitude) {
+        LatLng latLng = new LatLng(latitude,longitude);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(latLng,18);
+        mMap.moveCamera(cameraUpdate);
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
 
     private void checkMyPermission() {
@@ -255,11 +291,11 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
             if (addresses != null && addresses.size() > 0) {
                 userCountry = addresses.get(0).getCountryName();
                 userAddress = addresses.get(0).getAddressLine(0);
-                address.setText(userCountry + ", " + userAddress);
+                searchText.setText(userCountry + ", " + userAddress);
             }
             else {
                 userCountry = "Unknown";
-                address.setText(userCountry);
+                searchText.setText(userCountry);
             }
 
         } catch (Exception e) {
