@@ -50,6 +50,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import io.reactivex.rxjava3.functions.Consumer;
+
 public class BuyerPayment extends AppCompatActivity implements AdapterView.OnItemSelectedListener, OnMapReadyCallback, OnMapsSdkInitializedCallback {
     TextView price, searchText;
     Button placeOrder,search;
