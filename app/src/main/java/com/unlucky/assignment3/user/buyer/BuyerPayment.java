@@ -381,6 +381,11 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
             checked = false;
         }
 
+        if (userAddress.length() == 0) {
+            searchText.setError("Address is required!!!");
+            checked = false;
+        }
+
         return checked;
     }
 
