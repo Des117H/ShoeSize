@@ -1,5 +1,7 @@
 package com.unlucky.assignment3.user.buyer;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -7,11 +9,15 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -90,18 +96,21 @@ public class BuyerShoppingCart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (cart.size() != 0) {
-                    Intent i = new Intent(BuyerShoppingCart.this,BuyerPayment.class);
-                    i.putExtra("price", price);
-                    startActivityForResult(i,202);
+                    if (ContextCompat.checkSelfPermission(BuyerShoppingCart.this,
+                            Manifest.permission.ACCESS_FINE_LOCATION) ==
+                            PackageManager.PERMISSION_GRANTED) {
+                        Intent i = new Intent(BuyerShoppingCart.this,BuyerPayment.class);
+                        i.putExtra("price", price);
+                        startActivityForResult(i,202);
+                    }
                 } else {
-                    Toast.makeText(BuyerShoppingCart.this, "There is no shoe in cart!!!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BuyerShoppingCart.this,
+                            "There is no shoe in cart!!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
         getShoppingCart();
-
-
     }
 
     public void getShoppingCart() {

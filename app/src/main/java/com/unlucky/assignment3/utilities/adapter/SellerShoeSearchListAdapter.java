@@ -121,8 +121,8 @@ public class SellerShoeSearchListAdapter extends BaseAdapter {
         this.shoeDataList = new ArrayList<>(tempList);
     }
 
-    public void removeShoe(ArrayList<Shoe> shoe) {
-        this.shoeDataList= new ArrayList<>(shoe);
+    public void removeShoe(String shoeName) {
+        this.shoeDataList.removeIf(shoe -> shoe.getName().equals(shoeName));
     }
 
     public List<Shoe> getDataList() {

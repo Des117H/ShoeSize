@@ -1,5 +1,7 @@
 package com.unlucky.assignment3.user.buyer;
 
+import static androidx.fragment.app.FragmentManager.TAG;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -11,10 +13,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
@@ -245,11 +250,7 @@ public class BuyerMain extends AppCompatActivity {
             }
             return true;
         });
-
-
-
     }
-
 
     private List<Photo> getListPhoto() {
         List<Photo> list = new ArrayList<>();
