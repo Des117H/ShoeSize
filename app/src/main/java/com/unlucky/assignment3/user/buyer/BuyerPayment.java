@@ -24,6 +24,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,6 +40,12 @@ import com.google.android.gms.maps.OnMapsSdkInitializedCallback;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -49,13 +57,15 @@ import com.unlucky.assignment3.R;
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
-
-import io.reactivex.rxjava3.functions.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class BuyerPayment extends AppCompatActivity implements AdapterView.OnItemSelectedListener, OnMapReadyCallback, OnMapsSdkInitializedCallback {
     TextView price, searchText;
     Button placeOrder,search;
     private GoogleMap mMap;
+    CheckBox checkBox;
+    EditText name, phoneNumber;
 
     Boolean isPermissionGranted = false;
     MapView mapView;
@@ -65,6 +75,11 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
     String userCountry, userAddress;
     LocationManager locationManager;
 
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser currentUser;
+
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +87,8 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
         MapsInitializer.initialize(getApplicationContext(), MapsInitializer.Renderer.LATEST, this);
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        currentUser = auth.getCurrentUser();
 
         Spinner spinner = findViewById(R.id.paymenMethod);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -90,10 +107,27 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
         price = findViewById(R.id.price);
         searchText = findViewById(R.id.addressPayTV);
         placeOrder = findViewById(R.id.placeOrder);
+        checkBox = findViewById(R.id.checkBox);
+        name = findViewById(R.id.name);
+        phoneNumber = findViewById(R.id.phoneNumber);
+
+        db.collection("users")
+                .document(currentUser.getEmail())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            DocumentSnapshot doc = task.getResult();
+
+                            name.setText((CharSequence) doc.get("name"));
+                            phoneNumber.setText((CharSequence) doc.get("phone"));
+                        }
+                    }
+                });
 
         double priceNumber = (double) i.getExtras().get("price");
-        String total = "Total :$" + priceNumber;
-        price.setText(total);
+        price.setText("Total :$" + priceNumber);
 
         getCurrentLocation();
 
@@ -115,7 +149,12 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
         });
 
         placeOrder.setOnClickListener(view -> {
-            alertDialog.show();
+            if (checkBox.isChecked()) {
+                alertDialog.show();
+            } else {
+                Toast.makeText(this, "You must agree with term of purchase before order",
+                        Toast.LENGTH_SHORT).show();
+            }
         });
 
         checkMyPermission();
@@ -293,7 +332,8 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
             if (addresses != null && addresses.size() > 0) {
                 userCountry = addresses.get(0).getCountryName();
                 userAddress = addresses.get(0).getAddressLine(0);
-                searchText.setText(userCountry + ", " + userAddress);
+                userAddress = userAddress.replace("Vietnam", "Việt Nam");
+                searchText.setText(userAddress);
             }
             else {
                 userCountry = "Unknown";
@@ -317,4 +357,45 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
         }
     }
 
+    public boolean isValid() {
+        boolean checked = true;
+
+        String nameStr = name.getText().toString();
+        String phoneNumberStr = phoneNumber.getText().toString();
+
+        if (nameStr.length() == 0) {
+            name.setError("Full name is required");
+            checked = false;
+        } else if (!isValidName(nameStr)) {
+            name.setError("Full name is not valid");
+            checked = false;
+        }
+
+        if (phoneNumberStr.length() == 0) {
+            phoneNumber.setError("Phone number is required");
+            checked = false;
+        } else if (!isValidPhoneNumber(phoneNumberStr)) {
+            phoneNumber.setError("Phone number is not valid");
+            checked = false;
+        }
+
+        return checked;
+    }
+
+    public static boolean isValidName(String fullName)
+    {
+        String nameRegex = "[A-Z][a-z]+(?: [A-Z][a-z]*)*";
+
+        Pattern pattern = Pattern.compile(nameRegex);
+        Matcher matcher = pattern.matcher(fullName);
+        return matcher.matches();
+    }
+
+    public static boolean isValidPhoneNumber(String str)
+    {
+//      10 digit phone number
+        String phoneRegex = "0[0-9]{9}";
+
+        return (str.matches(phoneRegex));
+    }
 }

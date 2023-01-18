@@ -50,7 +50,6 @@ import java.util.TimerTask;
 import me.relex.circleindicator.CircleIndicator;
 
 public class BuyerMain extends AppCompatActivity {
-
     private RecyclerView newShoeRV;
     private List<Shoe> newShoeList, shoeCart;
     private ShoeRecyclerViewAdapter adapter;
