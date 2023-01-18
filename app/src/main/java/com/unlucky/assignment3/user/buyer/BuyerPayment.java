@@ -150,7 +150,9 @@ public class BuyerPayment extends AppCompatActivity implements AdapterView.OnIte
 
         placeOrder.setOnClickListener(view -> {
             if (checkBox.isChecked()) {
-                alertDialog.show();
+                if (isValid()) {
+                    alertDialog.show();
+                }
             } else {
                 Toast.makeText(this, "You must agree with term of purchase before order",
                         Toast.LENGTH_SHORT).show();
