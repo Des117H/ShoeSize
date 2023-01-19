@@ -67,6 +67,8 @@ public class WelcomePage extends AppCompatActivity {
         emailEditText.setText("abc@gmail.com");
         passwordEditText.setText("123456");
 
+        auth.signOut();
+
         clicked = 0;
 
         if (isBuyer) {
