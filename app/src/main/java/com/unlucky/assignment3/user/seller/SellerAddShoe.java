@@ -106,7 +106,14 @@ public class SellerAddShoe extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-//
+//        name.setText("Air Jordan 007 Abc");
+//        price.setText("110");
+//        style.setText("DH6927-140");
+//        colorway.setText("White/Midnight Navy/Light Smoke Grey-Fire Red");
+//        releaseDay.setText("2023-01-16");
+//        description.setText("111");
+//        imageURL.setText("https://images.stockx.com/360/Nike-Dunk-High-Panda-2021-W/Images/Nike-Dunk-High-Panda-2021-W/Lv2/img01.jpg?fm=jpg&amp;auto=compress&amp;w=576&amp;");
+
         name.setText("Nike Dunk High Panda 2021 W");
         price.setText("110");
         style.setText("DD1869-103");
@@ -116,7 +123,7 @@ public class SellerAddShoe extends AppCompatActivity {
                 "leather upper with a matching sole. From there, hits of red on the woven tongue " +
                 "label add some subtle flair.\nThe women's Nike Dunk High Black White (W) " +
                 "released in July of 2021 and retailed for $110.");
-        imageURL.setText("https://images.stockx.com/360/Nike-Dunk-High-Panda-2021-W/Images/Nike-Dunk-High-Panda-2021-W/Lv2/img01.jpg?fm=avif&amp;auto=compress&amp;w=576&amp;");
+        imageURL.setText("https://images.stockx.com/360/Nike-Dunk-High-Panda-2021-W/Images/Nike-Dunk-High-Panda-2021-W/Lv2/img01.jpg?fm=jpg&amp;auto=compress&amp;w=576&amp;");
     }
 
     public void checkShoe() {

@@ -87,13 +87,21 @@ public class SellerShoeDetail extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(SellerShoeDetail.this, "Deleted",
-                                    Toast.LENGTH_SHORT).show();
+                            db.collection("shoes")
+                                    .document(shoeName)
+                                    .delete()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Toast.makeText(SellerShoeDetail.this, "Deleted",
+                                                    Toast.LENGTH_SHORT).show();
 
-                            Intent y = new Intent(SellerShoeDetail.this,
-                                    SellerMain.class);
-                            startActivity(y);
-                            finish();
+                                            Intent y = new Intent(SellerShoeDetail.this,
+                                                    SellerMain.class);
+                                            startActivity(y);
+                                            finish();
+                                        }
+                                    });
                         }
                     });
             });

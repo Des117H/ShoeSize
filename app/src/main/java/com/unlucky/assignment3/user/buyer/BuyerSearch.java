@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 
@@ -21,12 +22,20 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.unlucky.assignment3.R;
 import com.unlucky.assignment3.data.Shoe;
+import com.unlucky.assignment3.user.seller.SellerMain;
+import com.unlucky.assignment3.user.seller.SellerShoeDetail;
 import com.unlucky.assignment3.utilities.adapter.ShoeSearchListAdapter;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class BuyerSearch extends AppCompatActivity implements SearchView.OnQueryTextListener{
     private ListView searchListView;
@@ -34,7 +43,6 @@ public class BuyerSearch extends AppCompatActivity implements SearchView.OnQuery
     private ShoeSearchListAdapter adapter;
     private SearchView shoeSearchView;
     private ArrayList<String> shoeNameList = new ArrayList<>();
-    private final long DELAY = 1000; // in ms
 
     ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -59,11 +67,10 @@ public class BuyerSearch extends AppCompatActivity implements SearchView.OnQuery
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buyer_search);
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        Handler timeHandler = new Handler(Looper.getMainLooper());
-
         Button back = findViewById(R.id.back);
+        searchListView = findViewById(R.id.search_list_view);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,35 +82,48 @@ public class BuyerSearch extends AppCompatActivity implements SearchView.OnQuery
             }
         });
 
-        searchListView = findViewById(R.id.search_list_view);
 
-        Bundle bundle = getIntent().getExtras();
+        db.collection("shoes")
+                .orderBy("name", Query.Direction.ASCENDING)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isComplete()) {
+                            ArrayList<Shoe> shoeList = new ArrayList<>();
 
-        shoeList = (ArrayList<Shoe>) bundle.getSerializable("shoe_list");
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map<String, Object> temp = document.getData();
+                                Shoe shoeData = new Shoe((String) temp.get("name"),
+                                        (String) temp.get("style"), (String) temp.get("colorway"),
+                                        (String) temp.get("releaseDate"), (String) temp.get("description"),
+                                        Double.parseDouble(temp.get("price").toString()), (String) temp.get("pictureLink"));
 
-        if (shoeList!= null && !shoeList.isEmpty()) {
-            // Pass results to ListViewAdapter Class
-            adapter = new ShoeSearchListAdapter(this, shoeList);
+                                shoeList.add(shoeData);
+                            }
 
-            // Binds the Adapter to the ListView
-            searchListView.setAdapter(adapter);
+                            adapter = new ShoeSearchListAdapter(BuyerSearch.this, shoeList);
 
-            searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
+                            // Binds the Adapter to the ListView
+                            searchListView.setAdapter(adapter);
+
+                            searchListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    Shoe selectedItem = (Shoe) parent.getItemAtPosition(position);
 //                    shoeNameList.add(selectedItem.name);
-                    Intent toShoeDetail = new Intent(BuyerSearch.this, BuyerDetail.class);
-                    toShoeDetail.putExtra("shoe_name",selectedItem.name);
-                    activityResultLaunch.launch(toShoeDetail);
-                }
-            });
+                                    Intent toShoeDetail = new Intent(BuyerSearch.this, BuyerDetail.class);
+                                    toShoeDetail.putExtra("shoe_name",selectedItem.name);
+                                    activityResultLaunch.launch(toShoeDetail);
+                                }
+                            });
 
-            // Locate the EditText in listview_main.xml
-            shoeSearchView = findViewById(R.id.shoeSearchView);
-            shoeSearchView.setOnQueryTextListener(this);
-        }
-
+                            // Locate the EditText in listview_main.xml
+                            shoeSearchView = findViewById(R.id.shoeSearchView);
+                            shoeSearchView.setOnQueryTextListener(BuyerSearch.this);
+                        }
+                    }
+                });
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
